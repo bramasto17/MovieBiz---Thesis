@@ -62,6 +62,7 @@
 .owl-carousel .owl-stage {
   position: relative;
   -ms-touch-action: pan-Y;
+  min-width: 1000000px !important;
 }
 .owl-carousel .owl-stage:after {
   content: ".";
