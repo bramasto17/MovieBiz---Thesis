@@ -68,7 +68,10 @@ class MovieController extends Controller
         $movie =(object) tmdb()->getMovie($id)->get();
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
         $reviews = Review::join('users','users.id','=','reviews.userId')
-                  ->rightjoin('ratings','reviews.movieId','=','ratings.movieId')
+                  ->join('ratings',function($join){
+                    $join->on('reviews.userId','=','ratings.userId');
+                    $join->on('reviews.movieId','=','ratings.movieId');
+                  })
                   ->where('reviews.movieId',$id)->select('reviews.*','users.name','ratings.rating')->get();
         // dd($reviews);
         return view('Movie\review')->with(compact('movie','reviews'));
