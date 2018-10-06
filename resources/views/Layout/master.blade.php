@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
     <!--[if lt IE 9]>
@@ -65,14 +66,17 @@
                 <a href="/login">Login / Sign Up</a>
                 @else
                 <form action="/search" id="search">
-                    <div class="col-xs-10">
+                    <div class="col-xs-12">
                         <div class="field-form">
-                            <input type="text" class="control" placeholder="Search" required="required" name="txtSearch" id="txtSearch" >
+                            
+                                <input type="text" class="control" placeholder="Search" required="required" name="txtSearch" id="txtSearch" >
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            
                         </div>
                     </div>
-                    <div class="col-xs-2 submit">
-                        <button type="submit"><i class="lnr lnr-magnifier"></i></button>
-                    </div>
+                    <!-- <div class="col-xs-2 submit">
+                        
+                    </div> -->
                 </form>
                 @endif
             </div>

@@ -966,7 +966,7 @@ form .control {
     padding: 15px 15px 15px 30px;
     border-radius: 100px;
     border: 1px solid #d02727;
-    margin: 2%;
+    
     /*background-color: rgba(255, 0, 0, 0.5);*/
 }
 
@@ -1002,15 +1002,40 @@ form .control {
 
 #search button{
     background: transparent;
-    border: none;
+   
+    border-style:solid;
+    border-color:#d02727;
+    border-width:1px 1px 1px 0px;
     font-size: 35px;
     color: white;
 }
 
+
+/* search area - davis*/
 #search .control{
     color: #fff;
+    float :left;
     background: transparent;
     border-color: #fff;
+    border-radius :0px;
+    width:80%;
+    margin-top :1px;
+}
+#search button{
+    width:20%;
+     float: right;
+    display: block;
+    text-align: left;
+    
+    margin: 0;
+    padding-top:3%;
+    padding-left: 4%;
+    padding-right:4%;
+    background-color:white;
+    padding-bottom:3.5%;
+    color: #ab0000;
+    height:auto;
+
 }
 
 /*-- 18. Footer-Area --*/
@@ -1584,3 +1609,7 @@ form .control {
   color: #5B6770;
   padding: 5px;
 }
+
+/* Searchbar Homepage - Davis*/
+
+
