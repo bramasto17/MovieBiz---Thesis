@@ -8,8 +8,8 @@ Login
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-8 col-md-offset-2">
-                    <div class="space-30 hidden-xs"></div>
-                    <h1 class="wow fadeInUp" data-wow-delay="0.4s">Login</h1>
+                    <div class="space-20 hidden-xs"></div>
+                    <h3 class="wow fadeInUp" data-wow-delay="0.4s">Already have an account?<br>Login here.</h3>
                     <div class="space-20"></div>
                     <div class="desc wow fadeInUp" data-wow-delay="0.6s">
                         <div class="Login_SignUp-form text-center">
@@ -17,15 +17,17 @@ Login
 								{{csrf_field()}}
                                 <div class="field-form">
                                     <input type="email" class="control" placeholder="Email" required="required" name="txtEmail" id="txtEmail" >
+                                </div>
+                                <div class="field-form">
                                     <input type="password" class="control" placeholder="Password" required="required" name="txtPassword" id="txtPassword">
                                 </div>
                                 <input class="bttn-white wow fadeInUp" type="submit" value="Login"></input>
-                                <!-- <label class="mt10" for="mc-email"></label> -->
                             </form>
                         </div>
+
                     </div>
                     <div class="space-20"></div>
-                    <h5 class="wow fadeInUp" data-wow-delay="0.4s">Not a User? <a href="signup.html"><u>Sign Up!</u></a></h5>
+                    <h5 class="wow fadeInUp" data-wow-delay="0.4s">Not a User? <a href="/register"><u>Sign Up!</u></a></h5>
                     <div class="space-80"></div>
                 </div>
             </div>

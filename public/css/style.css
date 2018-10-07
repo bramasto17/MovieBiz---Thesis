@@ -45,6 +45,8 @@ CSS INDEX
 
 * {
     outline: none;
+    /*border: 1px solid black;
+    box-sizing: content-box;*/
 }
 
 a {
@@ -123,10 +125,9 @@ input:-webkit-autofill:focus {
     background: -webkit-linear-gradient(45deg, rgb(255, 0, 0) 0%, rgb(0, 0, 0) 100%);
     background: -o-linear-gradient(45deg, rgb(255, 0, 0) 0%, rgb(0, 0, 0) 100%);
     background: linear-gradient(45deg, rgb(255, 0, 0) 0%, rgb(0, 0, 0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#482cbf', endColorstr='#6ac6f0', GradientType=1);
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#482cbf', endColorstr='#6ac6f0', GradientType=1);*/
     overflow: hidden;
     z-index: 1;
-    margin-right: 10px;
     border: none;
 }
 
@@ -156,7 +157,10 @@ input:-webkit-autofill:focus {
 
 .bttn-white.active,
 .bttn-white:hover {
-    color: #ffffff;
+    /*color: #ffffff;*/
+    color: #d02727;
+    background: #fff;
+    /*border: 1px solid red;*/
 }
 
 .bttn-white.active:before,
@@ -169,7 +173,8 @@ input:-webkit-autofill:focus {
     padding: 12px 30px;
     background-color: #ffffff;
     display: inline-block;
-    color: #d02727;
+    /*color: #d02727;*/
+    color: #fff;
     text-transform: uppercase;
     border-radius: 50px;
     letter-spacing: 1.5px;
@@ -961,7 +966,7 @@ input:-webkit-autofill:focus {
 /*-- 17. Login_SignUp-Form --*/
 
 form .control {
-    width: 100%;
+    width: 65%;
     height: auto;
     padding: 15px 15px 15px 30px;
     border-radius: 100px;
@@ -990,6 +995,12 @@ form .control {
     right: 0;
     top: 0;
     margin-right: 0;
+}
+
+.Login_SignUp-form input[type=submit] {
+    width: 60%;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 #Login_SignUp a{

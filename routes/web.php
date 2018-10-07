@@ -10,12 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/','HomeController@index');
 
+// LOGIN
 Route::get('/login','LoginController@index');
 Route::post('/login','LoginController@Login')->name('login');
 Route::get('/logout','LoginController@Logout');
 
+//REGISTER
+Route::get('/register','RegisterController@index');
+
+//HOME
 Route::get('/home','HomeController@home');
 Route::get('/search','HomeController@search');
 
