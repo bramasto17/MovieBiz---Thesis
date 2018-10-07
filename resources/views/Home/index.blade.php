@@ -39,6 +39,7 @@ Home
         </div>
     </div>
 </section>
+@if(isset($history))
 <section class="gallery-area section-padding list" id="gallery_page">
     <div class="container-fluid">
         <div class="row">
@@ -57,4 +58,5 @@ Home
         </div>
     </div>
 </section>
+@endif
 @endsection
