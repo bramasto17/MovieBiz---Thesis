@@ -157,10 +157,7 @@ input:-webkit-autofill:focus {
 
 .bttn-white.active,
 .bttn-white:hover {
-    /*color: #ffffff;*/
-    color: #d02727;
-    background: #fff;
-    /*border: 1px solid red;*/
+    color: #ffffff;
 }
 
 .bttn-white.active:before,
@@ -173,8 +170,7 @@ input:-webkit-autofill:focus {
     padding: 12px 30px;
     background-color: #ffffff;
     display: inline-block;
-    /*color: #d02727;*/
-    color: #fff;
+    color: #d02727;
     text-transform: uppercase;
     border-radius: 50px;
     letter-spacing: 1.5px;
