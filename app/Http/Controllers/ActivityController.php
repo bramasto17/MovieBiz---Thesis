@@ -11,7 +11,10 @@ class ActivityController extends Controller
 {
     public function index(){
     	$movieId = Watch::where('userId',Auth::user()->id)->get()->sortByDesc('created_at');
-		$history = (object) tmdb()->getMovie($movieId[0]->movieId)->get();
+        if(count($movieId) != 0){
+		  $history = (object) tmdb()->getMovie($movieId[0]->movieId)->get();
+        }
+        else $history = null;
 
 		return view('activity.index')->with(['history'=>$history]);
     }
@@ -19,9 +22,10 @@ class ActivityController extends Controller
     public function getActivity(){
         $activity = \DB::table('watches')
                  ->select(DB::raw('CAST(created_at as date) as date, COUNT(movieId) as total'))
+                 ->where('userId',\Auth::user()->id)
                  ->groupBy(DB::raw('CAST(created_at as date)'))
                  ->get();
-
+                 
         return json_encode($activity);
     }
     //

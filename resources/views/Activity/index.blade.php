@@ -3,12 +3,18 @@
 My Activity
 @endsection
 @section('Content')
-<header class="home-area activity overlay" style="background: url(https://image.tmdb.org/t/p/original{{$history->backdrop_path}}) no-repeat scroll center top / cover;">
+<header class="home-area activity overlay" style="background: url(https://image.tmdb.org/t/p/original{{isset($history) ? $history->backdrop_path : ''}}) no-repeat scroll center top / cover;">
     <div class="container">
+        @if(isset($history))
         <div class="row">
             <h4 class="wow fadeInUp" data-wow-delay="0.4s">Last movie watched</h4>
             <h1 class="wow fadeInUp" data-wow-delay="0.4s">{{$history->title}}</h1>
         </div>
+        @else
+        <div class="row">
+            <h4 class="wow fadeInUp" data-wow-delay="0.4s">You haven't watched anything</h4>
+        </div>
+        @endif
     </div>
 </header>
 <section class="section-padding info" id="price_page">
