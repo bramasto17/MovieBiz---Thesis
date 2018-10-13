@@ -18,7 +18,7 @@
 			</div>  
 			<div class="col-xs-12 col-md-9" id="">
 				<div id="comments">
-		            <h3 class="comment-heading">{{count($allReviews) + count($myReview)}} Reviews</h3>
+		            <h3 class="comment-heading">{{count($allReviews) + (isset($myReview) ? 1 : 0)}} Reviews</h3>
 		            <ul class="comments-list">
                         @if($myReview)
                         <li class="border-round-white">

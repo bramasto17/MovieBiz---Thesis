@@ -94,23 +94,31 @@ class MovieController extends Controller
 
         $allReviews = DB::table('reviews')
             ->join('users', 'users.id', '=', 'reviews.userId')
-            ->join('ratings', 'ratings.userId', '=', 'reviews.userId')
+            ->join('ratings', function($join)
+                {
+                $join->on('ratings.userId', '=', 'reviews.userId');
+                $join->on('ratings.movieId', '=', 'reviews.movieId');
+                })
             ->where('reviews.movieId', '=', $movie->id)
             ->where('users.id', '!=', Auth::user()->id)
             ->select('reviews.*','users.name','ratings.rating')
             ->get();
 
-//        dd($allReviews);
+       // dd($allReviews);
 
         $myReview = DB::table('reviews')
             ->join('users', 'users.id', '=', 'reviews.userId')
-            ->join('ratings', 'ratings.userId', '=', 'reviews.userId')
+            ->join('ratings', function($join)
+                {
+                $join->on('ratings.userId', '=', 'reviews.userId');
+                $join->on('ratings.movieId', '=', 'reviews.movieId');
+                })
             ->where('reviews.movieId', '=', $movie->id)
             ->where('users.id', '=', Auth::user()->id)
             ->select('reviews.*','users.name','ratings.rating')
             ->first();
 
-//        dd($myReview);
+       // dd($myReview);
 
         return view('Movie\review')->with(compact('movie','allReviews','myReview'));
     }
