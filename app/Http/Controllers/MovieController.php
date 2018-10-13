@@ -12,6 +12,8 @@ use Carbon\Carbon;
 use App\Rating;
 use App\Review;
 use App\Watch;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 class MovieController extends Controller
 {
@@ -36,7 +38,9 @@ class MovieController extends Controller
 
     public function ratingMovie(Request $request){
         // dd($request);
-        $rating = Rating::where('userId',Auth::user()->id)->where('movieId',$request->movieId)->first();
+        $rating = Rating::where('userId',Auth::user()->id)
+            ->where('movieId',$request->movieId)
+            ->first();
 
         if($rating != null){
             $rating->rating = $request->rating;
@@ -54,12 +58,25 @@ class MovieController extends Controller
         return json_encode(['message' => 'Success']);
     }
 
+    /**
+     *  REVIEW MOVIE
+     */
     public function reviewMovie(Request $request){
-        $review = new Review();
-        $review->userId = Auth::user()->id;
-        $review->movieId = $request->movieId;
-        $review->review = $request->review;
-        $review->save();
+        $inputs = Input::all();
+        $rules = [
+            'review' => 'required'
+        ];
+        $validator = Validator::make($inputs, $rules);
+
+        if($validator->passes()){
+            $review = new Review();
+            $review->userId = Auth::user()->id;
+            $review->movieId = $request->movieId;
+            $review->review = $request->review;
+            $review->save();
+        } else {
+            return redirect('/movie/'.$request->movieId.'/review')->withErrors($validator);
+        }
 
         return redirect('/movie/'.$request->movieId.'/review');
     }
@@ -67,13 +84,61 @@ class MovieController extends Controller
     public function showReview($id){
         $movie =(object) tmdb()->getMovie($id)->get();
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
-        $reviews = Review::join('users','users.id','=','reviews.userId')
+
+        /*$reviews = Review::join('users','users.id','=','reviews.userId')
                   ->join('ratings',function($join){
                     $join->on('reviews.userId','=','ratings.userId');
                     $join->on('reviews.movieId','=','ratings.movieId');
                   })
-                  ->where('reviews.movieId',$id)->select('reviews.*','users.name','ratings.rating')->get();
-        // dd($reviews);
-        return view('Movie\review')->with(compact('movie','reviews'));
+                  ->where('reviews.movieId','=',$id)->select('reviews.*','users.name','ratings.rating')->get();*/
+
+        $allReviews = DB::table('reviews')
+            ->join('users', 'users.id', '=', 'reviews.userId')
+            ->join('ratings', 'ratings.userId', '=', 'reviews.userId')
+            ->where('reviews.movieId', '=', $movie->id)
+            ->where('users.id', '!=', Auth::user()->id)
+            ->select('reviews.*','users.name','ratings.rating')
+            ->get();
+
+//        dd($allReviews);
+
+        $myReview = DB::table('reviews')
+            ->join('users', 'users.id', '=', 'reviews.userId')
+            ->join('ratings', 'ratings.userId', '=', 'reviews.userId')
+            ->where('reviews.movieId', '=', $movie->id)
+            ->where('users.id', '=', Auth::user()->id)
+            ->select('reviews.*','users.name','ratings.rating')
+            ->first();
+
+//        dd($myReview);
+
+        return view('Movie\review')->with(compact('movie','allReviews','myReview'));
+    }
+
+    public function editReview(Request $request){
+        $target = Review::find($request->id);
+
+        $inputs = Input::all();
+        $rules = [
+            'review' => 'required'
+        ];
+        $validator = Validator::make($inputs, $rules);
+
+        if($validator->passes()){
+            $target->review = $request->review;
+            $target->save();
+        } else {
+            return redirect('/movie/'.$request->movieId.'/review')->withErrors($validator);
+        }
+
+        return redirect('/movie/'.$request->movieId.'/review');
+    }
+
+    public function deleteReview(Request $request){
+        DB::table('reviews')
+            ->where('id', '=', $request->id)
+            ->delete();
+
+        return redirect('/movie/'.$request->movieId.'/review');
     }
 }

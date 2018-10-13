@@ -45,8 +45,8 @@ CSS INDEX
 
 * {
     outline: none;
-    /*border: 1px solid black;
-    box-sizing: content-box;*/
+    /*border: 1px solid black;*/
+    /*box-sizing: border-box;*/
 }
 
 a {
@@ -619,7 +619,7 @@ input:-webkit-autofill:focus {
 
 .team-box-container{
     display: table;
-    /*background-color: red;*/\
+    /*background-color: red;*/
     -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -1168,7 +1168,7 @@ form .control {
     -webkit-animation: mymove 1.5s infinite linear;
     animation: mymove 1.5s infinite linear;
 }
-
+/* 
 @-webkit-keyframes mymove {
     0 {
         -webkit-box-shadow: 0 0 0 0 rgba(94, 136, 252, 0.6), 0 0 0 0 rgba(94, 136, 252, 0.6);
@@ -1213,7 +1213,7 @@ form .control {
         -webkit-box-shadow: 0 0 0 0 rgba(94, 136, 252, 0.6), 0 0 0 0 rgba(94, 136, 252, 0.6);
         box-shadow: 0 0 0 0 rgba(94, 136, 252, 0.6), 0 0 0 0 rgba(94, 136, 252, 0.6);
     }
-}
+} */
 
 /*-- 20. Blog-Post --*/
 
@@ -1382,10 +1382,11 @@ form .control {
 }
 
 .review-rating{
-    background-color: #d02727;
-    border-radius: 100%;
-    color: #fff;
-    padding: 0.5%;
+    background-color: gold;
+    color: #000;
+    border-radius: 30px;
+    font-weight: 500;
+    padding: 1%;
 }
 
 .comment-respond h4,
@@ -1615,4 +1616,14 @@ form .control {
 
 /* Searchbar Homepage - Davis*/
 
+/* DK  - 10/10/18*/
+.noborder-round {
+    padding: 20px;
+    border-radius: 10px;
+}
 
+.border-round-white {
+    border: 3px solid white;
+    padding: 20px;
+    border-radius: 10px;
+}

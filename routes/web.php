@@ -20,6 +20,7 @@ Route::get('/logout','LoginController@Logout');
 
 //REGISTER
 Route::get('/register','RegisterController@index');
+ Route::post('/register','RegisterController@Register');
 
 //HOME
 Route::get('/home','HomeController@home');
@@ -28,11 +29,13 @@ Route::get('/search','HomeController@search');
 Route::get('/my-activity','ActivityController@index');
 Route::get('/get-activity','ActivityController@getActivity');
 
-// Route::get('/register','RegisterController@index');
-// Route::post('/register','RegisterController@Register');
-
+//MOVIE
 Route::get('/movie/{id}','MovieController@index');
-Route::get('/movie/{id}/review','MovieController@showReview');
 Route::post('/checkInMovie','MovieController@checkInMovie'); //untuk check in film
 Route::post('/ratingMovie','MovieController@ratingMovie');
+
+//REVIEW
+Route::get('/movie/{id}/review','MovieController@showReview');
 Route::post('/reviewMovie','MovieController@reviewMovie');
+Route::post('/editReviewMovie','MovieController@editReview');
+Route::post('/deleteReviewMovie','MovieController@deleteReview');
