@@ -10,9 +10,9 @@ use App\Watch;
 class ActivityController extends Controller
 {
     public function index(){
-    	$movieId = Watch::where('userId',Auth::user()->id)->get()->sortByDesc('created_at');
+    	$movieId = Watch::where('userId',Auth::user()->id)->orderBy('created_at','desc')->get();
         if(count($movieId) != 0){
-		  $history = (object) tmdb()->getMovie($movieId[0]->movieId)->get();
+          $history = (object) tmdb()->getMovie($movieId[0]->movieId)->get();
         }
         else $history = null;
 
