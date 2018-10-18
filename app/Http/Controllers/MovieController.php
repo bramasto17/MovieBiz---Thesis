@@ -120,7 +120,7 @@ class MovieController extends Controller
 
        // dd($myReview);
 
-        return view('Movie\review')->with(compact('movie','allReviews','myReview'));
+        return view('Movie\review', compact('movie','allReviews','myReview'));
     }
 
     public function editReview(Request $request){
@@ -149,4 +149,15 @@ class MovieController extends Controller
 
         return redirect('/movie/'.$request->movieId.'/review');
     }
+
+    /**
+     *  FORUM
+     */
+    public function showForum($id){
+        $movie =(object) tmdb()->getMovie($id)->get();
+        $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
+
+        return view('Movie\Forum\index', compact('movie'));
+    }
+
 }

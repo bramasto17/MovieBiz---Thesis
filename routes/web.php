@@ -39,3 +39,6 @@ Route::get('/movie/{id}/review','MovieController@showReview');
 Route::post('/reviewMovie','MovieController@reviewMovie');
 Route::post('/editReviewMovie','MovieController@editReview');
 Route::post('/deleteReviewMovie','MovieController@deleteReview');
+
+//FORUM
+Route::get('/movie/{id}/forum','MovieController@showForum');

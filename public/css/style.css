@@ -463,6 +463,10 @@ input:-webkit-autofill:focus {
     text-align: center;
 }
 
+.home-area input{
+    color: red;
+}
+
 .detail{
     text-align: left;
 }
@@ -1627,3 +1631,25 @@ form .control {
     padding: 20px;
     border-radius: 10px;
 }
+
+.badge-red {
+    background: red;
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-right: 20px
+}
+
+.badge-green {
+    background: green;
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-right: 20px
+}
+
+.badge-blue {
+    background: blue;
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-right: 20px
+}
+

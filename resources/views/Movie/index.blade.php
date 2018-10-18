@@ -285,7 +285,7 @@
 	                                </ul>
 	                            </div>
 	                            <div class="price-footer">
-	                                <a href="#" class="bttn-white">Go to movie's forum</a>
+	                                <a href="/movie/{{$movie->id}}/forum" class="bttn-white">Go to movie's forum</a>
 	                            </div>
 	                        </div>
 	                        <div class="space-30 hidden visible-xs"></div>
