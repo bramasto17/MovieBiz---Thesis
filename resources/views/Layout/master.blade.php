@@ -55,7 +55,7 @@
                 <li><a href="#contact_page">Contacts</a></li>
                 @else
                 <li><a href="#">Feed</a></li>
-                <li><a href="/my-activity">My Activity</a></li>
+                <!--<li><a href="/my-activity">My Activity</a></li>-->
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="#">Movies</a></li>
                 <li><a href="#">TV Series</a></li>
@@ -63,21 +63,36 @@
             </ul>
             <div class="right-button hidden-xs">
                 @if (auth()->guest())
-                <a href="/login">Login / Sign Up</a>
-                @else
-                <form action="/search" id="search2">
-                    <div class="col-xs-12">
-                        <div class="field-form">
-                            <input type="text" class="control" placeholder="Search" required="required" name="txtSearch" id="txtSearch" >
-                            <button type="submit"><i class="fa fa-search fa-lg"></i></button>
+                <div class="login">
+                    <a href="/login">Login / Sign Up</a>
+                </div>
+                @else 
+                <div class ="right-button-elements">            
+                    <form action="/search" id="search2">
+                        <div class="col-xs-12">
+                            <div class="field-form">
+                                <input type="text" class="control" placeholder="Search" required="required" name="txtSearch" id="txtSearch" ><!--
+                             --><button type="submit"><i class="fa fa-search fa-lg"></i></button>
+                            </div>
                         </div>
-                    </div>
-                    <!-- <div class="col-xs-2 submit">
+                        <!-- <div class="col-xs-2 submit">
 
-                    </div> -->
-                </form>
+                        </div> -->
+                    </form>
+                </div>
+                <div class="right-button-elements" style="float:right">
+                    <div class="dropdown">
+                        <button class="dropbtn">{{Auth::user()->name}}</button>
+                        <div class="dropdown-content">
+                            <a href="#">My Profile</a>
+                            <a href="/my-activity">My Activity</a>
+                            <a href="/logout">Logout</a>
+                        </div>
+                    </div> 
+                </div>
                 @endif
             </div>
+           
         </div>
     </div>
 </nav>

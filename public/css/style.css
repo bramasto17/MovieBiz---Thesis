@@ -317,7 +317,7 @@ input:-webkit-autofill:focus {
     top: 0;
     width: 100%;
     z-index: 9999;
-    padding: 20px 140px 15px 0;
+    padding: 20px 0 15px 0;
     background: transparent;
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
@@ -353,12 +353,13 @@ input:-webkit-autofill:focus {
 }
 
 .mainmenu-area .right-button {
-    position: absolute;
-    right: 10px;
-    top: 20px;
+    position: relative;
+    display:inline-block;
+    float-left;
+    width:30vw;
 }
 
-.mainmenu-area .right-button a {
+.mainmenu-area .right-button .login a {
     color: #ffffff;
     padding: 10px 40px;
     border-radius: 50px;
@@ -370,15 +371,22 @@ input:-webkit-autofill:focus {
     font-size: 14px;
 }
 
-.mainmenu-area .right-button a:hover {
+.mainmenu-area .right-button .login a:hover {
     background-color: rgba(255, 255, 255, 1);
     color: #d02727;;
+}
+.mainmenu-area .right-button .right-button-elements{
+    display:inline-block;
+}
+.mainmenu-area .right-button .right-button-elements .dropdown{
+    float:right;
 }
 
 .mainmenu-area ul.mainmenu {
     text-align: center;
-    float: none;
-    display: block;
+    width: 50vw;
+    float:left;
+    display: inline-block;
 }
 
 .mainmenu-area ul.mainmenu li {
@@ -1014,6 +1022,7 @@ form .control {
 
 #search .submit{
     padding: 10px;
+
 }
 
 
@@ -1073,7 +1082,10 @@ form .control {
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     border-left: none;
+    padding-top:2px;
+    padding-bottom:2px;
 }
+
 
 
 /*-- 18. Footer-Area --*/
@@ -1683,3 +1695,50 @@ form .control {
     padding-right: 20px
 }
 
+/* ======Dropdown user - Davis * created 20 october 2018 last updated 20 october 2018*=====*/
+
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right:0;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black!important;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
