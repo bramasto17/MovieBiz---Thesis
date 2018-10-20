@@ -54,19 +54,36 @@
                 <li><a href="#features_page">Features</a></li>
                 <li><a href="#contact_page">Contacts</a></li>
                 @else
-                <li><a href="#">Feed</a></li>
-                <!--<li><a href="/my-activity">My Activity</a></li>-->
                 <li class="active"><a href="/">Home</a></li>
+                <li><a href="#">Feed</a></li>
+                <!--<li><a href="/my-activity">My Activity</a></li>-->                
                 <li><a href="#">Movies</a></li>
                 <li><a href="#">TV Series</a></li>
                 @endif
             </ul>
             <div class="right-button hidden-xs">
                 @if (auth()->guest())
-                <div class="login">
-                    <a href="/login">Login / Sign Up</a>
+                <div class = "right-button-elements">
+                    <div class="login">
+                        <a href="/login">Login</a>
+                    </div>
+                </div>
+                <div class = "right-button-elements">
+                    <div class="login">
+                    <a href="/register">Sign Up</a>
+                    </div>                    
                 </div>
                 @else 
+                <div class="right-button-elements" style="float:right">
+                    <div class="dropdown">
+                        <button class="dropbtn">{{Auth::user()->name}}</button>
+                        <div class="dropdown-content">
+                            <a href="/my-profile">My Profile</a>
+                            <a href="/my-activity">My Activity</a>
+                            <a href="/logout">Logout</a>
+                        </div>
+                    </div> 
+                </div>
                 <div class ="right-button-elements">            
                     <form action="/search" id="search2">
                         <div class="col-xs-12">
@@ -80,16 +97,7 @@
                         </div> -->
                     </form>
                 </div>
-                <div class="right-button-elements" style="float:right">
-                    <div class="dropdown">
-                        <button class="dropbtn">{{Auth::user()->name}}</button>
-                        <div class="dropdown-content">
-                            <a href="/my-profile">My Profile</a>
-                            <a href="/my-activity">My Activity</a>
-                            <a href="/logout">Logout</a>
-                        </div>
-                    </div> 
-                </div>
+                
                 @endif
             </div>
            

@@ -358,7 +358,9 @@ input:-webkit-autofill:focus {
     float:right;
     width:30vw;
 }
-
+.mainmenu-area .right-button .login{
+    float:right;
+}
 .mainmenu-area .right-button .login a {
     color: #ffffff;
     padding: 10px 40px;
@@ -377,13 +379,15 @@ input:-webkit-autofill:focus {
 }
 .mainmenu-area .right-button .right-button-elements{
     display:inline-block;
+    float:right;
+    padding-left:20px;
 }
 .mainmenu-area .right-button .right-button-elements .dropdown{
     float:right;
 }
 
 .mainmenu-area ul.mainmenu {
-    text-align: center;
+    
     width: 50vw;
     float:left;
     display: inline-block;
@@ -1741,4 +1745,21 @@ form .control {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
+}
+
+/*========= PROFILE PAGE =========*/   /*======CREATED 20 OCTOBER 2018, davis ========*/ /*======LAST 20 OCTOBER 2018, davis======*/
+.profile-name{
+    vertical-align:top;
+    width:auto;
+    height:auto;
+    font-size: 50px;
+}
+.profile-image{
+    padding-bottom : 50px;
+    padding-top :25px;
+}
+.profile-image img{
+    width : 200px;
+    height:200px;
+    border-radius:50%;
 }
