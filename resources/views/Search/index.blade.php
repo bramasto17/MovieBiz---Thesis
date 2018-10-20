@@ -8,6 +8,7 @@ Home
         <div class="row">
             <div class="col-xs-12 col-sm-12">
                 <h1>Search Results for "{{$search}}"</h1>
+                <h2>Movies</h2>
             </div>
         </div>
         <div class="row">
@@ -17,6 +18,19 @@ Home
             </div>
             @endforeach
         </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <h2>User</h2>
+                @if(count($users)==0)
+                    <h3>Nothing Found</h3>
+                @else
+                @foreach($users as $user)
+                <a href="/profile/{{$user->id}}">{{$user->name}}</a>
+                @endforeach
+                @endif
+            </div>
+        </div>
+
     </div>
 </section>
 @endsection

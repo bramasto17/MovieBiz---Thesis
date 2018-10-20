@@ -78,7 +78,7 @@
                     <div class="dropdown">
                         <button class="dropbtn">{{Auth::user()->name}}</button>
                         <div class="dropdown-content">
-                            <a href="/my-profile">My Profile</a>
+                            <a href="/profile/{{Auth::user()->id}}">My Profile</a>
                             <a href="/my-activity">My Activity</a>
                             <a href="/logout">Logout</a>
                         </div>
