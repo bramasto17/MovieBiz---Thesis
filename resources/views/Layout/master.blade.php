@@ -65,17 +65,15 @@
                 @if (auth()->guest())
                 <a href="/login">Login / Sign Up</a>
                 @else
-                <form action="/search" id="search">
+                <form action="/search" id="search2">
                     <div class="col-xs-12">
                         <div class="field-form">
-                            
-                                <input type="text" class="control" placeholder="Search" required="required" name="txtSearch" id="txtSearch" >
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                            
+                            <input type="text" class="control" placeholder="Search" required="required" name="txtSearch" id="txtSearch" >
+                            <button type="submit"><i class="fa fa-search fa-lg"></i></button>
                         </div>
                     </div>
                     <!-- <div class="col-xs-2 submit">
-                        
+
                     </div> -->
                 </form>
                 @endif

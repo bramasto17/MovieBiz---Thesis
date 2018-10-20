@@ -84,6 +84,8 @@ class MovieController extends Controller
     public function showReview($id){
         $movie =(object) tmdb()->getMovie($id)->get();
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
+        $rating = Rating::where('userId',Auth::user()->id)->where('movieId',$id)->first();
+
 
         /*$reviews = Review::join('users','users.id','=','reviews.userId')
                   ->join('ratings',function($join){
@@ -120,7 +122,7 @@ class MovieController extends Controller
 
        // dd($myReview);
 
-        return view('Movie\review', compact('movie','allReviews','myReview'));
+        return view('Movie\review', compact('movie','allReviews','myReview','rating'));
     }
 
     public function editReview(Request $request){

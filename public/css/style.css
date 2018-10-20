@@ -45,7 +45,7 @@ CSS INDEX
 
 * {
     outline: none;
-    /*border: 1px solid black;*/
+    /*border: 1px solid yellow;*/
     /*box-sizing: border-box;*/
 }
 
@@ -217,6 +217,11 @@ input:-webkit-autofill:focus {
     transform: translateY(-5px);
 }
 
+.bttn-half-padding{
+    padding: 6px 15px;
+
+}
+
 .sq {
     border-radius: 3px !important;
 }
@@ -349,8 +354,8 @@ input:-webkit-autofill:focus {
 
 .mainmenu-area .right-button {
     position: absolute;
-    right: 15px;
-    top: 12px;
+    right: 10px;
+    top: 20px;
 }
 
 .mainmenu-area .right-button a {
@@ -1045,6 +1050,32 @@ form .control {
 
 }
 
+/* search area - dika*/
+#search2 .control{
+    color: #fff;
+    padding: 7px 10px;
+    background: transparent;
+    border: 2px solid #fff;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right: none;
+    margin-right: 0;
+}
+#search2 button{
+    margin-left: 0;
+    background: transparent;
+    border: 2px solid #fff;
+    color: #ab0000;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-left: none;
+}
+
+
 /*-- 18. Footer-Area --*/
 
 .footer-box {
@@ -1241,7 +1272,6 @@ form .control {
     margin-top: 10px;
     padding: 0;
 }
-
 
 .post-single:after {
     content: "";
@@ -1491,9 +1521,9 @@ form .control {
 .rating {
   display: inline-block;
   position: relative;
-  height: 50px;
-  line-height: 50px;
-  font-size: 50px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 25px;
 }
 
 .rating label {
