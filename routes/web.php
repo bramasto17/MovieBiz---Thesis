@@ -40,6 +40,8 @@ Route::post('/reviewMovie','MovieController@reviewMovie');
 Route::post('/editReviewMovie','MovieController@editReview');
 Route::post('/deleteReviewMovie','MovieController@deleteReview');
 
+//PROFILE
+Route::get('/my-profile','ProfileController@index');
 
 //FEED
 Route::get('/feed','FeedController@index');

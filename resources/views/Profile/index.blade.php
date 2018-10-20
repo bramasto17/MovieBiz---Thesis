@@ -4,7 +4,6 @@ Feed
 @endsection
 
 @section('Content')
-
-FEED
+PROFILE
 
 @endsection
