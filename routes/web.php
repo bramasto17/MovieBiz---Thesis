@@ -40,5 +40,9 @@ Route::post('/reviewMovie','MovieController@reviewMovie');
 Route::post('/editReviewMovie','MovieController@editReview');
 Route::post('/deleteReviewMovie','MovieController@deleteReview');
 
+
+//FEED
+Route::get('/feed','FeedController@index');
+
 //FORUM
 Route::get('/movie/{id}/forum','MovieController@showForum');
