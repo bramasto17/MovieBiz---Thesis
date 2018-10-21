@@ -1763,3 +1763,34 @@ form .control {
     height:200px;
     border-radius:50%;
 }
+#follow{
+    color:white;
+    width :120px;
+    height:45px;
+    text-align:center;
+    font-size:20px;
+    padding:0;
+    border:0;
+
+}
+#follow button :focus{
+    color:white;
+}
+.following{
+    background-color:green;
+}
+.following:hover{
+    background-color:red;
+}
+
+.not-following{
+    background-color:blue;
+}
+
+.not-following:hover{
+    background-color:green;
+}
+    
+
+
+
