@@ -210,6 +210,7 @@
 <script src="/assets/js/animations.min.js"></script>
 <!-- CUSTOM SCRIPTS -->
 <script src="/assets/js/custom.js"></script>
+@stack('scripts')
 </body>
 
 </html>
