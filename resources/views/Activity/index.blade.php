@@ -34,3 +34,10 @@ My Activity
 </section>
 <script type="text/javascript" src="/js/barchart.js"></script>
 @endsection
+@push('scripts')
+<script type="text/javascript">
+    $(function() {
+        $("#my-activity").addClass("active");
+    });
+</script>
+@endpush

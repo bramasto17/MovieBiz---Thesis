@@ -60,3 +60,10 @@ Home
 </section>
 @endif
 @endsection
+@push('scripts')
+<script type="text/javascript">
+    $(function() {
+        $("#home").addClass("active");
+    });
+</script>
+@endpush

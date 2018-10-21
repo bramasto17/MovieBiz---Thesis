@@ -230,11 +230,12 @@
             data: data,
             url: '/checkInMovie',
             success: function (data) {
-                $('#message').css("display","block");
-                $('#message').text("Success checked in movie!!");
-                $("#message").fadeTo(2000, 500).slideUp(500, function(){
-                    $("#message").slideUp(500);
-                });
+                // $('#message').css("display","block");
+                // $('#message').text("Success checked in movie!!");
+                // $("#message").fadeTo(2000, 500).slideUp(500, function(){
+                //     $("#message").slideUp(500);
+                // });
+                $('#checkInMovie').text("Checked in movie!!");
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
              console.log(errorThrown);
