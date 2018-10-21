@@ -24,8 +24,8 @@ My Profile
 					  type: 'post', // performing a POST request
 					  data : {
 					  	"_token": "{{ csrf_token() }}",
-					    follower : "{{Auth::user()->id}}", // will be accessible in $_POST['data1']
-					    following : "{{$user->id}}"
+					    followerID : "{{Auth::user()->id}}", // will be accessible in $_POST['data1']
+					    followTargetID : "{{$user->id}}"
 					  },
 					  dataType: 'json',                   
 					  success: function(data)         
