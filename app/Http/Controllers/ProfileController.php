@@ -11,4 +11,12 @@ class ProfileController extends Controller
     	$user = User::where('id',$id)->first();
     	return view('Profile.index')->with(['user'=>$user]);
     }
+
+    public function follow(Request $request){
+    	$data = $request->all();
+
+
+    	
+    	return "Followed";
+    }
 }

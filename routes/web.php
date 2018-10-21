@@ -42,15 +42,8 @@ Route::post('/deleteReviewMovie','MovieController@deleteReview');
 
 //PROFILE
 Route::get('/profile/{id}','ProfileController@index');
-Route::any('/profile/{id}/test',function($data ='John'){
-		return $data;
-});
-Route::any('/profile/test',function($data ='John'){
-		return $data;
-});
-Route::any('test',function($data ='John'){
-		return $data;
-});
+Route::post('/profile/{id}/follow','ProfileController@follow');
+
 
 //FEED
 Route::get('/feed','FeedController@index');

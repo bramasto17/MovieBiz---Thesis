@@ -15,13 +15,27 @@ My Profile
 		@endif
 		<script src="http://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
-			jQuery.noConflict();
-			jQuery(document).ready(function(){
-				jQuery("#follow").click(function(){
+			
+			$(document).ready(function(){
+				$("#follow").click(function(){
 					console.log("clicked");
-					jQuery.get("test",function(data){
-						alert(data);
-					});				
+					$.ajax({                    
+					  url: '{{$user->id}}/follow',     
+					  type: 'post', // performing a POST request
+					  data : {
+					  	"_token": "{{ csrf_token() }}",
+					    follower : "{{Auth::user()->id}}", // will be accessible in $_POST['data1']
+					    following : "{{$user->id}}"
+					  },
+					  dataType: 'json',                   
+					  success: function(data)         
+					  {
+					    // etc...
+					  } 
+					});
+					// $.ajax({url: "{{$user->id}}/test", success: function(result){
+     //    				$("#follow").text(result);
+    	// 			}});			
 				});
 			});
 		</script>
