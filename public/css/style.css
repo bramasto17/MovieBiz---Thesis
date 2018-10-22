@@ -1663,27 +1663,27 @@ form .control {
     min-height: 50vh !important;
 }
 #chart_month{
-    background: red;
     height: 25vh;
 }
 .axis path,
 .axis line{
     fill: none;
     stroke: #500;
-    shape-rendering: crispEdges;
+    /*shape-rendering: crispEdges;*/
 }
 
 .toolTip {
   pointer-events: none;
   position: absolute;
   background-color: white;
-  min-width: 40px;
+  min-width: 100px;
   display: none;
   height: auto;
   text-align: center;
   color: #5B6770;
   box-shadow: 0px 3px 9px 9px rgba(0, 0, 0, .15);
-  padding: 5px;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 .detail {
