@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use Auth;
+use Session;
+
 use Carbon\Carbon;
 
 use App\Rating;
@@ -23,10 +25,8 @@ class MovieController extends Controller
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
         $rating = Rating::where('userId',Auth::user()->id)->where('movieId',$id)->first();
         $review = Review::join('users','users.id','=','reviews.userId')->where('movieId',$id)->select('reviews.*','users.name')->first();
-        $isWatch = Watch::where('movieId',$id)->get();
-        $watched = (isset($isWatch)) ? true : false;
-        // dd($watched);
-        return view('Movie\index', compact('movie','rating','review','watched'));
+        $isWatch = Watch::where('movieId',$id)->first();
+        return view('Movie\index', compact('movie','rating','review','isWatch'));
     }
 
     public function checkInMovie(Request $request){
@@ -34,6 +34,11 @@ class MovieController extends Controller
         $watch->userId = Auth::user()->id;
         $watch->movieId = $request->movieId;
         $watch->save();
+
+        $history = Session::get('history');
+        $history_new = (object) tmdb()->getMovie($watch->movieId)->get();
+        $history[] = $history_new;
+        Session::put('history', $history);
 
         return json_encode(['message' => 'Success']);
     }

@@ -30,15 +30,28 @@ class HomeController extends Controller
     }
 
     public function home(Request $request){
+        //POPULAR
         $popular = Session::get('popular');
-        $latest = Session::get('popular');
 
-        $movieId = Watch::where('userId',Auth::user()->id)->get()->sortByDesc('created_at');
-        
-        $history = null;
-        foreach ($movieId as $key => $data) {
-            $history[] = (object) tmdb()->getMovie($data->movieId)->get();
+        //LATEST
+        if(!Session::has('latest')){
+            $latests = tmdb()->nowPlayingMovies();
+            foreach ($latests as $l) {
+                $latest[] = (object) $l->get();
+            }
+            Session::put('latest', $latest);
         }
+        $latest = Session::get('latest');
+
+        //HISTORY
+        if(!Session::has('history')){
+            $movieId = Watch::where('userId',Auth::user()->id)->get()->sortByDesc('created_at');
+            foreach ($movieId as $key => $data) {
+                $history[] = (object) tmdb()->getMovie($data->movieId)->get();
+            }
+            Session::put('history', $history);
+        }
+        $history = Session::get('history');
         // dd($history[0]->id);
         return view('Home/index')->with(['popular'=>$popular,'latest'=>$latest, 'history'=>$history]);
     }
