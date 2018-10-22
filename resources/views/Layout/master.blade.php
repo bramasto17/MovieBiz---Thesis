@@ -33,7 +33,7 @@
 <body data-spy="scroll" data-target="#menu-section">
 <!-- Preloader-content -->
 <div class="preloader">
-    <span><i class="lnr lnr-sync"></i></span>
+    <span><div class="lds-dual-ring"></div></span>
 </div>
 <!-- MainMenu-Area -->
 <nav class="mainmenu-area" data-spy="affix" data-offset-top="200">
