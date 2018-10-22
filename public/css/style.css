@@ -740,12 +740,6 @@ input:-webkit-autofill:focus {
     border-radius: 2px;
 }
 
-.gallery-slide .item:hover{
-    border-color: #9ecaed;
-    box-shadow: 0 0 10px #9ecaed;
-    outline-offset: -15px;
-}
-
 .gallery-slide .owl-controls {
     position: static;
     text-align: center;
@@ -1534,6 +1528,36 @@ form .control {
     width: 100%;
 }
 
+/*========OVERLAY IMAGE========*/
+.item .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 15px;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background: linear-gradient(45deg, rgba(255, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.item:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+/*========END OVERLAY IMAGE========*/
+
 /*========RATING========*/
 .rating {
   margin-top: 15px;
@@ -1630,6 +1654,7 @@ form .control {
 #message{
     color: #fff;
     display: none;
+    font-size: 50px;
 }
 /*========END RATING========*/
 

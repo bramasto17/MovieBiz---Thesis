@@ -19,8 +19,6 @@
 	                <div class="space-20"></div>
 	                <div class="desc wow fadeInUp" data-wow-delay="0.6s">
 	                    <p>{{$movie->overview}}</p>
-	                </div>
-	                <div class="detail wow fadeInUp" data-wow-delay="0.6s">
 	                    <div class="col-xs-6 col-sm-4">
 	                        <span class="red-color">Release : </span>
 	                        <span>{{$movie->release_date->format('d M Y')}}</span>
@@ -58,7 +56,7 @@
 		                </div>
 		                <div class="col-xs-12 col-sm-8 wow fadeInUp">
 		                	<div class="row">
-		                    	<span class="red-color">Your Rating: <span class="lnr lnr-checkmark-circle" id="message"></span> </span>
+		                    	<span class="red-color">Your Rating: </span>
 		                	</div>
 		                	<div class="row">
 		                		<div class="rating">
@@ -148,6 +146,7 @@
 								    <span class="icon">★</span>
 								  </label>
 								</div>
+								<span class="lnr lnr-checkmark-circle" id="message"></span>
 		                	</div>
 		                </div>
 	                </div>

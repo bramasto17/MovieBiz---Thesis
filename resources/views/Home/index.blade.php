@@ -10,7 +10,12 @@ Home
                 <div class="gallery-slide">
                     @foreach($popular as $data)
                     <div class="item">
-                        <a href="/movie/{{$data->id}}"><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->poster_path}}" alt=""></a>
+                        <a href="/movie/{{$data->id}}">
+                            <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->poster_path}}" alt="{{$data->title}}">
+                            <div class="overlay">
+                                <div class="text">{{$data->title}}</div>
+                              </div>
+                        </a>
                     </div>
                     @endforeach
                 </div>
@@ -31,7 +36,12 @@ Home
                 <div class="gallery-slide">
                     @foreach($latest as $data)
                     <div class="item">
-                        <a href="/movie/{{$data->id}}"><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->poster_path}}" alt=""></a>
+                        <a href="/movie/{{$data->id}}">
+                            <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->poster_path}}" alt="{{$data->title}}">
+                            <div class="overlay">
+                                <div class="text">{{$data->title}}</div>
+                              </div>
+                        </a>
                     </div>
                     @endforeach
                 </div>
@@ -47,7 +57,12 @@ Home
                 <div class="gallery-slide">
                     @foreach($history as $data)
                     <div class="item">
-                        <a href="/movie/{{$data->id}}"><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->poster_path}}" alt=""></a>
+                        <a href="/movie/{{$data->id}}">
+                            <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->poster_path}}" alt="{{$data->title}}">
+                            <div class="overlay">
+                                <div class="text">{{$data->title}}</div>
+                              </div>
+                        </a>
                     </div>
                     @endforeach
                 </div>
