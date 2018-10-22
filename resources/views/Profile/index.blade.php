@@ -10,13 +10,25 @@ My Profile
 		<div class="row"><div class="profile-image"><img src="../images/team-4.jpg"></div></div>
 		<h2>TEST</h2>
 		@if($user->id != Auth::user()->id)
-			<div class="row"><button id="follow">Follow</button></div>
-			<a href="/AAAAAAAAAAAAAAAA">test</a>
+			<div class="row"><button id="follow" class="not-following">Follow</button></div>
 		@endif
 		<script src="http://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			
+			function changeText(data){
+				$("#follow").text(data);
+					if(data =="Following"){
+						$("#follow").removeClass("not-following").addClass("following");
+					}else if(data == "Follow"){
+					  	$("#follow").removeClass("following").addClass("not-following");
+					    };
+			};
+
 			$(document).ready(function(){
+				console.log("is following : ");
+				if("{{$isFollowing}}"){
+					changeText("Following");
+				}else changeText("Follow");
 				$("#follow").click(function(){
 					console.log("clicked");
 					$.ajax({                    
@@ -24,19 +36,28 @@ My Profile
 					  type: 'post', // performing a POST request
 					  data : {
 					  	"_token": "{{ csrf_token() }}",
-					    follower : "{{Auth::user()->id}}", // will be accessible in $_POST['data1']
-					    following : "{{$user->id}}"
-					  },
-					  dataType: 'json',                   
-					  success: function(data)         
-					  {
-					    // etc...
-					  } 
+					    followerID : "{{Auth::user()->id}}", // will be accessible in $_POST['data1']
+					    followTargetID : "{{$user->id}}"
+					  },                  
+					  success: function(data){
+					  	changeText(data);
+					  }
 					});
 					// $.ajax({url: "{{$user->id}}/test", success: function(result){
      //    				$("#follow").text(result);
     	// 			}});			
 				});
+
+				$("#follow").mouseover(function(){
+					if($("#follow").text() == "Following"){
+						$("#follow").text("Unfollow");
+					}
+				});
+				$("#follow").mouseleave(function(){
+					if($("#follow").text()=="Unfollow")
+						$("#follow").text("Following");
+				});
+				
 			});
 		</script>
 	
