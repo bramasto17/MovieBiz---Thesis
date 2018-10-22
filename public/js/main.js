@@ -208,8 +208,6 @@
             data: data,
             url: '/ratingMovie',
             success: function (data) {
-                $('#message').css("display","block");
-                $('#message').text("Success added rating!!");
                 $("#message").fadeTo(2000, 500).slideUp(500, function(){
                     $("#message").slideUp(500);
                 });
@@ -235,7 +233,7 @@
                 // $("#message").fadeTo(2000, 500).slideUp(500, function(){
                 //     $("#message").slideUp(500);
                 // });
-                $('#checkInMovie').text("Checked in movie!!");
+                $('#checkInMovie').html('<span class="lnr lnr-checkmark-circle"></span> Checked in movie!!');
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
              console.log(errorThrown);

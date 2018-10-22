@@ -54,11 +54,11 @@
 	                <div class="row movie-menu">
 		                <div class="col-xs-12 col-sm-4">
                     		<div class="space-20"></div>
-		                    	<button id="checkInMovie" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-film-play"></i>{{$watched ? 'Watch Again' : 'Chek-In Movie'}}</button>
+		                    	<button id="checkInMovie" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-film-play"></i>{{isset($isWatch) ? 'Watch Again' : 'Chek-In Movie'}}</button>
 		                </div>
 		                <div class="col-xs-12 col-sm-8 wow fadeInUp">
 		                	<div class="row">
-		                    	<span class="red-color">Your Rating: </span>
+		                    	<span class="red-color">Your Rating: <span class="lnr lnr-checkmark-circle" id="message"></span> </span>
 		                	</div>
 		                	<div class="row">
 		                		<div class="rating">
@@ -150,9 +150,6 @@
 								</div>
 		                	</div>
 		                </div>
-	                </div>
-	                <div class="row">
-						<div class="alert alert-success" id="message"></div>
 	                </div>
 	            </div>
 	        </div>
