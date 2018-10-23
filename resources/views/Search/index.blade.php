@@ -14,7 +14,14 @@ Home
         <div class="row">
            	@foreach($movies as $data)
             <div class="col-xs-6 col-sm-2 poster-list">
-                <a href="/movie/{{$data->getID()}}"><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->getPoster()}}" alt=""></a>
+                <div class="item">
+                    <a href="/movie/{{$data->getID()}}">
+                        <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->getPoster()}}" alt="">
+                        <div class="overlay">
+                            <div class="text">{{$data->getTitle()}}</div>
+                        </div>
+                    </a>
+                </div>
             </div>
             @endforeach
         </div>

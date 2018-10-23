@@ -3,12 +3,12 @@
 My Activity
 @endsection
 @section('Content')
-<header class="home-area activity overlay" style="background: url(https://image.tmdb.org/t/p/original{{isset($history) ? $history->backdrop_path : ''}}) no-repeat scroll center top / cover;">
+<header class="home-area activity overlay" style="background: url(https://image.tmdb.org/t/p/original{{count($history) != 0 ? $history[0]->movie()->backdrop_path : ''}}) no-repeat scroll center top / cover;">
     <div class="container">
         @if(isset($history))
         <div class="row">
             <h4 class="wow fadeInUp" data-wow-delay="0.4s">Last movie watched</h4>
-            <h1 class="wow fadeInUp" data-wow-delay="0.4s">{{$history->title}}</h1>
+            <h1 class="wow fadeInUp" data-wow-delay="0.4s">{{$history[0]->movie()->title}}</h1>
         </div>
         @else
         <div class="row">
@@ -45,15 +45,16 @@ My Activity
         <div class="row">
             <div class="col-xs-6">
                 <figure class="mobile-image wow fadeInUp" data-wow-delay="0.2s">
-                    <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{$movie->poster_path}}" alt="">
+                    <img id="backdrop" src="https://image.tmdb.org/t/p/original{{$mosts[0]->movie()->backdrop_path}}" alt="">
                 </figure>
             </div>
             <div class="col-xs-6">
-                <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                <table class="table allcp-form theme-warning tc-checkbox-1 fs13 wow fadeInUp">
                     <tbody>
-                        @foreach($leaves as $leave)
-                        <tr>
-                            <td></td>
+                        @foreach($mosts as $data)
+                        <tr class="most_watched" id="{{$data->movie()->backdrop_path}}">
+                            <td>{{$data->movie()->title}}</td>
+                            <td>{{$data->total}} times</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -68,6 +69,10 @@ My Activity
 <script type="text/javascript">
     $(function() {
         $("#my-activity").addClass("active");
+    });
+    $('.most_watched').mouseover(function() {
+        // alert( this.id );
+        document.getElementById("backdrop").src="https://image.tmdb.org/t/p/original"+this.id;
     });
 </script>
 @endpush

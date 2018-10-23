@@ -61,7 +61,7 @@ Home
                             <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->poster_path}}" alt="{{$data->title}}">
                             <div class="overlay">
                                 <div class="text">{{$data->title}}</div>
-                              </div>
+                            </div>
                         </a>
                     </div>
                     @endforeach

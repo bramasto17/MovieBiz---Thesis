@@ -261,7 +261,7 @@
 	<!-- Testimonial-Area-End -->
 	<div class="container">
 	    <div class="row">
-	        <div class="col-xs-12 col-md-4">
+	        <div class="col-xs-12 col-md-6">
 	            <section class="section-padding price-area" id="price_page">
 	                <div class="row">
 	                    <div class="col-xs-12">
@@ -289,7 +289,7 @@
 	                </div>
 	            </section>
 	        </div>
-	        <div class="col-xs-12 col-md-8">
+	        <div class="col-xs-12 col-md-6">
 	            <section class="section-padding price-area" id="price_page">
 	                <div class="row">
 	                    <div class="col-xs-12">

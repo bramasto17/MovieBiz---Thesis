@@ -5,30 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use Session;
 use App\Watch;
 
 class ActivityController extends Controller
 {
     public function index(){
-    	$movieId = Watch::where('userId',Auth::user()->id)->orderBy('created_at','desc')->get();
-      if(count($movieId) != 0){
-        $history = (object) tmdb()->getMovie($movieId[0]->movieId)->get();
-      }
-      else $history = null;
+    	$history = Watch::where('userId',Auth::user()->id)->orderBy('created_at','desc')->get();
 
-      // $ids = \DB::table('watches')
-      //            ->select(DB::raw('movieId, movieId as title, COUNT(movieId) as total'))
-      //            ->where('userId',\Auth::user()->id)
-      //            ->groupBy(DB::raw('movieId'))
-      //            ->orderBy('total','desc')
-      //            ->get();
-      // foreach ($ids as $id) {
-      //   $most =(object) tmdb()->getMovie($id->movieId)->get();
-      //   $most->setAttribute('count', $id->total);
-      //   dd($most);
-      // }
+      $mosts = Watch::where('userId',\Auth::user()->id)
+                 ->select(DB::raw('movieId, COUNT(movieId) as total'))
+                 ->groupBy(DB::raw('movieId'))
+                 ->orderBy('total','desc')
+                 ->take(8)
+                 ->get();
 
-		  return view('activity.index')->with(['history'=>$history]);
+        foreach ($history as $key => $a) {
+          if($a->movieId != $history[($key-1 < 0) ? 0: $key-1]->movieId){ 
+            $gs = $a->movie()->genres;
+            foreach ($gs as $g) {
+              isset($genres[$g['name']]) ? $genres[$g['name']] += 1 : $genres[$g['name']] = 1;
+            }
+          }
+        }
+          // dd($total_movies);
+
+        // dd($history[0]->movie()->backdrop_path);
+
+		  return view('activity.index')->with(['history'=>$history, 'mosts'=>$mosts, 'genres'=>$genres]);
     }
 
     public function getActivity(){

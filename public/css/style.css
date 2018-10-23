@@ -668,10 +668,6 @@ input:-webkit-autofill:focus {
     border-radius: 100%;
 }
 
-.poster-list:hover{
-    box-shadow: 0px 0px 15px #fff;
-}
-
 .team-box:hover {
     -webkit-box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.1);
@@ -880,6 +876,7 @@ input:-webkit-autofill:focus {
 
 .price-box .price-body {
     padding: 40px;
+    min-height: 200px;
 }
 
 .price-box .price-body ul {
@@ -1546,6 +1543,10 @@ form .control {
   opacity: 1;
 }
 
+.poster-list .item .overlay {
+    margin-bottom: 0;
+}
+
 .text {
   color: white;
   font-size: 20px;
@@ -1662,9 +1663,7 @@ form .control {
 .activity{
     min-height: 50vh !important;
 }
-#chart_month{
-    height: 25vh;
-}
+
 .axis path,
 .axis line{
     fill: none;
@@ -1697,6 +1696,11 @@ form .control {
   color: #5B6770;
   padding: 5px;
 }
+
+#backdrop{
+    /*-webkit-mask-image:-webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));*/
+}
+
 /*========END ACTIVITY========*/
 
 /* Searchbar Homepage - Davis*/
