@@ -21,13 +21,13 @@ My Activity
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <div class="page-title text-center">
+                <div class="page-title text-center wow fadeInUp">
                     <h3 class="title">Stats</h3>
                     <!-- <div class="space-60"></div> -->
                 </div>
             </div>
         </div>
-        <div class="row stats">
+        <div class="row wow fadeInUp stats">
             <div class="col-xs-12 col-sm-3">
                 <div class="price-box">
                     <div class="price-header">
