@@ -49,7 +49,7 @@ class HomeController extends Controller
             foreach ($movieId as $key => $data) {
                 $history[] = (object) tmdb()->getMovie($data->movieId)->get();
             }
-            Session::put('history', $history);
+            Session::put('history', isset($history) ? $history : null);
         }
         $history = Session::get('history');
         // dd($history[0]->id);
