@@ -1,0 +1,24 @@
+{
+  "name": "kryptonit3/tmdb-laravel",
+  "description": "TMDB Wrapper for Laravel",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jesse Szypulski",
+      "email": "jesse.szypulski@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.2",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kryptonit3\\TMDBLaravel\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  }
+}
