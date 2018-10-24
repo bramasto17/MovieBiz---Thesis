@@ -1,7 +1,3 @@
-@extends('Layout/master')
-@section('Title')
-{{$movie->title}} [{{$movie->release_date->year}}]
-@endsection
 @section('Content')
 	<!-- Home-Area -->
 	<header class="home-area overlay" style="background: url(https://image.tmdb.org/t/p/original{{$movie->backdrop_path}}) no-repeat scroll center bottom / cover;">
@@ -52,7 +48,7 @@
 	                <div class="row movie-menu">
 		                <div class="col-xs-12 col-sm-4">
                     		<div class="space-20"></div>
-		                    	<button id="checkInMovie" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-film-play"></i>{{isset($isWatch) ? 'Watch Again' : 'Chek-In Movie'}}</button>
+		                    	<button id="checkInMovie" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-film-play"></i>{{isset($isWatch) ? 'Watch Again' : 'Chek-In Movie'}}<span class="lds-dual-ring" id="loadingDiv"></span></button>
 		                </div>
 		                <div class="col-xs-12 col-sm-8 wow fadeInUp">
 		                	<div class="row">

@@ -6,33 +6,37 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use Session;
+use App\Rating;
+use App\Review;
 use App\Watch;
 
 class ActivityController extends Controller
 {
     public function index(){
-    	$history = Watch::where('userId',Auth::user()->id)->orderBy('created_at','desc')->get();
+      $history = Watch::where('userId',Auth::user()->id)->whereMonth('created_at',date('n'))->orderBy('created_at','desc')->get();
 
       $mosts = Watch::where('userId',\Auth::user()->id)
                  ->select(DB::raw('movieId, COUNT(movieId) as total'))
                  ->groupBy(DB::raw('movieId'))
                  ->orderBy('total','desc')
+                 ->orderBy('created_at','desc')
                  ->take(8)
                  ->get();
 
-        foreach ($history as $key => $a) {
-          if($a->movieId != $history[($key-1 < 0) ? 0: $key-1]->movieId){ 
-            $gs = $a->movie()->genres;
-            foreach ($gs as $g) {
-              isset($genres[$g['name']]) ? $genres[$g['name']] += 1 : $genres[$g['name']] = 1;
-            }
-          }
-        }
-          // dd($total_movies);
+      $total =  Watch::where('userId',Auth::user()->id)->count();
+      $movies = Watch::where('userId',Auth::user()->id)->selectRaw(DB::raw('COUNT(DISTINCT movieId) as distinct_movie'))->first();
+      $average = Rating::where('userId',Auth::user()->id)->selectRaw(DB::raw('AVG(rating) as average_rating'))->first();
+      $reviews = Review::where('userId',Auth::user()->id)->count();
 
-        // dd($history[0]->movie()->backdrop_path);
+      $user = array(
+                'total' => $total,
+                'movies' => $movies->distinct_movie,
+                'average' => number_format((float)$average->average_rating, 2, '.', ''),
+                'reviews' => $reviews
+              );
+      $user = (object) $user;
 
-		  return view('activity.index')->with(['history'=>$history, 'mosts'=>$mosts, 'genres'=>$genres]);
+		  return view('activity.index')->with(['history'=>$history, 'mosts'=>$mosts, 'user'=>$user]);
     }
 
     public function getActivity(){
@@ -48,6 +52,35 @@ class ActivityController extends Controller
         }
 
         return json_encode($activity);
+    }
+
+    public function getFavouriteGenres(){
+      $history = Watch::where('userId',Auth::user()->id)->orderBy('created_at','desc')->get();
+      foreach ($history as $key => $a) {
+        if($a->movieId != $history[($key-1 < 0) ? 0: $key-1]->movieId){ 
+          $gs = $a->movie()->genres;
+          foreach ($gs as $g) {
+            isset($gnr[$g['name']]) ? $gnr[$g['name']] += 1 : $gnr[$g['name']] = 1;
+          }
+        }
+      }
+
+      $obj = array(
+                'label' => 'label',
+                'count' => 'count'
+             );
+      $obj = (object) $obj;
+      $genres[] = $obj;
+
+      foreach ($gnr as $key => $g) {
+        $obj = array(
+                  'label' => $key,
+                  'count' => $g
+               );
+        $obj = (object) $obj;
+        $genres[] = $obj;
+      }
+      return json_encode($genres);
     }
     //
 }

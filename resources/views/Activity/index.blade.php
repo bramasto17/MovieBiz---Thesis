@@ -17,7 +17,65 @@ My Activity
         @endif
     </div>
 </header>
-<section class="section-padding info" id="price_page">
+<section class="section-padding info">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-title text-center">
+                    <h3 class="title">Stats</h3>
+                    <!-- <div class="space-60"></div> -->
+                </div>
+            </div>
+        </div>
+        <div class="row stats">
+            <div class="col-xs-12 col-sm-3">
+                <div class="price-box">
+                    <div class="price-header">
+                        <div class="price-icon">
+                            <span>{{$user->total}}</span>
+                        </div>
+                        <h4>times watched</h4>
+                    </div>
+                </div>
+                <div class="space-30 hidden visible-xs"></div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="price-box">
+                    <div class="price-header">
+                        <div class="price-icon">
+                            <span>{{$user->movies}}</span>
+                        </div>
+                        <h4>movies watched</h4>
+                    </div>
+                </div>
+                <div class="space-30 hidden visible-xs"></div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="price-box">
+                    <div class="price-header">
+                        <div class="price-icon">
+                            <span>{{$user->average}}</span>
+                        </div>
+                        <h4>average rating</h4>
+                    </div>
+                </div>
+                <div class="space-30 hidden visible-xs"></div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="price-box">
+                    <div class="price-header">
+                        <div class="price-icon">
+                            <span>{{$user->reviews}}</span>
+                        </div>
+                        <h4>reviews given</h4>
+                    </div>
+                </div>
+                <div class="space-30 hidden visible-xs"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-padding info">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -32,7 +90,7 @@ My Activity
         </div>
     </div>
 </section>
-<section class="section-padding info" id="price_page">
+<section class="section-padding info">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -63,7 +121,23 @@ My Activity
         </div>
     </div>
 </section>
+<section class="section-padding info">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-title text-center">
+                    <h4 class="title">Your favourite genres</h4>
+                    <!-- <div class="space-60"></div> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="chart_genre"></div>
+        </div>
+    </div>
+</section>
 <script type="text/javascript" src="/js/watch-history.js"></script>
+<!-- <script type="text/javascript" src="/js/favourite-genres.js"></script> -->
 @endsection
 @push('scripts')
 <script type="text/javascript">

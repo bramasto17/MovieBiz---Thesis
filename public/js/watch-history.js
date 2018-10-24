@@ -44,7 +44,6 @@ var color1 = d3.scale.linear()
 
 //generate chart
 d3.json("/get-activity", function(error, data){
-
   //read each row
   if(error) console.log("Error, file not found");
   data.forEach(function(d){

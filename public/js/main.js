@@ -218,6 +218,13 @@
         });
     });
 
+    jQuery.ajaxSetup({
+        beforeSend: function() {
+           $('#loadingDiv').css('display','inline-grid');
+        },
+        success: function() {}
+    });
+
     $('#checkInMovie').on("click", function(){
         var token = $('#token').val(); // get selected value
         var movieId = $('#movieId').val(); // get selected value
@@ -233,7 +240,7 @@
                 // $("#message").fadeTo(2000, 500).slideUp(500, function(){
                 //     $("#message").slideUp(500);
                 // });
-                $('#checkInMovie').html('<span class="lnr lnr-checkmark-circle"></span> Checked in movie!!');
+                $('#checkInMovie').html('<span class="lnr lnr-checkmark-circle"></span> Movie Checked In!!');
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
              console.log(errorThrown);

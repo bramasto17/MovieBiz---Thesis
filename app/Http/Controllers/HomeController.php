@@ -59,13 +59,7 @@ class HomeController extends Controller
     public function search(Request $request){
         $txtSearch = $request->txtSearch;
         $movies = tmdb()->searchMovie($txtSearch);
-
         $users = User::where('name','LIKE','%'.$txtSearch.'%')->select('id','name')->get();
-        
-        // foreach ($search as $key => $data) {
-        //     $movies[] = (object) $data->get();
-        // }
-
         return view('Search/index')->with(['movies'=>$movies, 'search'=>$txtSearch,'users'=>$users]);
     }
 

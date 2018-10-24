@@ -16,7 +16,8 @@ Home
             <div class="col-xs-6 col-sm-2 poster-list">
                 <div class="item">
                     <a href="/movie/{{$data->getID()}}">
-                        <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->getPoster()}}" alt="">
+                        <!-- <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->getPoster()}}" alt=""> -->
+                        <img src="@if(@file_get_contents('https://image.tmdb.org/t/p/w185_and_h278_bestv2'.$data->getPoster()) === false) {{ URL::to('/') }}/images/poster.jpg @else https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->getPoster()}} @endif" alt="">
                         <div class="overlay">
                             <div class="text">{{$data->getTitle()}}</div>
                         </div>
@@ -37,7 +38,6 @@ Home
                 @endif
             </div>
         </div>
-
     </div>
 </section>
 @endsection

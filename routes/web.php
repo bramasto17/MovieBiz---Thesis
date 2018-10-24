@@ -26,8 +26,10 @@ Route::get('/register','RegisterController@index');
 Route::get('/home','HomeController@home');
 Route::get('/search','HomeController@search');
 
+//ACTIVITY
 Route::get('/my-activity','ActivityController@index');
 Route::get('/get-activity','ActivityController@getActivity');
+Route::get('/get-favourite-genres','ActivityController@getFavouriteGenres');
 
 //MOVIE
 Route::get('/movie/{id}','MovieController@index');

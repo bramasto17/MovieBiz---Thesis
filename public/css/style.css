@@ -1697,10 +1697,6 @@ form .control {
   padding: 5px;
 }
 
-#backdrop{
-    /*-webkit-mask-image:-webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));*/
-}
-
 /*========END ACTIVITY========*/
 
 /* Searchbar Homepage - Davis*/
@@ -1847,9 +1843,20 @@ form .control {
   border-color: #fff transparent #fff transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
-#reload_gcal .lds-dual-ring:after {
-  width: 25px;
-  height: 25px;
+#checkInMovie .lds-dual-ring {
+    margin: 0;
+    /*display: inherit;*/
+    width: 0px;
+    height: 0px;
+    display: none;
+}
+#checkInMovie .lds-dual-ring:after {
+  width: 20px;
+  height: 20px;
+  border-color: #d0271c transparent #d0271c transparent;
+}
+#checkInMovie .lds-dual-ring:after:hover {
+  border-color: #fff transparent #fff transparent;
 }
 @keyframes lds-dual-ring {
   0% {
@@ -1859,5 +1866,6 @@ form .control {
     transform: rotate(360deg);
   }
 }
-
-
+.stats{
+    padding-bottom: 8%;
+}
