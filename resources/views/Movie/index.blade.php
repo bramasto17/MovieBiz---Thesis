@@ -1,3 +1,7 @@
+@extends('Layout/master')
+@section('Title')
+{{$movie->title}} [{{$movie->release_date->year}}]
+@endsection
 @section('Content')
 	<!-- Home-Area -->
 	<header class="home-area overlay" style="background: url(https://image.tmdb.org/t/p/original{{$movie->backdrop_path}}) no-repeat scroll center bottom / cover;">
@@ -258,7 +262,7 @@
 	<div class="container">
 	    <div class="row">
 	        <div class="col-xs-12 col-md-6">
-	            <section class="section-padding price-area" id="price_page">
+	            <section class="section-padding price-area" id="forum">
 	                <div class="row">
 	                    <div class="col-xs-12">
 	                        <div class="page-title text-center">
@@ -286,7 +290,7 @@
 	            </section>
 	        </div>
 	        <div class="col-xs-12 col-md-6">
-	            <section class="section-padding price-area" id="price_page">
+	            <section class="section-padding price-area" id="review">
 	                <div class="row">
 	                    <div class="col-xs-12">
 	                        <div class="page-title text-center">
@@ -319,3 +323,11 @@
 	    </div>
 	</div>
 @endsection
+@push('scripts')
+<script type="text/javascript">
+	$( document ).ready(function() {
+    	if($("#review .price-body").height() > $("#forum .price-body").height()) $("#forum .price-body").height($("#review .price-body").height());
+    	else $("#review .price-body").height($("#forum .price-body").height())
+	});
+</script>
+@endpush

@@ -31,7 +31,7 @@ class ActivityController extends Controller
       $user = array(
                 'total' => $total,
                 'movies' => $movies->distinct_movie,
-                'average' => number_format((float)$average->average_rating, 2, '.', ''),
+                'average' => number_format((float)$average->average_rating, 1, '.', ''),
                 'reviews' => $reviews
               );
       $user = (object) $user;
