@@ -56,26 +56,23 @@ class ActivityController extends Controller
 
     public function getFavouriteGenres(){
       $history = Watch::where('userId',Auth::user()->id)->orderBy('created_at','desc')->get();
+      $total_genres = 0;
+
       foreach ($history as $key => $a) {
         if($a->movieId != $history[($key-1 < 0) ? 0: $key-1]->movieId){ 
           $gs = $a->movie()->genres;
           foreach ($gs as $g) {
             isset($gnr[$g['name']]) ? $gnr[$g['name']] += 1 : $gnr[$g['name']] = 1;
+            $total_genres+=1;
           }
         }
       }
 
-      $obj = array(
-                'label' => 'label',
-                'count' => 'count'
-             );
-      $obj = (object) $obj;
-      $genres[] = $obj;
-
       foreach ($gnr as $key => $g) {
         $obj = array(
                   'label' => $key,
-                  'count' => $g
+                  'count' => $g,
+                  'percentage' => round($g/$total_genres*100),
                );
         $obj = (object) $obj;
         $genres[] = $obj;

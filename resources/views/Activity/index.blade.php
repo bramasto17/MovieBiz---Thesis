@@ -9,6 +9,7 @@ My Activity
         <div class="row">
             <h4 class="wow fadeInUp" data-wow-delay="0.4s">Last movie watched</h4>
             <h1 class="wow fadeInUp" data-wow-delay="0.4s">{{$history[0]->movie()->title}}</h1>
+            <h4 class="wow fadeInUp" data-wow-delay="0.4s">{{$history[0]->created_at}}</h4>
         </div>
         @else
         <div class="row">
@@ -132,12 +133,14 @@ My Activity
             </div>
         </div>
         <div class="row">
-            <div id="chart_genre"></div>
+            <center>
+                <div id="chart_genre"></div>
+            </center>
         </div>
     </div>
 </section>
 <script type="text/javascript" src="/js/watch-history.js"></script>
-<!-- <script type="text/javascript" src="/js/favourite-genres.js"></script> -->
+<script type="text/javascript" src="/js/favourite-genres.js"></script>
 @endsection
 @push('scripts')
 <script type="text/javascript">

@@ -1,100 +1,59 @@
-var width = 360;
-        var height = 360;
-        var radius = Math.min(width, height) / 2;
-        var donutWidth = 75;
-        var legendRectSize = 18;
-        var legendSpacing = 4;
+var width = 960;
+var height = 500;
+var radius = 200;
+var color = d3.scale.linear()
+  .domain([0, 1])
+  .range(["#d85050","#620000"]);
 
-        var color = d3.scale.category20b();
+var tooltip_genre = d3.select("#chart_genre").append("div").attr("class", "toolTip");
 
-        var svg = d3.select('#chart_genre')
-          .append('svg')
-          .attr('width', width)
-          .attr('height', height)
-          .append('g')
-          .attr('transform', 'translate(' + (width / 2) + 
-            ',' + (height / 2) + ')');
+d3.json("/get-favourite-genres", function(error, dataset){
+    dataset.forEach(function(d){
+        d.label = d.label;
+        d.count = +d.count;
+        d.percentage = +d.percentage;
+    });
+    var max = d3.max(dataset, function(d) { return d.percentage; });
 
-        var arc = d3.svg.arc()
-          .innerRadius(radius - donutWidth)
-          .outerRadius(radius);
+    var svg = d3.select("#chart_genre").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-        var pie = d3.layout.pie()
-          .value(function(d) { return d.count; })
-          .sort(null);
+    var arc = d3.svg.arc()
+            .outerRadius(radius)
+            .innerRadius(0);
 
-        var tooltip_genre = d3.select('#chart_genre')                               // NEW
-          .append('div')                                                // NEW
-          .attr('class', 'tooltip_genre');                                    // NEW
-                      
-        tooltip_genre.append('div')                                           // NEW
-          .attr('class', 'label');                                      // NEW
-             
-        tooltip_genre.append('div')                                           // NEW
-          .attr('class', 'count');                                      // NEW
+    var pie = d3.layout.pie()
+            .sort(null)
+            .value(function(d){ return d.count; });
 
-        tooltip_genre.append('div')                                           // NEW
-          .attr('class', 'percent');                                    // NEW
-
-        // d3.json('/get-favourite-genres', function(error, dataset) {
-        d3.csv('weekdays.csv', function(error, dataset) {
-  		console.log(dataset);
-          dataset.forEach(function(d) {
-            d.count = +d.count;
-          });
-
-          var path = svg.selectAll('path')
+    var g = svg.selectAll(".fan")
             .data(pie(dataset))
             .enter()
-            .append('path')
-            .attr('d', arc)
-            .attr('fill', function(d, i) { 
-              return color(d.data.label); 
+            .append("g")
+            .attr("class", "fan")
+            .on("mouseover", function (d) {
+            tooltip_genre
+                .style("left", d3.event.pageX + "px")
+                .style("top", d3.event.pageY + "px")
+                .style("display", "inline-block")
+                .html(d.data.label + "<br>" + d.data.count + " movies");
+            })
+            .on("mouseout", function () {
+                // Hide the tooltip
+                d3.select("#tooltip")
+                    .style("opacity", 0);;
             });
 
-          path.on('mouseover', function(d) {                            // NEW
-            var total = d3.sum(dataset.map(function(d) {                // NEW
-              return d.count;                                           // NEW
-            }));                                                        // NEW
-            var percent = Math.round(1000 * d.data.count / total) / 10; // NEW
-            tooltip_genre.select('.label').html(d.data.label);                // NEW
-            tooltip_genre.select('.count').html(d.data.count);                // NEW
-            tooltip_genre.select('.percent').html(percent + '%');             // NEW
-            tooltip_genre.style('display', 'block');                          // NEW
-          });                                                           // NEW
-          
-          path.on('mouseout', function() {                              // NEW
-            tooltip_genre.style('display', 'none');                           // NEW
-          });                                                           // NEW
+    g.append("path")
+        .attr("d", arc)
+        .attr("fill", function(d,i){ return color(d.data.percentage/max); })
 
-          /* OPTIONAL 
-          path.on('mousemove', function(d) {                            // NEW
-            tooltip_genre.style('top', (d3.event.pageY + 10) + 'px')          // NEW
-              .style('left', (d3.event.pageX + 10) + 'px');             // NEW
-          });                                                           // NEW
-          */
-            
-          var legend = svg.selectAll('.legend')
-            .data(color.domain())
-            .enter()
-            .append('g')
-            .attr('class', 'legend')
-            .attr('transform', function(d, i) {
-              var height = legendRectSize + legendSpacing;
-              var offset =  height * color.domain().length / 2;
-              var horz = -2 * legendRectSize;
-              var vert = i * height - offset;
-              return 'translate(' + horz + ',' + vert + ')';
-            });
-
-          legend.append('rect')
-            .attr('width', legendRectSize)
-            .attr('height', legendRectSize)                                   
-            .style('fill', color)
-            .style('stroke', color);
-            
-          legend.append('text')
-            .attr('x', legendRectSize + legendSpacing)
-            .attr('y', legendRectSize - legendSpacing)
-            .text(function(d) { return d; });
+    g.append("text")
+        .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+        .style("text-anchor", "middle")
+        .style("fill", "#fff")
+        .text(function(d) { return d.data.percentage + "%"; });
 });
