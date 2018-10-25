@@ -47,7 +47,8 @@ d3.json("/get-activity", function(error, data){
   //read each row
   if(error) console.log("Error, file not found");
   data.forEach(function(d){
-    d.date = d.date;
+    d.actualdate = d.date;
+    d.date = +d.date.substring(8, 12);
     d.total = +d.total;
   });
   //==============  
@@ -90,7 +91,7 @@ d3.json("/get-activity", function(error, data){
               .style("left", d3.event.pageX + "px")
               .style("top", d3.event.pageY + "px")
               .style("display", "inline-block")
-              .html(d.total + " movie")
+              .html(d.actualdate + "<br>" +d.total + " movie")
             //==============
           })
           .on("mouseout", function(d, i) {

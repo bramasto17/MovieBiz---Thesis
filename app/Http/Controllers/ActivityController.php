@@ -9,11 +9,12 @@ use Session;
 use App\Rating;
 use App\Review;
 use App\Watch;
+use Carbon\Carbon;
 
 class ActivityController extends Controller
 {
     public function index(){
-      $history = Watch::where('userId',Auth::user()->id)->whereMonth('created_at',date('n'))->orderBy('created_at','desc')->get();
+      $history = Watch::where('userId',Auth::user()->id)->orderBy('created_at','desc')->get();
 
       $mosts = Watch::where('userId',\Auth::user()->id)
                  ->select(DB::raw('movieId, COUNT(movieId) as total'))
@@ -40,18 +41,27 @@ class ActivityController extends Controller
     }
 
     public function getActivity(){
-        $activities = \DB::table('watches')
-                 ->select(DB::raw('CAST(created_at as date) as date, COUNT(movieId) as total'))
-                 ->where('userId',\Auth::user()->id)
-                 ->groupBy(DB::raw('CAST(created_at as date)'))
-                 ->get();
-                 
-        foreach ($activities as $a) {
-            $a->date = date('d', strtotime($a->date));
-            $activity[] = $a;
-        }
 
-        return json_encode($activity);
+      $start = Carbon::now()->subDays(29);
+      for ($i = 0 ; $i <= 29; $i++) {
+        $dates[] = $start->copy()->addDays($i)->toDateString();
+      }
+
+      foreach ($dates as $date) {
+        $q = \DB::table('watches')
+            ->where('userId',\Auth::user()->id)
+            ->where('created_at','>=',$date.' 00:00:00')
+            ->where('created_at','<=',$date.' 23:59:59')
+            ->count();
+        $obj = array('date' => $date, 'total' => $q );
+        $activity[] = $obj;
+      }
+               
+      // foreach ($activities as $a) {
+      //     $a->date = date('d', strtotime($a->date));
+      //     $activity[] = $a;
+      // }
+      return json_encode($activity);
     }
 
     public function getFavouriteGenres(){

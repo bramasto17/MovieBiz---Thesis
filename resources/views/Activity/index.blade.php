@@ -81,13 +81,13 @@ My Activity
         <div class="row">
             <div class="col-xs-12">
                 <div class="page-title text-center">
-                    <h4 class="title">Your activity this month</h4>
+                    <h4 class="title">Your activity for the past 30 days</h4>
                     <!-- <div class="space-60"></div> -->
                 </div>
             </div>
         </div>
         <div class="row">
-            <div id="chart_month"></div>
+            <div class="wow fadeInUp" id="chart_month"></div>
         </div>
     </div>
 </section>
@@ -124,19 +124,22 @@ My Activity
 </section>
 <section class="section-padding info">
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="page-title text-center">
-                    <h4 class="title">Your favourite genres</h4>
-                    <!-- <div class="space-60"></div> -->
+        <div class="col-xs-6">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="page-title text-center">
+                        <h4 class="title">Your favourite genres</h4>
+                        <!-- <div class="space-60"></div> -->
+                    </div>
                 </div>
             </div>
+            <div class="row">
+                <center>
+                    <div class="wow fadeInUp" id="chart_genre"></div>
+                </center>
+            </div>
         </div>
-        <div class="row">
-            <center>
-                <div id="chart_genre"></div>
-            </center>
-        </div>
+        <div class="col-xs-6"></div>
     </div>
 </section>
 <script type="text/javascript" src="/js/watch-history.js"></script>

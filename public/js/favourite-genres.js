@@ -1,9 +1,9 @@
-var width = 960;
-var height = 500;
-var radius = 200;
+var width = 500;
+var height = 300;
+var radius = 150;
 var color = d3.scale.linear()
   .domain([0, 1])
-  .range(["#d85050","#620000"]);
+  .range(["#d14040","#620000"]);
 
 var tooltip_genre = d3.select("#chart_genre").append("div").attr("class", "toolTip");
 
@@ -23,7 +23,7 @@ d3.json("/get-favourite-genres", function(error, dataset){
 
     var arc = d3.svg.arc()
             .outerRadius(radius)
-            .innerRadius(0);
+            .innerRadius(50);
 
     var pie = d3.layout.pie()
             .sort(null)
@@ -35,21 +35,27 @@ d3.json("/get-favourite-genres", function(error, dataset){
             .append("g")
             .attr("class", "fan")
             .on("mouseover", function (d) {
-            tooltip_genre
-                .style("left", d3.event.pageX + "px")
-                .style("top", d3.event.pageY + "px")
-                .style("display", "inline-block")
-                .html(d.data.label + "<br>" + d.data.count + " movies");
-            })
-            .on("mouseout", function () {
-                // Hide the tooltip
-                d3.select("#tooltip")
-                    .style("opacity", 0);;
+                tooltip_genre
+                    .style("left", d3.event.pageX/1.5 + "px")
+                    .style("top", d3.event.pageY/10 + "px")
+                    .style("display", "inline-block")
+                    .html(d.data.label + "<br>" + d.data.count + " movies");
             });
+            
 
     g.append("path")
         .attr("d", arc)
-        .attr("fill", function(d,i){ return color(d.data.percentage/max); })
+        .attr("fill", function(d,i){ return color(d.data.percentage/max);})
+        .on("mouseover", function (d) {
+            d3.select(this).attr("fill", function() {
+                return '#d85050';
+            });
+        })
+        .on("mouseout", function () {
+            d3.select(this).attr("fill", function(d) {
+                return color(d.data.percentage/max);
+            });
+        });
 
     g.append("text")
         .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
