@@ -218,12 +218,12 @@
         });
     });
 
-    jQuery.ajaxSetup({
-        beforeSend: function() {
-           $('#loadingDiv').css('display','inline-grid');
-        },
-        success: function() {}
-    });
+    // jQuery.ajaxSetup({
+    //     beforeSend: function() {
+    //        $('#loadingDiv').css('display','inline-grid');
+    //     },
+    //     success: function() {}
+    // });
 
     $('#checkInMovie').on("click", function(){
         var token = $('#token').val(); // get selected value
@@ -234,6 +234,9 @@
             dataType: 'json',
             data: data,
             url: '/checkInMovie',
+            beforeSend: function() {
+                $('#loadingDiv').css('display','inline-grid');
+            },
             success: function (data) {
                 // $('#message').css("display","block");
                 // $('#message').text("Success checked in movie!!");

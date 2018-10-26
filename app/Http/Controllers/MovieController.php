@@ -25,7 +25,7 @@ class MovieController extends Controller
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
         $rating = Rating::where('userId',Auth::user()->id)->where('movieId',$id)->first();
         $review = Review::join('users','users.id','=','reviews.userId')->where('movieId',$id)->select('reviews.*','users.name')->first();
-        $isWatch = Watch::where('movieId',$id)->first();
+        $isWatch = Watch::where('userId',Auth::user()->id)->where('movieId',$id)->first();
         return view('Movie\index', compact('movie','rating','review','isWatch'));
     }
 
@@ -92,6 +92,7 @@ class MovieController extends Controller
         $movie =(object) tmdb()->getMovie($id)->get();
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
         $rating = Rating::where('userId',Auth::user()->id)->where('movieId',$id)->first();
+        $isWatch = Watch::where('userId',Auth::user()->id)->where('movieId',$id)->first();
 
 
         /*$reviews = Review::join('users','users.id','=','reviews.userId')
@@ -129,7 +130,7 @@ class MovieController extends Controller
 
        // dd($myReview);
 
-        return view('Movie\review', compact('movie','allReviews','myReview','rating'));
+        return view('Movie\review', compact('movie','allReviews','myReview','isWatch','rating'));
     }
 
     public function editReview(Request $request){

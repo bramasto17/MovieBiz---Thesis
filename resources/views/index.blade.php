@@ -82,11 +82,9 @@ MovieBiz
                     <div class="space-60"></div>
                 </div>
                 <div class="hidden-xs hidden-sm col-md-4">
-                    <a href="/movie/{{$popular[1]->id}}">
-                        <figure class="wow fadeInUp mobile-image">
-                            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{$popular[1]->poster_path}}">
-                        </figure>
-                    </a>
+                    <figure class="wow fadeInUp mobile-image">
+                        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{$popular[1]->poster_path}}">
+                    </figure>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="service-box wow fadeInUp" data-wow-delay="0.2s">

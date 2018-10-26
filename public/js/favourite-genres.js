@@ -36,8 +36,8 @@ d3.json("/get-favourite-genres", function(error, dataset){
             .attr("class", "fan")
             .on("mouseover", function (d) {
                 tooltip_genre
-                    .style("left", d3.event.pageX/1.5 + "px")
-                    .style("top", d3.event.pageY/10 + "px")
+                    .style("left", event.layerX + "px")
+                    .style("top", event.layerY + "px")
                     .style("display", "inline-block")
                     .html(d.data.label + "<br>" + d.data.count + " movies");
             });

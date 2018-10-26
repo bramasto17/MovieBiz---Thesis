@@ -13,12 +13,14 @@
 				<figure class="wow fadeInUp" data-wow-delay="0.2s">
 			        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{$movie->poster_path}}" alt="">
                     <div class="space-30"></div>
-		    		<h3 align="center">{{$movie->title}} Reviews ({{count($allReviews) + (isset($myReview) ? 1 : 0)}})</h3>
+		    		<h3 align="center">{{$movie->title}}</h3>
+                    <h4 align="center">({{count($allReviews) + (isset($myReview) ? 1 : 0)}} Reviews)</h4>
 			    </figure>
 			</div>  
 			<div class="col-xs-12 col-md-9" id="">
 				<div id="comments">
 		            <ul class="comments-list">
+                        @if($isWatch)
                         @if($myReview)
                         <li class="border-round-white.">
                             <article class="comment">
@@ -153,6 +155,11 @@
                                 </div>
                                 <div class="space-40"></div>
                             </form>
+                        </div>
+                        @endif
+                        @else
+                        <div class="comment-respond">
+                            <h4>You need to watch the movie first before give review</h4>
                         </div>
                         @endif
 
