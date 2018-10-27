@@ -1,9 +1,10 @@
-var width = 500;
-var height = 300;
+var parentDiv = document.getElementById("div_genre");
+var width = parentDiv.clientWidth;
+var height = 3/5*parentDiv.clientWidth;
 var radius = 150;
 var color = d3.scale.linear()
   .domain([0, 1])
-  .range(["#d14040","#620000"]);
+  .range(["#F4998D","#9C0000"]);
 
 var tooltip_genre = d3.select("#chart_genre").append("div").attr("class", "toolTip");
 
@@ -23,7 +24,7 @@ d3.json("/get-favourite-genres", function(error, dataset){
 
     var arc = d3.svg.arc()
             .outerRadius(radius)
-            .innerRadius(50);
+            .innerRadius(0);
 
     var pie = d3.layout.pie()
             .sort(null)

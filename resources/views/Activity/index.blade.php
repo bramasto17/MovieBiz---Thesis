@@ -79,7 +79,7 @@ My Activity
 <section class="section-padding info">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12" id="div_history">
                 <div class="page-title text-center">
                     <h4 class="title">Your activity for the past 30 days</h4>
                     <!-- <div class="space-60"></div> -->
@@ -124,7 +124,7 @@ My Activity
 </section>
 <section class="section-padding info">
     <div class="container">
-        <div class="col-xs-6">
+        <div class="col-xs-6" id="div_genre">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title text-center">

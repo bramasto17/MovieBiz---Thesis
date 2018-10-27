@@ -1,6 +1,7 @@
+var parentDiv = document.getElementById("div_history");
 //define margin
-var margin = {top:20, right:10, bottom:100, left:80},
-  width = 1000 - margin.left - margin.right,
+var margin = {top:20, right:80, bottom:100, left:80},
+  width = parentDiv.clientWidth - margin.left - margin.right,
   height = 300 - margin.top - margin.bottom;
 //==============
 
@@ -111,7 +112,8 @@ d3.json("/get-activity", function(error, data){
             .selectAll("text")
             .attr({
               "dx" : "-1em",
-              "dy" : "1em"
+              "dy" : "1em",
+              "x" : "15px"
             })
             .style({
               "text-anchor" : "center",
