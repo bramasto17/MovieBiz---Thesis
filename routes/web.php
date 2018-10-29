@@ -20,7 +20,7 @@ Route::get('/logout','LoginController@Logout');
 
 //REGISTER
 Route::get('/register','RegisterController@index');
- Route::post('/register','RegisterController@Register');
+Route::post('/register','RegisterController@Register');
 
 //HOME
 Route::get('/home','HomeController@home');

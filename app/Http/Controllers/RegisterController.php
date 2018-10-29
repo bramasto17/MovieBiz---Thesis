@@ -20,30 +20,28 @@ class RegisterController extends Controller
     			'txtPassword' => 'required | min:5 | alpha_num',
     			'txtEmail' => 'required| email | unique:users,email',
     		);
+
     	$validator = Validator::make($request->all(),$rules);
     	$name = $request->txtUsername;
     	$password = $request->txtPassword;
       	$email = $request->txtEmail;
-        
-        // dd($request);
-
 
     	if ($validator->fails()){
     		return redirect('/register')->withErrors($validator);
     	}
-    	else { 
+    	else {
           DB::table('users')
             ->insert([
                 'name' => $name,
                 'password' => app('hash')->make($password),
                 'email' => $email,
               ]);
-            
+
            //login paakai email dan password
-          $request = $request->create(route("login"), 'POST', 
+          $request = $request->create(route("login"), 'POST',
             array("txtEmail"=>$email,"txtPassword"=>$password,"_token"=> csrf_token()));
             return Route::dispatch($request);
-	    } 
+	    }
     } 
 
 }
