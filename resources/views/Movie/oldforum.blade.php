@@ -1,4 +1,4 @@
-@extends('Layout/master')
+@extends('Layout.master')
 @section('Title')
     {{$movie->title}} [{{$movie->release_date->year}}] Forum
 @endsection
@@ -8,15 +8,15 @@
         <div class="section-padding">
             <div class="container" >
                 <div class="row">
-                    <div class="col-xs-1">
-                        <article class="post-single sticky">
-                            <div class="post-body">
-                                <a href="#"><i class="fa fa-angle-up fa-3x"></i></a><br>
-                                <h3 style="margin-left: 5px;">0</h3>
-                                <a href="#"><i class="fa fa-angle-down fa-3x"></i></a><br>
-                            </div>
-                        </article>
-                    </div>
+                    {{--<div class="col-xs-1">--}}
+                        {{--<article class="post-single sticky">--}}
+                            {{--<div class="post-body">--}}
+                                {{--<a href="#"><i class="fa fa-angle-up fa-3x"></i></a><br>--}}
+                                {{--<h3 style="margin-left: 5px;">0</h3>--}}
+                                {{--<a href="#"><i class="fa fa-angle-down fa-3x"></i></a><br>--}}
+                            {{--</div>--}}
+                        {{--</article>--}}
+                    {{--</div>--}}
 
                     <div class="col-xs-2">
                         <article class="post-single sticky">

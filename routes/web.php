@@ -52,3 +52,7 @@ Route::get('/feed','FeedController@index');
 
 //FORUM
 Route::get('/movie/{id}/forum','MovieController@showForum');
+Route::post('/createThread','MovieController@createThread');
+//Route::get('/movie/{id}/forum/{tid}','MovieController@showThreadDetail');
+Route::get('/thread/{id}','MovieController@showThreadDetail');
+Route::post('/createPost','MovieController@createPost');
