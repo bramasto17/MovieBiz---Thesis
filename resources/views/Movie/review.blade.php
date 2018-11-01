@@ -3,7 +3,7 @@
 {{$movie->title}} [{{$movie->release_date->year}}] Review
 @endsection
 @section('Content')
-	<section class="overlay no-scroll" style="background: url(https://image.tmdb.org/t/p/original{{$movie->backdrop_path}}) no-repeat center center fixed;" id="reviews-section">
+	<section class="overlay no-scroll" style="background: url(https://image.tmdb.org/t/p/original{{$movie->backdrop_path}}) no-repeat center center fixed; background-size: contain;" id="reviews-section">
 		<div class="space-80"></div>
 
 		

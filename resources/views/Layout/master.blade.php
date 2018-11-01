@@ -49,16 +49,15 @@
         <div class="collapse navbar-collapse" id="primary_menu">
             <ul class="nav navbar-nav mainmenu">
                 @if (auth()->guest())
-                <li class="active"><a href="/#home_page">Home</a></li>
-                <li><a href="#about_page">About</a></li>
-                <li><a href="#features_page">Features</a></li>
-                <li><a href="#contact_page">Contacts</a></li>
+                <li id="home_page"><a href="/#home_page">Home</a></li>
+                <li id="about_page"><a href="#about_page">About</a></li>
+                <li id="features_page"><a href="#features_page">Features</a></li>
+                <li id="contact_page"><a href="#contact_page">Contacts</a></li>
                 @else
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="#">Feed</a></li>
-                <!--<li><a href="/my-activity">My Activity</a></li>-->                
-                <li><a href="#">Movies</a></li>
-                <li><a href="#">TV Series</a></li>
+                <li id="home"><a href="/">Home</a></li>
+                <li id="discover"><a href="/discover">Discover</a></li>
+                <li id="feed"><a href="/feed">Feed</a></li>
+                <li id="my-activity"><a href="/my-activity">My Activity</a></li>                
                 @endif
             </ul>
             <div class="right-button hidden-xs">
@@ -79,7 +78,7 @@
                         <button class="dropbtn">{{Auth::user()->name}}</button>
                         <div class="dropdown-content">
                             <a href="/profile/{{Auth::user()->id}}">My Profile</a>
-                            <a href="/my-activity">My Activity</a>
+                            <!-- <a href="/my-activity">My Activity</a> -->
                             <a href="/logout">Logout</a>
                         </div>
                     </div> 
