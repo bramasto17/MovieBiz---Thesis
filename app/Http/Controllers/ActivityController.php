@@ -27,6 +27,7 @@ class ActivityController extends Controller
       $total =  Watch::where('userId',Auth::user()->id)->count();
       $movies = Watch::where('userId',Auth::user()->id)->selectRaw(DB::raw('COUNT(DISTINCT movieId) as distinct_movie'))->first();
       $average = Rating::where('userId',Auth::user()->id)->selectRaw(DB::raw('AVG(rating) as average_rating'))->first();
+      $rating_top = Rating::where('userId',Auth::user()->id)->orderBy('rating','desc')->take(3)->get();
       $reviews = Review::where('userId',Auth::user()->id)->count();
 
       $user = array(
@@ -37,7 +38,7 @@ class ActivityController extends Controller
               );
       $user = (object) $user;
 
-		  return view('activity.index')->with(['history'=>$history, 'mosts'=>$mosts, 'user'=>$user]);
+		  return view('activity.index')->with(['history'=>$history, 'mosts'=>$mosts, 'user'=>$user, 'rating_top'=>$rating_top]);
     }
 
     public function getActivity(){

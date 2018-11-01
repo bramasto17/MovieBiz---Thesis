@@ -1,6 +1,6 @@
-var parentDiv = document.getElementById("div_genre");
-var width = parentDiv.clientWidth;
-var height = 3/5*parentDiv.clientWidth;
+var parentDiv_genre = document.getElementById("div_genre");
+var width_genre = parentDiv_genre.clientWidth;
+var height_genre = 3/5*parentDiv_genre.clientWidth;
 var radius = 150;
 var color = d3.scale.linear()
   .domain([0, 1])
@@ -17,10 +17,10 @@ d3.json("/get-favourite-genres", function(error, dataset){
     var max = d3.max(dataset, function(d) { return d.percentage; });
 
     var svg = d3.select("#chart_genre").append("svg")
-        .attr("width", width)
-        .attr("height", height)
+        .attr("width", width_genre)
+        .attr("height", height_genre)
         .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+        .attr("transform", "translate(" + width_genre / 2 + "," + height_genre / 2 + ")");
 
     var arc = d3.svg.arc()
             .outerRadius(radius)
@@ -41,6 +41,9 @@ d3.json("/get-favourite-genres", function(error, dataset){
                     .style("top", event.layerY + "px")
                     .style("display", "inline-block")
                     .html(d.data.label + "<br>" + d.data.count + " movies");
+            })
+            .on("mouseout", function () {
+                tooltip_genre.style("display","none");
             });
             
 
