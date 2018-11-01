@@ -30,6 +30,7 @@ class HomeController extends Controller
     }
 
     public function home(Request $request){
+        ini_set('max_execution_time', 6000);
         //POPULAR
         $popular = Session::get('popular');
 
@@ -47,12 +48,14 @@ class HomeController extends Controller
         if(!Session::has('history')){
             $movieId = Watch::where('userId',Auth::user()->id)->get()->sortByDesc('created_at');
             foreach ($movieId as $key => $data) {
+                // $time_start = microtime(true); 
                 $history[] = (object) tmdb()->getMovie($data->movieId)->get();
+                // $time_end = microtime(true); 
+                // $exe[] = $time_end - $time_start;
             }
             Session::put('history', isset($history) ? $history : null);
         }
         $history = Session::get('history');
-        // dd($history[0]->id);
         return view('Home/index')->with(['popular'=>$popular,'latest'=>$latest, 'history'=>$history]);
     }
 

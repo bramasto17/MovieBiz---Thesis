@@ -167,7 +167,7 @@ class MovieController extends Controller
         $movie =(object) tmdb()->getMovie($id)->get();
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
 
-        return view('Movie\Forum\index', compact('movie'));
+        return view('Movie\forum', compact('movie'));
     }
 
 }

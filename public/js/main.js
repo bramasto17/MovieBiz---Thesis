@@ -21,11 +21,11 @@
         loop: true,
         margin: 0,
         responsiveClass: true,
-        nav: true,
+        nav: false,
         autoplay: true,
         autoplayTimeout: 4000,
         smartSpeed: 1000,
-        navText: ['<i class="lnr lnr-chevron-left"></i>', '<i class="lnr lnr-chevron-right"></i>'],
+        // navText: ['<i class="lnr lnr-chevron-left"></i>', '<i class="lnr lnr-chevron-right"></i>'],
         responsive: {
             0: {
                 items: 2,
