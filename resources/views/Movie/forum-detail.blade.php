@@ -84,7 +84,7 @@
                                     @foreach($subposts as $subpost)
                                         @if($subpost->subpost == $post->id)
 
-                                        <div class="row">
+                                            <div class="row">
                                                 <div class="col-xs-12 col-md-1"></div>
                                                 <div class="col-xs-12 col-md-11">
                                                     <div>

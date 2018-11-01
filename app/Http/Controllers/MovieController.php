@@ -24,7 +24,7 @@ class MovieController extends Controller
 {
     //
     public function index($id){
-    	$movie =(object) tmdb()->getMovie($id)->get();
+        $movie =(object) tmdb()->getMovie($id)->get();
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
         $rating = Rating::where('userId',Auth::user()->id)->where('movieId',$id)->first();
         $review = Review::join('users','users.id','=','reviews.userId')->where('movieId',$id)->select('reviews.*','users.name')->first();
@@ -108,30 +108,30 @@ class MovieController extends Controller
         $allReviews = DB::table('reviews')
             ->join('users', 'users.id', '=', 'reviews.userId')
             ->join('ratings', function($join)
-                {
+            {
                 $join->on('ratings.userId', '=', 'reviews.userId');
                 $join->on('ratings.movieId', '=', 'reviews.movieId');
-                })
+            })
             ->where('reviews.movieId', '=', $movie->id)
             ->where('users.id', '!=', Auth::user()->id)
             ->select('reviews.*','users.name','ratings.rating')
             ->get();
 
-       // dd($allReviews);
+        // dd($allReviews);
 
         $myReview = DB::table('reviews')
             ->join('users', 'users.id', '=', 'reviews.userId')
             ->join('ratings', function($join)
-                {
+            {
                 $join->on('ratings.userId', '=', 'reviews.userId');
                 $join->on('ratings.movieId', '=', 'reviews.movieId');
-                })
+            })
             ->where('reviews.movieId', '=', $movie->id)
             ->where('users.id', '=', Auth::user()->id)
             ->select('reviews.*','users.name','ratings.rating')
             ->first();
 
-       // dd($myReview);
+        // dd($myReview);
 
         return view('Movie\review', compact('movie','allReviews','myReview','isWatch','rating'));
     }
@@ -170,7 +170,6 @@ class MovieController extends Controller
         $movie =(object) tmdb()->getMovie($id)->get();
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
 
-<<<<<<< HEAD
         $forum = Forum::where('movieID','=', $id)->first();
         if (!$forum) {
             $new = new Forum();
@@ -209,9 +208,6 @@ class MovieController extends Controller
 
         return redirect('/movie/'.$request->movieId.'/forum');
 
-=======
-        return view('Movie\forum', compact('movie'));
->>>>>>> master
     }
 
     public function showThreadDetail($id){
