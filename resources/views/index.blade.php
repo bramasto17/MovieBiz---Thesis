@@ -1,6 +1,6 @@
 @extends('Layout/master')
 @section('Title')
-MovieBiz
+Cinegram
 @endsection
 @section('Content')
     <!-- Home-Area -->

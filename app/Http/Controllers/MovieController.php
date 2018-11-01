@@ -170,6 +170,7 @@ class MovieController extends Controller
         $movie =(object) tmdb()->getMovie($id)->get();
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
 
+<<<<<<< HEAD
         $forum = Forum::where('movieID','=', $id)->first();
         if (!$forum) {
             $new = new Forum();
@@ -208,6 +209,9 @@ class MovieController extends Controller
 
         return redirect('/movie/'.$request->movieId.'/forum');
 
+=======
+        return view('Movie\forum', compact('movie'));
+>>>>>>> master
     }
 
     public function showThreadDetail($id){

@@ -112,7 +112,7 @@ My Activity
                     <tbody>
                         @foreach($mosts as $data)
                         <tr class="most_watched" id="{{$data->movie()->backdrop_path}}">
-                            <td>{{$data->movie()->title}}</td>
+                            <td><a href="/movie/{{$data->movieId}}">{{$data->movie()->title}}</a></td>
                             <td>{{$data->total}} times</td>
                         </tr>
                         @endforeach
@@ -139,7 +139,34 @@ My Activity
                 </center>
             </div>
         </div>
-        <div class="col-xs-6"></div>
+        <div class="col-xs-6">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="page-title text-center">
+                        <h4 class="title">Your best movies</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach($rating_top as $data)
+                    <div class="col-xs-6 col-sm-4 poster-list">
+                        <div class="item wow fadeInUp" id="top_rated">
+                            <a href="/movie/{{$data->movieId}}">
+                                <img src="@if(@file_get_contents('https://image.tmdb.org/t/p/w185_and_h278_bestv2'.$data->movie()->poster_path) === false) {{ URL::to('/') }}/images/poster.jpg @else https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->movie()->poster_path}} @endif" alt="">
+                                <div class="overlay">
+                                    <div class="text">
+                                        {{$data->movie()->title}}<br>
+                                        <span class="review-rating"> {{$data->rating}}
+                                            <span class="icon">★</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <script type="text/javascript" src="/js/watch-history.js"></script>

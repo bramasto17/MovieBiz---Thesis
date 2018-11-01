@@ -1518,12 +1518,12 @@ form .control {
 
 .comments-list .comment {
     position: relative;
-    padding-left: 130px;
+    padding-left: 75px;
 }
 
 .comments-list .comment .comment-pic {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     border-radius: 3px;
     position: absolute;
     left: 0;
@@ -1734,14 +1734,20 @@ form .control {
 /*========ACTIVITY========*/
 .activity{
     min-height: 50vh !important;
+    margin-bottom: 50px;
     padding-bottom: 50px;
+}
+
+.activity h1{
+  text-shadow: 2px 2px rgba(0, 0, 0, .15);
+
 }
 
 .axis path,
 .axis line{
     fill: none;
     stroke: #500;
-    /*shape-rendering: crispEdges;*/
+    shape-rendering: crispEdges;
 }
 
 .toolTip {
@@ -1768,6 +1774,10 @@ form .control {
   text-align: left;
   color: #5B6770;
   padding: 5px;
+}
+
+#top_rated{
+    box-shadow: 0 0 20px black;
 }
 
 /*========END ACTIVITY========*/
