@@ -28,8 +28,20 @@ class MovieController extends Controller
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
         $rating = Rating::where('userId',Auth::user()->id)->where('movieId',$id)->first();
         $review = Review::join('users','users.id','=','reviews.userId')->where('movieId',$id)->select('reviews.*','users.name')->first();
-        $isWatch = Watch::where('userId',Auth::user()->id)->where('movieId',$id)->first();
-        return view('Movie\index', compact('movie','rating','review','isWatch'));
+
+        $isWatch = Watch::where('userId',Auth::user()->id)->where('movieId',$id)->count();
+        $dis_users = Watch::where('movieId',$id)->selectRaw(DB::raw('COUNT(DISTINCT userId) as distinct_user'))->first();
+        $dis_reviews = Review::where('movieId',$id)->selectRaw(DB::raw('COUNT(DISTINCT userId) as distinct_review'))->first();
+        $dis_ratings = Rating::where('movieId',$id)->selectRaw(DB::raw('AVG(rating) as average_rating'))->first();
+        $stats = array(
+            'times_played' => isset($isWatch) ? $isWatch : '0',
+            'users_played' => $dis_users->distinct_user,
+            'total_review' => $dis_reviews->distinct_review,
+            'avg_rating' => number_format((float)$dis_ratings->average_rating, 1, '.', ''),
+        );
+        $stats = (object) $stats;
+
+        return view('Movie\index', compact('movie','rating','review','stats'));
     }
 
     public function checkInMovie(Request $request){
