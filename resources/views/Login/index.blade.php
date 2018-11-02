@@ -21,7 +21,7 @@ Login
                                 <div class="field-form">
                                     <input type="password" class="control" placeholder="Password" required="required" name="txtPassword" id="txtPassword">
                                 </div>
-                                <input class="bttn-white wow fadeInUp" type="submit" value="Login"></input>
+                                <input id="login_submit" class="bttn-white wow fadeInUp" type="submit" value="Login"></input>
                             </form>
                         </div>
 
@@ -35,3 +35,10 @@ Login
     </header>
     <!-- Home-Area-End -->
 @endsection
+@push('scripts')
+<script type="text/javascript">
+    $("#login_submit").on("click", function () {
+        $('.preloader').fadeIn(3500);
+    });
+</script>
+@endpush

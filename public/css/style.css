@@ -238,6 +238,10 @@ input:-webkit-autofill:focus {
     padding-bottom: 20px;
 }
 
+.section-padding-child{
+    padding-top: 60px;
+}
+
 .upper {
     text-transform: uppercase;
 }
@@ -562,6 +566,10 @@ input:-webkit-autofill:focus {
     box-shadow: 0 0 20px black;
 }
 
+iframe{
+    box-shadow: 0 0 20px black;
+    
+}
 
 /*-- 11. Service-Box --*/
 
@@ -734,6 +742,7 @@ input:-webkit-autofill:focus {
     margin-bottom: 15px;
     overflow: hidden;
     border-radius: 2px;
+    box-shadow: 0 0 20px black;
 }
 
 .gallery-slide .owl-controls {

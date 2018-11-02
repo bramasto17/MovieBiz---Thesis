@@ -3,7 +3,7 @@
 {{$movie->title}} [{{$movie->release_date->year}}]
 @endsection
 @section('Content')
-	<!-- Home-Area -->
+	<!-- Header-Area -->
 	<header class="home-area overlay" style="background: url(https://image.tmdb.org/t/p/original{{$movie->backdrop_path}}) no-repeat scroll center bottom / cover;">
 	    <div class="container">
             <input type="hidden" value="{!!csrf_token() !!}" id="token">
@@ -52,7 +52,7 @@
 	                <div class="row movie-menu">
 		                <div class="col-xs-12 col-sm-4">
                     		<div class="space-20"></div>
-		                    	<button id="checkInMovie" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-film-play"></i>{{isset($isWatch) ? 'Watch Again' : 'Chek-In Movie'}}<span class="lds-dual-ring" id="loadingDiv"></span></button>
+		                    	<button id="checkInMovie" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-film-play"></i>{{$stats->times_played > 0 ? 'Watch Again' : 'Chek-In Movie'}}<span class="lds-dual-ring" id="loadingDiv"></span></button>
 		                </div>
 		                <div class="col-xs-12 col-sm-8 wow fadeInUp">
 		                	<div class="row">
@@ -155,8 +155,8 @@
 	    </div>
 	</header>
 	<!-- Home-Area-End -->
-	<!--Price-Area -->
-	<section class="section-padding info" id="price_page">
+	<!--Stats-Area -->
+	<section class="section-padding info">
 	    <div class="container">
 	        <div class="row">
 	            <div class="col-xs-12">
@@ -171,29 +171,7 @@
 	                <div class="price-box">
 	                    <div class="price-header">
 	                        <div class="price-icon">
-	                            <span>290</span>
-	                        </div>
-	                        <h4>user watched</h4>
-	                    </div>
-	                </div>
-	                <div class="space-30 hidden visible-xs"></div>
-	            </div>
-	            <div class="col-xs-12 col-sm-3">
-	                <div class="price-box">
-	                    <div class="price-header">
-	                        <div class="price-icon">
-	                            <span>30</span>
-	                        </div>
-	                        <h4>friends watched</h4>
-	                    </div>
-	                </div>
-	                <div class="space-30 hidden visible-xs"></div>
-	            </div>
-	            <div class="col-xs-12 col-sm-3">
-	                <div class="price-box">
-	                    <div class="price-header">
-	                        <div class="price-icon">
-	                            <span>190</span>
+	                            <span>{{$stats->times_played}}</span>
 	                        </div>
 	                        <h4>times played</h4>
 	                    </div>
@@ -204,9 +182,31 @@
 	                <div class="price-box">
 	                    <div class="price-header">
 	                        <div class="price-icon">
-	                            <span>8.8</span>
+	                            <span>{{$stats->users_played}}</span>
 	                        </div>
-	                        <h4>overall rating</h4>
+	                        <h4>users watched</h4>
+	                    </div>
+	                </div>
+	                <div class="space-30 hidden visible-xs"></div>
+	            </div>
+	            <div class="col-xs-12 col-sm-3">
+	                <div class="price-box">
+	                    <div class="price-header">
+	                        <div class="price-icon">
+	                            <span>{{$stats->total_review}}</span>
+	                        </div>
+	                        <h4>reviews given</h4>
+	                    </div>
+	                </div>
+	                <div class="space-30 hidden visible-xs"></div>
+	            </div>
+	            <div class="col-xs-12 col-sm-3">
+	                <div class="price-box">
+	                    <div class="price-header">
+	                        <div class="price-icon">
+	                            <span>{{isset($stats->avg_rating) ? $stats->avg_rating : 'No data'}}</span>
+	                        </div>
+	                        <h4>average rating</h4>
 	                    </div>
 	                </div>
 	                <div class="space-30 hidden visible-xs"></div>
@@ -214,9 +214,29 @@
 	        </div>
 	    </div>
 	</section>
-	<!--Price-Area-End -->
-	<!-- Testimonial-Area -->
-	<section class="testimonial-area" id="testimonial_page">
+	<!-- Stats-Area-End -->
+	<!--Trailer-Area -->
+	<section class="testimonial-area">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-xs-12">
+	                <div class="page-title text-center">
+	                    <h3 class="title">Trailer</h3>
+	                    <!-- <div class="space-60"></div> -->
+	                </div>
+	            </div>
+	        </div>
+	        <div class="row">
+	            <center>
+	            	<iframe src="https://www.youtube.com/embed/{{$movie->trailers['youtube'][0]['source']}}?ecver=2"frameborder="0"
+						width="520px" height="292px" allowfullscreen></iframe>
+	            </center>
+	        </div>
+	    </div>
+	</section>
+	<!-- Trailer-Area-End -->
+	<!--Actors-Area -->
+	<section class="testimonial-area">
 	    <div class="container">
 	        <div class="row">
 	            <div class="col-xs-12">
@@ -258,7 +278,8 @@
 	        </div>
 	    </div>
 	</section>
-	<!-- Testimonial-Area-End -->
+	<!-- Trailer-Area-End -->
+	<!-- Forum-Review-Area-->
 	<div class="container">
 	    <div class="row">
 	        <div class="col-xs-12 col-md-6">
@@ -322,6 +343,7 @@
 	        </div>
 	    </div>
 	</div>
+	<!-- Forum-Review-Area-End-->
 @endsection
 @push('scripts')
 <script type="text/javascript">
