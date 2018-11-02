@@ -59,6 +59,36 @@ class HomeController extends Controller
         return view('Home/index')->with(['popular'=>$popular,'latest'=>$latest, 'history'=>$history]);
     }
 
+    public function discover(Request $request){
+        ini_set('max_execution_time', 6000);
+        //POPULAR
+        $popular = Session::get('popular');
+
+        //LATEST
+        if(!Session::has('latest')){
+            $latests = tmdb()->nowPlayingMovies();
+            foreach ($latests as $l) {
+                $latest[] = (object) $l->get();
+            }
+            Session::put('latest', $latest);
+        }
+        $latest = Session::get('latest');
+
+        //HISTORY
+        if(!Session::has('history')){
+            $movieId = Watch::where('userId',Auth::user()->id)->get()->sortByDesc('created_at');
+            foreach ($movieId as $key => $data) {
+                // $time_start = microtime(true); 
+                $history[] = (object) tmdb()->getMovie($data->movieId)->get();
+                // $time_end = microtime(true); 
+                // $exe[] = $time_end - $time_start;
+            }
+            Session::put('history', isset($history) ? $history : null);
+        }
+        $history = Session::get('history');
+        return view('Discover/index')->with(['popular'=>$popular,'latest'=>$latest, 'history'=>$history]);
+    }
+
     public function search(Request $request){
         $txtSearch = $request->txtSearch;
         $movies = tmdb()->searchMovie($txtSearch);

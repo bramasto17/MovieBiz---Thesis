@@ -25,6 +25,7 @@ Route::post('/register','RegisterController@Register');
 //HOME
 Route::get('/home','HomeController@home');
 Route::get('/search','HomeController@search');
+Route::get('/discover','HomeController@discover');
 
 //ACTIVITY
 Route::get('/my-activity','ActivityController@index');
