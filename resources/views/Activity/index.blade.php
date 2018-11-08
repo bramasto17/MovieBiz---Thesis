@@ -3,21 +3,25 @@
 My Activity
 @endsection
 @section('Content')
-<header class="home-area activity overlay" style="background: url(https://image.tmdb.org/t/p/original{{count($history) != 0 ? $history[0]->movie()->backdrop_path : ''}}) no-repeat scroll center top / cover;">
+@if(isset($history))
+<header class="home-area activity overlay" style="background: url(https://image.tmdb.org/t/p/original{{$history->movie()->backdrop_path}}) no-repeat scroll center top / cover;">
     <div class="container">
-        @if(isset($history))
         <div class="row">
             <h4 class="wow fadeInUp" data-wow-delay="0.4s">Last movie watched</h4>
-            <h1 class="wow fadeInUp" data-wow-delay="0.4s">{{$history[0]->movie()->title}}</h1>
-            <h4 class="wow fadeInUp" data-wow-delay="0.4s">{{$history[0]->created_at}}</h4>
+            <h1 class="wow fadeInUp" data-wow-delay="0.4s">{{$history->movie()->title}}</h1>
+            <h4 class="wow fadeInUp" data-wow-delay="0.4s">{{$history->created_at}}</h4>
         </div>
-        @else
+    </div>
+</header>
+@else
+<header class="home-area activity overlay">
+    <div class="container">
         <div class="row">
             <h4 class="wow fadeInUp" data-wow-delay="0.4s">You haven't watched anything</h4>
         </div>
-        @endif
     </div>
 </header>
+@endif
 <section class="section-padding info">
     <div class="container">
         <div class="row">
@@ -101,6 +105,7 @@ My Activity
                 </div>
             </div>
         </div>
+        @if(isset($mosts[0]))
         <div class="row">
             <div class="col-xs-6">
                 <figure class="mobile-image wow fadeInUp" data-wow-delay="0.2s">
@@ -120,6 +125,13 @@ My Activity
                 </table>
             </div>
         </div>
+        @else
+        <div class="row">
+            <center>
+                <h4 class="wow fadeInUp" data-wow-delay="0.4s">You haven't watched anything</h4>
+            </center>
+        </div>
+        @endif
     </div>
 </section>
 <section class="section-padding info">

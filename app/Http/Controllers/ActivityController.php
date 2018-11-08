@@ -14,7 +14,8 @@ use Carbon\Carbon;
 class ActivityController extends Controller
 {
     public function index(){
-      $history = Watch::where('userId',Auth::user()->id)->orderBy('created_at','desc')->get();
+      $history = Watch::where('userId',Auth::user()->id)->orderBy('created_at','desc')->first();
+      // dd(isset($history));
 
       $mosts = Watch::where('userId',\Auth::user()->id)
                  ->select(DB::raw('movieId, COUNT(movieId) as total'))

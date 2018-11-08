@@ -1,11 +1,157 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "31307fccef870e7f1e075fec9bcd7892",
+    "content-hash": "d9d52c001f83bf93896d81821e5b9f07",
     "packages": [
+        {
+            "name": "bartlett/umlwriter",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/llaville/umlwriter.git",
+                "reference": "e4a204db7416ce49712978287f6c631b54c09008"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/llaville/umlwriter/zipball/e4a204db7416ce49712978287f6c631b54c09008",
+                "reference": "e4a204db7416ce49712978287f6c631b54c09008",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "sebastian/version": "~1.0|~2.0",
+                "symfony/console": "~2.5|~3.0"
+            },
+            "require-dev": {
+                "andrewsville/php-token-reflection": "~1.4",
+                "bartlett/php-reflect": "~4.0"
+            },
+            "suggest": {
+                "andrewsville/php-token-reflection": "Reverse-engine, alternative solution",
+                "bartlett/php-reflect": "Reverse-engine, default solution"
+            },
+            "bin": [
+                "bin/umlwriter"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bartlett\\": "src/Bartlett"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Laurent Laville",
+                    "email": "pear@laurent-laville.org",
+                    "homepage": "https://github.com/llaville",
+                    "role": "Lead"
+                }
+            ],
+            "description": "Create UML class diagrams from your PHP source.",
+            "homepage": "http://php5.laurent-laville.org/umlwriter/",
+            "keywords": [
+                "graphviz",
+                "plantuml",
+                "uml"
+            ],
+            "time": "2017-02-28T21:05:47+00:00"
+        },
+        {
+            "name": "clue/graph",
+            "version": "v0.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clue/graph.git",
+                "reference": "f4c2c2c2419e938299a85bf700a8da8c301b904d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clue/graph/zipball/f4c2c2c2419e938299a85bf700a8da8c301b904d",
+                "reference": "f4c2c2c2419e938299a85bf700a8da8c301b904d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Fhaculty": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A mathematical graph/network library written in PHP",
+            "homepage": "https://github.com/clue/graph",
+            "keywords": [
+                "dijkstra",
+                "edge",
+                "graph",
+                "graphviz",
+                "kruskal",
+                "mathematical",
+                "minimum spanning tree",
+                "moore-bellman-ford",
+                "network",
+                "prim",
+                "shortest path",
+                "vertex"
+            ],
+            "time": "2014-03-12T22:54:24+00:00"
+        },
+        {
+            "name": "clue/graph-uml",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clue/graph-uml.git",
+                "reference": "bcda493620633c56b3df8af9bb7af1b789d0ecfd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clue/graph-uml/zipball/bcda493620633c56b3df8af9bb7af1b789d0ecfd",
+                "reference": "bcda493620633c56b3df8af9bb7af1b789d0ecfd",
+                "shasum": ""
+            },
+            "require": {
+                "clue/graph": "0.7.*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Fhaculty": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Generate UML class diagrams by reflection for your PHP projects",
+            "homepage": "https://github.com/clue/graph-uml",
+            "keywords": [
+                "Class Diagram",
+                "graph",
+                "reflection",
+                "uml"
+            ],
+            "time": "2014-02-24T21:21:29+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -1121,6 +1267,49 @@
                 "uuid"
             ],
             "time": "2017-09-22T20:46:04+00:00"
+        },
+        {
+            "name": "sebastian/version",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/version.git",
+                "reference": "99732be0ddb3361e16ad77b68ba41efc8e979019"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/99732be0ddb3361e16ad77b68ba41efc8e979019",
+                "reference": "99732be0ddb3361e16ad77b68ba41efc8e979019",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Library that helps with managing the version number of Git-hosted PHP projects",
+            "homepage": "https://github.com/sebastianbergmann/version",
+            "time": "2016-10-03T07:35:21+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3349,49 +3538,6 @@
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
             "time": "2015-07-28T20:34:47+00:00"
-        },
-        {
-            "name": "sebastian/version",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/version.git",
-                "reference": "99732be0ddb3361e16ad77b68ba41efc8e979019"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/99732be0ddb3361e16ad77b68ba41efc8e979019",
-                "reference": "99732be0ddb3361e16ad77b68ba41efc8e979019",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
-            "description": "Library that helps with managing the version number of Git-hosted PHP projects",
-            "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2016-10-03T07:35:21+00:00"
         },
         {
             "name": "symfony/yaml",

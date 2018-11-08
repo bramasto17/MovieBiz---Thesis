@@ -320,6 +320,21 @@ class TMDB{
 		return $movies;
 	}
 
+	public function similarMovies($idMovie,$page = 1) {
+
+		$movies = array();
+
+		$result = $this->_call('movie/'.$idMovie.'/similar', 'page='. $page);
+
+		foreach($result['results'] as $data){
+			$movies[] = new Movie($data);
+		}
+
+		return $movies;
+	}
+
+	// https://api.themoviedb.org/3/movie/260513/similar
+
 	//------------------------------------------------------------------------------
 	// Get Lists of Persons
 	//------------------------------------------------------------------------------

@@ -344,6 +344,36 @@
 	    </div>
 	</div>
 	<!-- Forum-Review-Area-End-->
+	<!--Similar-Area -->
+	<section class="testimonial-area">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-xs-12">
+	                <div class="page-title text-center">
+	                    <h4 class="title">You May Also Like</h4>
+	                    <!-- <div class="space-60"></div> -->
+	                </div>
+	            </div>
+	        </div>
+	        <div class="row">
+	        	@foreach($similar as $data)
+                <div class="col-xs-6 col-sm-2 poster-list">
+                    <div class="item wow fadeInUp" id="top_rated">
+                        <a href="/movie/{{$data->id}}">
+                            <img src="@if(@file_get_contents('https://image.tmdb.org/t/p/w185_and_h278_bestv2'.$data->poster_path) === false) {{ URL::to('/') }}/images/poster.jpg @else https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->poster_path}} @endif" alt="">
+                            <div class="overlay">
+                                <div class="text">
+                                    {{$data->title}}<br>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+	        </div>
+	    </div>
+	</section>
+	<!-- Similar-Area-End-->
 @endsection
 @push('scripts')
 <script type="text/javascript">

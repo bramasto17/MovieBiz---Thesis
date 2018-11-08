@@ -18,7 +18,6 @@ class CreateThreatsTable extends Migration
             $table->integer('forumId')->unsigned();
             $table->integer('creatorId')->unsigned();
             $table->string('title');
-            $table->string('category');
             $table->timestamps();
             $table->foreign('forumId')->references('id')->on('forums')->onDelete('cascade');
             $table->foreign('creatorId')->references('id')->on('users')->onDelete('cascade');
