@@ -15,7 +15,7 @@
                 <div class="col-xs-12 col-md-10">
 
                     <div class="border-round-white">
-                        <h4><a href="" class="">{{$thisThread->name}}</a> <small>Posted on: {{$thisThread->created_at}}</small></h4>
+                        <h4><a href="" class="">{{$thisThread->userName}}</a> <small>Posted on: {{$thisThread->created_at}}</small></h4>
                         <h4>{{$thisThread->title}}</h4>
                     </div>
 
@@ -51,7 +51,7 @@
                                 <div class="col-xs-12 col-md-1"></div>
                                 <div class="col-xs-12 col-md-11">
                                     <div>
-                                        <h4><a href="" class="">{{$post->name}}</a> <small>Posted on: {{$post->created_at}}</small></h4>
+                                        <h4><a href="/profile/{{$post->userId}}" class="">{{$post->userName}}</a> <small>Posted on: {{$post->created_at}}</small></h4>
                                         <h4>{{$post->content}}</h4>
                                         <button id="myBtnSub">
                                             <small><span class="fa fa-reply"></span> Reply</small>
@@ -88,7 +88,7 @@
                                                 <div class="col-xs-12 col-md-1"></div>
                                                 <div class="col-xs-12 col-md-11">
                                                     <div>
-                                                        <h4><a href="" class="">{{$subpost->name}}</a> <small>Posted on: {{$subpost->created_at}}</small></h4>
+                                                        <h4><a href="/profile/{{$subpost->userId}}" class="">{{$subpost->userName}}</a> <small>Posted on: {{$subpost->created_at}}</small></h4>
                                                         <h4>{{$subpost->content}}</h4>
                                                     </div>
                                                 </div>

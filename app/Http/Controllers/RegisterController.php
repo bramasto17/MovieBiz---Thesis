@@ -34,10 +34,9 @@ class RegisterController extends Controller
             ->insert([
                 'name' => $name,
                 'password' => app('hash')->make($password),
-                'email' => $email,
+                'email' => $email
               ]);
 
-           //login paakai email dan password
           $request = $request->create(route("login"), 'POST',
             array("txtEmail"=>$email,"txtPassword"=>$password,"_token"=> csrf_token()));
             return Route::dispatch($request);

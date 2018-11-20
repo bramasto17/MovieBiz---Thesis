@@ -56,7 +56,6 @@ class ForumController extends Controller
             $new->forumId = $request->forumId;
             $new->creatorId = $request->creatorId;
             $new->title = $request->title;
-            $new->category = $request->category;
             $new->save();
         } else {
             return redirect('/movie/'.$request->movieId.'/forum')->withErrors($validator);
@@ -71,7 +70,7 @@ class ForumController extends Controller
             ->join('users', 'users.id', '=', 'threats.creatorId')
             ->join('forums', 'forums.id', '=', 'threats.forumId')
             ->where('threats.id', '=', $id)
-            ->select('threats.*', 'users.name', 'forums.movieId')
+            ->select('threats.*', 'users.name as userName', 'users.id as userId','forums.movieId')
             ->first();
 
         $movie =(object) tmdb()->getMovie($thisThread->movieId)->get();
@@ -82,7 +81,7 @@ class ForumController extends Controller
             ->join('threats', 'threats.id', '=', 'posts.threatId')
             ->where('posts.threatId', '=', $id)
             ->where('posts.subpost', '=', null)
-            ->select('posts.*', 'users.name')
+            ->select('posts.*', 'users.name as userName', 'users.id as userId')
             ->get();
 
         $subposts = DB::table('posts')
@@ -90,7 +89,7 @@ class ForumController extends Controller
             ->join('threats', 'threats.id', '=', 'posts.threatId')
             ->where('posts.threatId', '=', $id)
             ->where('posts.subpost', '!=', null)
-            ->select('posts.*', 'users.name')
+            ->select('posts.*', 'users.name as userName', 'users.id as userId')
             ->get();
 
         return view('Movie\forum-detail', compact('movie', 'thisThread', 'posts', 'subposts'));

@@ -18,15 +18,11 @@
             </div>
 
             {{-- Header --}}
-            <div class="col-xs-8 col-md-5 thread-header" align="center">
+            <div class="col-xs-9 col-md-6 thread-header" align="center">
                 Thread Topic
             </div>
 
             <div class="col-xs-2 col-md-2 thread-header">
-                Category
-            </div>
-
-            <div class="col-xs-1 col-md-1 thread-header">
                 Creator
             </div>
 
@@ -38,15 +34,11 @@
             {{-- Content --}}
             @if(count($threads) > 0)
                 @foreach($threads as $thread)
-                    <div class="col-xs-8 col-md-5 thread-content limit-word">
+                    <div class="col-xs-9 col-md-6 thread-content limit-word">
                         <a href="thread/{{$thread->id}}">{{$thread->title}}</a>
                     </div>
 
                     <div class="col-xs-2 col-md-2 thread-content">
-                        <span class="badge badge-primary">{{$thread->category}}</span>
-                    </div>
-
-                    <div class="col-xs-1 col-md-1 thread-content">
                         {{--{{$thread->name}}--}}
                         <img alt="" src="{{ URL::to('/') }}/images/person.png" style="height: 30px">
                     </div>
@@ -81,10 +73,6 @@
                         <input type="hidden" name="movieId" value="{{$movie->id}}">
                         <input type="hidden" name="forumId" value="{{$forum->id}}">
                         <input type="hidden" name="creatorId" value="{{Auth::user()->id}}">
-
-                        <label class="radio-inline"><input type="radio" name="category" value="Non Spoiler">Non Spoiler</label>
-                        <label class="radio-inline"><input type="radio" name="category" value="Spoiler">Spoiler</label>
-                        <label class="radio-inline"><input type="radio" name="category" value="Fan Theory">Fan Theory</label>
 
                         <textarea name="title"  rows="3" class="form-control" placeholder="Write title for this thread"></textarea>
                         <div class="space-30"></div>
