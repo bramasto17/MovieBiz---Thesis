@@ -39,17 +39,17 @@
 </div>
 <!-- MainMenu-Area -->
 <nav class="mainmenu-area" data-spy="affix" data-offset-top="200">
-    <div class="container-fluid">
+    <div class="container-fluid.">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary_menu">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="{{ URL::to('/') }}/images/logo.png" alt="Logo"></a>
+            {{--<a class="navbar-brand" href="#"><img src="{{ URL::to('/') }}/images/logo.png" alt="Logo"></a>--}}
         </div>
         <div class="collapse navbar-collapse" id="primary_menu">
-            <ul class="nav navbar-nav mainmenu">
+            <ul class="nav navbar-nav mainmenu.">
                 @if (auth()->guest())
                 <li id="home_page"><a href="/#home_page">Home</a></li>
                 <li id="about_page"><a href="#about_page">About</a></li>
@@ -62,46 +62,37 @@
                 <li id="my-activity"><a href="/my-activity">My Activity</a></li>                
                 @endif
             </ul>
+
             <div class="right-button hidden-xs">
                 @if (auth()->guest())
-                <div class = "right-button-elements">
-                    <div class="login">
-                        <a href="/login">Login</a>
-                    </div>
-                </div>
-                <div class = "right-button-elements">
-                    <div class="login">
-                    <a href="/register">Sign Up</a>
-                    </div>                    
-                </div>
-                @else 
-                <div class="right-button-elements" style="float:right">
-                    <div class="dropdown">
-                        <button class="dropbtn">{{Auth::user()->name}}</button>
-                        <div class="dropdown-content">
-                            <a href="/profile/{{Auth::user()->id}}">My Profile</a>
-                            <!-- <a href="/my-activity">My Activity</a> -->
-                            <a href="/logout">Logout</a>
+                    <div class = "right-button-elements">
+                        <div class="login">
+                            <a href="/login">Login</a>
                         </div>
-                    </div> 
-                </div>
-                <div class ="right-button-elements">            
-                    <form action="/search" id="search2">
-                        <div class="col-xs-12">
-                            <div class="field-form">
-                                <input type="text" class="control" placeholder="Search" required="required" name="txtSearch" id="txtSearch" ><!--
-                             --><button type="submit"><i class="fa fa-search fa-lg"></i></button>
+                    </div>
+                    <div class = "right-button-elements">
+                        <div class="login">
+                        <a href="/register">Sign Up</a>
+                        </div>
+                    </div>
+                @else
+                    <div class="right-button-elements" >
+                        <form action="/search" id="search2" style="display: inline-block">
+                            <input type="text" class="control" placeholder="Search" required="required" name="txtSearch" id="txtSearch" ><!--
+                            --><button type="submit" style="cursor: pointer"><i class="fa fa-search fa-lg"></i></button>
+                        </form>
+
+                        <div class="dropdown" style="display: inline-block">
+                            <button class="dropbtn"><img class="profile-pict" alt="" src="{{ URL::to('/') }}/images/person.png"></button>
+                            <div class="dropdown-content">
+                                <a href="/profile/{{Auth::user()->id}}">My Profile</a>
+                                <a href="/logout">Logout</a>
                             </div>
                         </div>
-                        <!-- <div class="col-xs-2 submit">
-
-                        </div> -->
-                    </form>
-                </div>
-                
+                    </div>
                 @endif
             </div>
-           
+
         </div>
     </div>
 </nav>
