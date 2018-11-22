@@ -31,7 +31,7 @@
                                     </figure>
                                     <div class="comment-content">
                                         <div class="comment-header">
-                                            <h4>Reviewed by you <small>{{$myReview->created_at}}</small></h4>
+                                            <h4>Review by you <small>{{$myReview->created_at}}</small></h4>
                                             <p class="comment-date"><span class="review-rating"> {{$myReview->rating}}/10 <span class="icon">★</span></span></p>
                                         </div>
 
@@ -171,7 +171,7 @@
 		                        </figure>
 		                        <div class="comment-content">
 		                            <div class="comment-header">
-                                        <h4>Reviewed by {{$review->name}} <small>{{$review->created_at}}</small></h4>
+                                        <h4>Review by {{$review->name}} <small>{{$review->created_at}}</small></h4>
                                         <p class="comment-date"><span class="review-rating"> {{$review->rating}}/10 <span class="icon">★</span></span></p>
 		                            </div>
 		                            <p>{{$review->review}}</p>

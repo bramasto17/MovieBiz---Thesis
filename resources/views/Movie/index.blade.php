@@ -171,20 +171,9 @@
 	                <div class="price-box">
 	                    <div class="price-header">
 	                        <div class="price-icon">
-	                            <span>{{$stats->times_played}}</span>
-	                        </div>
-	                        <h4>times played</h4>
-	                    </div>
-	                </div>
-	                <div class="space-30 hidden visible-xs"></div>
-	            </div>
-	            <div class="col-xs-12 col-sm-3">
-	                <div class="price-box">
-	                    <div class="price-header">
-	                        <div class="price-icon">
 	                            <span>{{$stats->users_played}}</span>
 	                        </div>
-	                        <h4>users watched</h4>
+	                        <h4>Users watched</h4>
 	                    </div>
 	                </div>
 	                <div class="space-30 hidden visible-xs"></div>
@@ -195,7 +184,7 @@
 	                        <div class="price-icon">
 	                            <span>{{$stats->total_review}}</span>
 	                        </div>
-	                        <h4>reviews given</h4>
+	                        <h4>Reviews given</h4>
 	                    </div>
 	                </div>
 	                <div class="space-30 hidden visible-xs"></div>
@@ -206,7 +195,18 @@
 	                        <div class="price-icon">
 	                            <span>{{isset($stats->avg_rating) ? $stats->avg_rating : 'No data'}}</span>
 	                        </div>
-	                        <h4>average rating</h4>
+	                        <h4>Cinegram rating</h4>
+	                    </div>
+	                </div>
+	                <div class="space-30 hidden visible-xs"></div>
+	            </div>
+	            <div class="col-xs-12 col-sm-3">
+	                <div class="price-box">
+	                    <div class="price-header">
+	                        <div class="price-icon">
+	                            <span>{{$movie->vote_average}}</span>
+	                        </div>
+	                        <h4>TMDB rating</h4>
 	                    </div>
 	                </div>
 	                <div class="space-30 hidden visible-xs"></div>
@@ -279,6 +279,38 @@
 	    </div>
 	</section>
 	<!-- Trailer-Area-End -->
+	<!--Similar-Area -->
+	<section class="testimonial-area">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-xs-12">
+	                <div class="page-title text-center">
+	                    <h3 class="title">You May Also Like</h3>
+	                    <!-- <div class="space-60"></div> -->
+	                </div>
+	            </div>
+	        </div>
+	        @if(isset($similar))
+	        <div class="row">
+	        	@foreach($similar as $data)
+                <div class="col-xs-6 col-sm-2 poster-list">
+                    <div class="item wow fadeInUp" id="top_rated">
+                        <a href="/movie/{{$data->id}}">
+                            <img src="@if(@file_get_contents('https://image.tmdb.org/t/p/w185_and_h278_bestv2'.$data->poster_path) === false) {{ URL::to('/') }}/images/poster.jpg @else https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->poster_path}} @endif" alt="">
+                            <div class="overlay">
+                                <div class="text">
+                                    {{$data->title}}<br>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+	        </div>
+	        @endif
+	    </div>
+	</section>
+	<!-- Similar-Area-End-->
 	<!-- Forum-Review-Area-->
 	<div class="container">
 	    <div class="row">
@@ -344,36 +376,6 @@
 	    </div>
 	</div>
 	<!-- Forum-Review-Area-End-->
-	<!--Similar-Area -->
-	<section class="testimonial-area">
-	    <div class="container">
-	        <div class="row">
-	            <div class="col-xs-12">
-	                <div class="page-title text-center">
-	                    <h4 class="title">You May Also Like</h4>
-	                    <!-- <div class="space-60"></div> -->
-	                </div>
-	            </div>
-	        </div>
-	        <div class="row">
-	        	@foreach($similar as $data)
-                <div class="col-xs-6 col-sm-2 poster-list">
-                    <div class="item wow fadeInUp" id="top_rated">
-                        <a href="/movie/{{$data->id}}">
-                            <img src="@if(@file_get_contents('https://image.tmdb.org/t/p/w185_and_h278_bestv2'.$data->poster_path) === false) {{ URL::to('/') }}/images/poster.jpg @else https://image.tmdb.org/t/p/w185_and_h278_bestv2{{$data->poster_path}} @endif" alt="">
-                            <div class="overlay">
-                                <div class="text">
-                                    {{$data->title}}<br>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                @endforeach
-	        </div>
-	    </div>
-	</section>
-	<!-- Similar-Area-End-->
 @endsection
 @push('scripts')
 <script type="text/javascript">

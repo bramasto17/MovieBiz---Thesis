@@ -15,12 +15,12 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('threatId')->unsigned();
+            $table->integer('threadId')->unsigned();
             $table->integer('userId')->unsigned();
             $table->string('content',1000);
             $table->integer('subpost')->unsigned()->nullable();
             $table->timestamps();
-            $table->foreign('threatId')->references('id')->on('threats')->onDelete('cascade');
+            $table->foreign('threadId')->references('id')->on('threads')->onDelete('cascade');
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('subpost')->references('id')->on('posts')->onDelete('cascade');
         });

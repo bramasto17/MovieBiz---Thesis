@@ -95,17 +95,4 @@ class HomeController extends Controller
         $users = User::where('name','LIKE','%'.$txtSearch.'%')->select('id','name')->get();
         return view('Search/index')->with(['movies'=>$movies, 'search'=>$txtSearch,'users'=>$users]);
     }
-
-    public function s(Request $request){
-        // initialize an empty graph and the UML class diagram builder
-        $graph = new Fhaculty\Graph\Graph();
-        $builder = new Fhaculty\Graph\Uml\ClassDiagramBuilder($graph);
-
-        // let's add some classes to the diagram
-        $builder->createVertexClass('Fhaculty\Graph\Uml\ClassDiagramBuilder');
-
-        // display graph as svg image
-        $graphviz = new Fhaculty\Graph\GraphViz($graph);
-        $graphviz->display();
-    }
 }
