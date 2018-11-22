@@ -1961,3 +1961,24 @@ form .control {
 .stats{
     padding-bottom: 8%;
 }
+
+#search_page{
+    min-height: 100vh;
+}
+
+#search_page span {
+    color: #959696;
+    margin: 50px;
+    cursor: pointer;
+}
+
+#search_page span.active{
+    color: #fff;
+    text-decoration: underline;
+}
+
+#search_page .item {
+    overflow: hidden;
+    border-radius: 2px;
+    box-shadow: 0 0 20px black;
+}

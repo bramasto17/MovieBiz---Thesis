@@ -47,7 +47,7 @@ class MovieController extends Controller
                 $similar[] = (object) $s->get();
             }
         }
-
+        
         return view('Movie\index', compact('movie','rating','review','stats','similar'));
     } 
 }

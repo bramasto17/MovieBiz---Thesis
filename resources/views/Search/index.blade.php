@@ -1,17 +1,22 @@
 @extends('Layout/master')
 @section('Title')
-Home
+Search Results for "{{$search}}"
 @endsection
 @section('Content')
-<section class="gallery-area section-padding list" id="gallery_page">
+<section class="gallery-area section-padding list" id="search_page">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-sm-12">
-                <h1>Search Results for "{{$search}}"</h1>
-                <h2>Movies</h2>
+                <center>
+                    <h4>Search Results for "{{$search}}"</h4>
+                    <h3>
+                        <span id="movies_search" class="active">Movies</span>
+                        <span id="users_search">Users</span>
+                    </h3>
+                </center>
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="movies_result">
            	@foreach($movies as $data)
             <div class="col-xs-6 col-sm-2 poster-list">
                 <div class="item">
@@ -26,11 +31,12 @@ Home
             </div>
             @endforeach
         </div>
-        <div class="row">
+        <div class="row hide" id="users_result">
             <div class="col-xs-12 col-sm-12">
-                <h2>User</h2>
                 @if(count($users)==0)
+                <center>
                     <h3>Nothing Found</h3>
+                </center>
                 @else
                 @foreach($users as $user)
                 <a href="/profile/{{$user->id}}">{{$user->name}}</a>
@@ -41,3 +47,22 @@ Home
     </div>
 </section>
 @endsection
+@push('scripts')
+<script type="text/javascript">
+    $(function() {
+        $("#movies_search").click(function(){
+            $("#movies_search").addClass("active");
+            $("#movies_result").removeClass("hide");
+            $("#users_search").removeClass("active");
+            $("#users_result").addClass("hide");
+        });
+
+        $("#users_search").click(function(){
+            $("#users_search").addClass("active");
+            $("#users_result").removeClass("hide");
+            $("#movies_search").removeClass("active");
+            $("#movies_result").addClass("hide");
+        });
+    });
+</script>
+@endpush
