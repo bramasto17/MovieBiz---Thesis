@@ -31,7 +31,7 @@
                             <span class="close">&times;</span>
                             <form id="formThread" action="/createPost" method="POST">
                                 {{csrf_field()}}
-                                <input type="hidden" name="threatId" value="{{$thisThread->id}}">
+                                <input type="hidden" name="threadId" value="{{$thisThread->id}}">
                                 <input type="hidden" name="userId" value="{{Auth::user()->id}}">
                                 <textarea name="txtContent"  rows="3" class="form-control" placeholder="Write post here"></textarea>
                                 <div class="space-30"></div>
@@ -65,7 +65,7 @@
 
                                             <form id="formThread" action="/createPost" method="POST">
                                                 {{csrf_field()}}
-                                                <input type="hidden" name="threatId" value="{{$thisThread->id}}">
+                                                <input type="hidden" name="threadId" value="{{$thisThread->id}}">
                                                 <input type="hidden" name="userId" value="{{Auth::user()->id}}">
                                                 <input type="hidden" name="subpost" value="{{$post->id}}">
 

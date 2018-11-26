@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Forum;
 use App\Post;
-use App\Threat;
+use App\Thread;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -47,7 +47,10 @@ class MovieController extends Controller
                 $similar[] = (object) $s->get();
             }
         }
+
+        $forum = Forum::where('movieId',$id)->first();
+        $threads = Thread::where('forumId',$forum->id)->take(3)->get();
         
-        return view('Movie\index', compact('movie','rating','review','stats','similar'));
+        return view('Movie\index', compact('movie','rating','review','stats','similar','threads'));
     } 
 }

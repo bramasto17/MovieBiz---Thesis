@@ -39,8 +39,6 @@
                                         <input type="hidden" name="id" value="{{$myReview->id}}">
                                         <textarea name="review" id="review" rows="5" class="form-control" placeholder="Write your review here">{{$myReview->review}}</textarea>
 
-                                        <div class="breadcrumb">0 persons like your review</div>
-
                                         <div align="right">
                                             <button type="submit" class="bttn-default bttn-half-padding">
                                                 Change review
@@ -175,9 +173,6 @@
                                         <p class="comment-date"><span class="review-rating"> {{$review->rating}}/10 <span class="icon">★</span></span></p>
 		                            </div>
 		                            <p>{{$review->review}}</p>
-                                    <div align="right">
-                                        <a href="#"><i class="fa fa-thumbs-up"> Like</i></a>
-                                    </div>
 		                        </div>
 		                    </article>
 		                </li>
