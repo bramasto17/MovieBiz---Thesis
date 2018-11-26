@@ -1846,7 +1846,7 @@ form .control {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: rgba(0,0,0,0.5);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -1855,14 +1855,18 @@ form .control {
 
 /* Links inside the dropdown */
 .dropdown-content a {
-    color: black!important;
+    color: white;
+    text-align: right;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+    color: black!important;
+    background-color: #f1f1f1
+}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -1871,7 +1875,7 @@ form .control {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background-color: rgba(0,0,0,0.5);
 }
 
 /*========= PROFILE PAGE =========*/   /*======CREATED 20 OCTOBER 2018, davis ========*/ /*======LAST 20 OCTOBER 2018, davis======*/
@@ -1981,4 +1985,13 @@ form .control {
     overflow: hidden;
     border-radius: 2px;
     box-shadow: 0 0 20px black;
+}
+
+#timeline{
+    margin-top: 20px;
+    /*border-color: white;
+    border-radius: 20px;
+    border-style: solid;*/
+    background-color: rgba(0,0,0,0.5);
+    padding: 2%;
 }

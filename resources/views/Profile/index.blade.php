@@ -32,7 +32,7 @@ My Profile
 				$("#follow").click(function(){
 					console.log("clicked");
 					$.ajax({                    
-					  url: '{{$user->id}}/follow',     
+					  url: 'profile/{{$user->id}}/follow',     
 					  type: 'post', // performing a POST request
 					  data : {
 					  	"_token": "{{ csrf_token() }}",

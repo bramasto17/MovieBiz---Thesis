@@ -328,9 +328,13 @@
 	                        <div class="price-box">
 	                            <div class="price-body">
 	                                <ul>
+	                                	@if(isset($threads))
 	                                	@foreach($threads as $thread)
 	                                    <li><a href="thread/{{$thread->id}}">{{$thread->title}}</a></li>
 	                                    @endforeach
+	                                    @else
+	                                    <li>No thread at the moment</li>
+	                                    @endif
 	                                </ul>
 	                            </div>
 	                            <div class="price-footer">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Forum;
 use App\Post;
-use App\Threat;
+use App\Timeline;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -38,8 +38,15 @@ class RatingController extends Controller
             $rating->movieId = $request->movieId;
             $rating->rating = $request->rating;
             $rating->save();
-
         }
+
+        $watch_movie = (object) tmdb()->getMovie($rating->movieId)->get();
+
+        $timeline = new Timeline();
+        $timeline->userId = Auth::user()->id;
+        $timeline->text = "I give " . $watch_movie->title . " " . $rating->rating . " stars";
+        $timeline->save();
+
         // return redirect('/movie/'.$request->movieId);
         return json_encode(['message' => 'Success']);
     }

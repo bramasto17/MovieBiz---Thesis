@@ -16,6 +16,7 @@ use Carbon\Carbon;
 
 use App\Rating;
 use App\Review;
+use App\Timeline;
 use App\Watch;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
@@ -30,9 +31,14 @@ class WatchController extends Controller
         $watch->save();
 
         $history = Session::get('history');
-        $history_new = (object) tmdb()->getMovie($watch->movieId)->get();
-        $history[] = $history_new;
+        $watch_movie = (object) tmdb()->getMovie($watch->movieId)->get();
+        $history[] = $watch_movie;
         Session::put('history', $history);
+
+        $timeline = new Timeline();
+        $timeline->userId = Auth::user()->id;
+        $timeline->text = "I'm currently watching " . $watch_movie->title;
+        $timeline->save();
 
         return json_encode(['message' => 'Success']);
     }
