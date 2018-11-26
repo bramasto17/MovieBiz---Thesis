@@ -48,7 +48,7 @@
 
             @else
                 <div class="col-xs-12 col-md-9 thread-content" align="center">
-                    No thread found
+                    No thread at the moment
                 </div>
             @endif
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Forum;
 use App\Post;
-use App\Threat;
+use App\Timeline;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -41,6 +41,13 @@ class ReviewController extends Controller
         } else {
             return redirect('/movie/'.$request->movieId.'/review')->withErrors($validator);
         }
+
+        $watch_movie = (object) tmdb()->getMovie($review->movieId)->get();
+
+        $timeline = new Timeline();
+        $timeline->userId = Auth::user()->id;
+        $timeline->text = "My review on " . $watch_movie->title . " : " . $review->review;
+        $timeline->save();
 
         return redirect('/movie/'.$request->movieId.'/review');
     }
