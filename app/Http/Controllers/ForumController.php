@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Forum;
 use App\Post;
-use App\Threat;
+use App\Thread;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -34,13 +34,16 @@ class ForumController extends Controller
         }
 
         $forum = Forum::where('movieID','=', $id)->first();
-        $threads = DB::table('threats')
-            ->join('users', 'users.id', '=', 'threats.creatorId')
-            ->join('forums', 'forums.id', '=', 'threats.forumId')
-            ->where('threats.forumId', '=', $forum->id)
-            ->select('threats.*', 'users.name', 'forums.movieId')
+        $threads = DB::table('threads')
+            ->join('users', 'users.id', '=', 'threads.creatorId')
+            ->join('forums', 'forums.id', '=', 'threads.forumId')
+            ->leftJoin('posts', 'posts.threadId', '=', 'threads.id')
+            ->where('threads.forumId', '=', $forum->id)
+            ->select(DB::raw('threads.id, threads.title, users.name, forums.movieId, COUNT(posts.id) as posts'))
+            ->groupBy(DB::raw('threads.id, threads.title, users.name, forums.movieId'))
             ->get();
-
+            // ->select('threads.*', 'users.name', 'forums.movieId', 'posts.id')
+            // dd($threads);
         return view('Movie\forum', compact('movie', 'threads', 'forum'));
     }
 
@@ -52,26 +55,25 @@ class ForumController extends Controller
         $validator = Validator::make($inputs, $rules);
 
         if($validator->passes()){
-            $new = new Threat();
+            $new = new Thread();
             $new->forumId = $request->forumId;
             $new->creatorId = $request->creatorId;
             $new->title = $request->title;
-            $new->category = $request->category;
             $new->save();
         } else {
             return redirect('/movie/'.$request->movieId.'/forum')->withErrors($validator);
         }
 
-        return redirect('/movie/'.$request->movieId.'/forum');
+        return redirect('/thread/'.$new->id);
 
     }
 
     public function showThreadDetail($id){
-        $thisThread =DB::table('threats')
-            ->join('users', 'users.id', '=', 'threats.creatorId')
-            ->join('forums', 'forums.id', '=', 'threats.forumId')
-            ->where('threats.id', '=', $id)
-            ->select('threats.*', 'users.name', 'forums.movieId')
+        $thisThread =DB::table('threads')
+            ->join('users', 'users.id', '=', 'threads.creatorId')
+            ->join('forums', 'forums.id', '=', 'threads.forumId')
+            ->where('threads.id', '=', $id)
+            ->select('threads.*', 'users.name', 'forums.movieId')
             ->first();
 
         $movie =(object) tmdb()->getMovie($thisThread->movieId)->get();
@@ -79,16 +81,16 @@ class ForumController extends Controller
 
         $posts = DB::table('posts')
             ->join('users', 'users.id', '=', 'posts.userId')
-            ->join('threats', 'threats.id', '=', 'posts.threatId')
-            ->where('posts.threatId', '=', $id)
+            ->join('threads', 'threads.id', '=', 'posts.threadId')
+            ->where('posts.threadId', '=', $id)
             ->where('posts.subpost', '=', null)
             ->select('posts.*', 'users.name')
             ->get();
 
         $subposts = DB::table('posts')
             ->join('users', 'users.id', '=', 'posts.userId')
-            ->join('threats', 'threats.id', '=', 'posts.threatId')
-            ->where('posts.threatId', '=', $id)
+            ->join('threads', 'threads.id', '=', 'posts.threadId')
+            ->where('posts.threadId', '=', $id)
             ->where('posts.subpost', '!=', null)
             ->select('posts.*', 'users.name')
             ->get();
@@ -107,7 +109,7 @@ class ForumController extends Controller
 
         if($validator->passes()){
             $new = new Post();
-            $new->threatId = $request->threatId;
+            $new->threadId = $request->threadId;
             $new->userId = $request->userId;
             $new->content = $request->txtContent;
 
@@ -120,10 +122,10 @@ class ForumController extends Controller
             $new->save();
 
         } else {
-            return redirect('/thread/'.$request->threatId)->withErrors($validator);
+            return redirect('/thread/'.$request->threadId)->withErrors($validator);
         }
 
-        return redirect('/thread/'.$request->threatId);
+        return redirect('/thread/'.$request->threadId);
 
     }
 }

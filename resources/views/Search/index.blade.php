@@ -17,6 +17,11 @@ Search Results for "{{$search}}"
             </div>
         </div>
         <div class="row" id="movies_result">
+            @if(count($movies)==0)
+            <center>
+                <h3>Nothing Found</h3>
+            </center>
+            @else
            	@foreach($movies as $data)
             <div class="col-xs-6 col-sm-2 poster-list">
                 <div class="item">
@@ -30,6 +35,7 @@ Search Results for "{{$search}}"
                 </div>
             </div>
             @endforeach
+            @endif
         </div>
         <div class="row hide" id="users_result">
             <div class="col-xs-12 col-sm-12">

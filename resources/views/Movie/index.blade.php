@@ -280,6 +280,7 @@
 	</section>
 	<!-- Trailer-Area-End -->
 	<!--Similar-Area -->
+	@if(isset($similar))
 	<section class="testimonial-area">
 	    <div class="container">
 	        <div class="row">
@@ -290,7 +291,6 @@
 	                </div>
 	            </div>
 	        </div>
-	        @if(isset($similar))
 	        <div class="row">
 	        	@foreach($similar as $data)
                 <div class="col-xs-6 col-sm-2 poster-list">
@@ -307,9 +307,9 @@
                 </div>
                 @endforeach
 	        </div>
-	        @endif
 	    </div>
 	</section>
+	@endif
 	<!-- Similar-Area-End-->
 	<!-- Forum-Review-Area-->
 	<div class="container">
@@ -328,9 +328,9 @@
 	                        <div class="price-box">
 	                            <div class="price-body">
 	                                <ul>
-	                                    <li>Non Spoiler Discussion </li>
-	                                    <li>Spoiler Discussion</li>
-	                                    <li>Fan Theory</li>
+	                                	@foreach($threads as $thread)
+	                                    <li><a href="thread/{{$thread->id}}">{{$thread->title}}</a></li>
+	                                    @endforeach
 	                                </ul>
 	                            </div>
 	                            <div class="price-footer">
@@ -356,10 +356,12 @@
 	                        <div class="price-box">
 	                            <div class="price-body">
 	                    			@if(isset($review))
+	                    			<a href="review/{{$movie->id}}">
 	                            	<span>Most Liked Review by {{$review->name}}</span>
 	                                <p>
 	                                	{{$review->review}}
 	                                </p>
+	                                </a>
 	                                @else
 	                        		<span>No review for the movie at this moment.</span>
 	                                @endif

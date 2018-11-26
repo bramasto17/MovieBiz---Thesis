@@ -18,12 +18,8 @@
             </div>
 
             {{-- Header --}}
-            <div class="col-xs-8 col-md-5 thread-header" align="center">
+            <div class="col-xs-10 col-md-7 thread-header" align="center">
                 Thread Topic
-            </div>
-
-            <div class="col-xs-2 col-md-2 thread-header">
-                Category
             </div>
 
             <div class="col-xs-1 col-md-1 thread-header">
@@ -34,31 +30,25 @@
                 Posts
             </div>
 
-
             {{-- Content --}}
             @if(count($threads) > 0)
                 @foreach($threads as $thread)
-                    <div class="col-xs-8 col-md-5 thread-content limit-word">
-                        <a href="thread/{{$thread->id}}">{{$thread->title}}</a>
-                    </div>
-
-                    <div class="col-xs-2 col-md-2 thread-content">
-                        <span class="badge badge-primary">{{$thread->category}}</span>
+                    <div class="col-xs-10 col-md-7 thread-content limit-word">
+                        <a href="thread/{{$thread->id}}">{{isset($thread->title) ? $thread->title : ''}}</a>
                     </div>
 
                     <div class="col-xs-1 col-md-1 thread-content">
-                        {{--{{$thread->name}}--}}
-                        <img alt="" src="{{ URL::to('/') }}/images/person.png" style="height: 30px">
+                        {{isset($thread->name) ? $thread->name : ''}}
                     </div>
 
                     <div class="col-xs-1 col-md-1 thread-content">
-                        Replies
+                        {{isset($thread->posts) ? $thread->posts : ''}} posts
                     </div>
                 @endforeach
 
             @else
                 <div class="col-xs-12 col-md-9 thread-content" align="center">
-                    No thread found..
+                    No thread found
                 </div>
             @endif
 
@@ -81,12 +71,7 @@
                         <input type="hidden" name="movieId" value="{{$movie->id}}">
                         <input type="hidden" name="forumId" value="{{$forum->id}}">
                         <input type="hidden" name="creatorId" value="{{Auth::user()->id}}">
-
-                        <label class="radio-inline"><input type="radio" name="category" value="Non Spoiler">Non Spoiler</label>
-                        <label class="radio-inline"><input type="radio" name="category" value="Spoiler">Spoiler</label>
-                        <label class="radio-inline"><input type="radio" name="category" value="Fan Theory">Fan Theory</label>
-
-                        <textarea name="title"  rows="3" class="form-control" placeholder="Write title for this thread"></textarea>
+                        <input type="text" name="title" class="form-control" placeholder="Write title for this thread"></input>
                         <div class="space-30"></div>
 
                         <div align="right">
