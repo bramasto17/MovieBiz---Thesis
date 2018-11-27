@@ -17,11 +17,14 @@ class FeedController extends Controller
     public function getFollowingIds(){
     	$following = Following::where('userId',Auth::user()->id)->get();
 
-    	foreach ($following as $f) {
-    		$ids[] = $f->followingId;
-    	}
+        if(count($following)==0) $ids[] = 0;
+        else{
+        	foreach ($following as $f) {
+        		$ids[] = $f->followingId;
+        	}
+        }
 
-    	return isset($ids) ? $ids : '0';
+    	return $ids;
 	}
 
     public function index(){

@@ -13,9 +13,16 @@ Feed
                 <div class="col-xs-12 col-md-1"></div>
                 <div class="col-xs-12 col-md-10">
                     {{--START POST--}}
-                        @if(isset($timelines))
+                        @if(count($timelines)==0)
+                        <div class="row">
+                            <center>
+                                <div class="space-40"></div>
+                                <h3>No activities</h3>
+                            </center>
+                        </div>
+                        @else
                         @foreach($timelines as $timeline)
-                        <div class="row" id="timeline">
+                        <div class="row" id="timeline" >
                             <div class="col-xs-12 col-md-1">
                                 <figure class="comment-pic">
                                     <img alt="" src="{{ URL::to('/') }}/images/person.png">
@@ -31,7 +38,7 @@ Feed
                             </div>
                         </div>
                         @endforeach
-                        @else
+                        <div class="space-80"></div>
                         @endif
                     {{--END POST--}}
                 </div>
