@@ -16,7 +16,7 @@ class CreateTimelinesTable extends Migration
         Schema::create('timelines', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('userId')->unsigned();
-            $table->string('text');
+            $table->string('text',1000);
             $table->timestamps();
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
         });

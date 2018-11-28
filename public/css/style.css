@@ -1973,11 +1973,14 @@ form .control {
     box-shadow: 0 0 20px black;
 }
 
-#timeline{
-    margin-top: 20px;
+.box{
     /*border-color: white;
     border-radius: 20px;
     border-style: solid;*/
     background-color: rgba(0,0,0,0.5);
     padding: 2%;
+}
+
+.box a{
+    color: white;
 }
