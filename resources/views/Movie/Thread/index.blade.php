@@ -1,4 +1,4 @@
-@extends('Layout/master')
+@extends('Layout.master')
 @section('Title')
     {{$movie->title}} [{{$movie->release_date->year}}] Forum
 @endsection

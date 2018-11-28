@@ -56,8 +56,7 @@ Route::post('/profile/{id}/follow','ProfileController@follow');
 Route::get('/feed','FeedController@index');
 
 //FORUM
-Route::get('/movie/{id}/forum','ForumController@showForum');
-Route::post('/createThread','ForumController@createThread');
-//Route::get('/movie/{id}/forum/{tid}','MovieController@showThreadDetail');
-Route::get('/thread/{id}','ForumController@showThreadDetail');
-Route::post('/createPost','ForumController@createPost');
+Route::get('/movie/{id}/forum','ThreadController@index');
+Route::post('/createThread','ThreadController@createThread');
+Route::get('/thread/{id}','ThreadController@showThreadDetail');
+Route::post('/createPost','ThreadController@createPost');

@@ -15,7 +15,7 @@
                 <div class="col-xs-12 col-md-10">
 
                     <div class="border-round-white">
-                        <h4><a href="" class="">{{$thisThread->userName}}</a> <small>Posted on: {{$thisThread->created_at}}</small></h4>
+                        <h4><a href="profile/{{$thisThread->userId}}" class="">{{$thisThread->userName}}</a> <small>Posted on: {{$thisThread->created_at}}</small></h4>
                         <h4>{{$thisThread->title}}</h4>
                     </div>
 

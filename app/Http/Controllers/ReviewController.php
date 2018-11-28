@@ -22,9 +22,6 @@ use Illuminate\Support\Facades\Validator;
 
 class ReviewController extends Controller
 {
-    /**
-     *  REVIEW MOVIE
-     */
     public function reviewMovie(Request $request){
         $inputs = Input::all();
         $rules = [
@@ -75,7 +72,7 @@ class ReviewController extends Controller
             })
             ->where('reviews.movieId', '=', $movie->id)
             ->where('users.id', '!=', Auth::user()->id)
-            ->select('reviews.*','users.name','ratings.rating')
+            ->select('reviews.*','users.name as userName', 'users.id as userId','ratings.rating')
             ->get();
 
         // dd($allReviews);
@@ -89,12 +86,12 @@ class ReviewController extends Controller
             })
             ->where('reviews.movieId', '=', $movie->id)
             ->where('users.id', '=', Auth::user()->id)
-            ->select('reviews.*','users.name','ratings.rating')
+            ->select('reviews.*','users.name as userName','ratings.rating')
             ->first();
 
         // dd($myReview);
 
-        return view('Movie\review', compact('movie','allReviews','myReview','isWatch','rating'));
+        return view('Movie\Review\index', compact('movie','allReviews','myReview','isWatch','rating'));
     }
 
     public function editReview(Request $request){

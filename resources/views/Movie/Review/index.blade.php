@@ -1,4 +1,4 @@
-@extends('Layout/master')
+@extends('Layout.master')
 @section('Title')
 {{$movie->title}} [{{$movie->release_date->year}}] Review
 @endsection
@@ -169,7 +169,7 @@
 		                        </figure>
 		                        <div class="comment-content">
 		                            <div class="comment-header">
-                                        <h4>Review by {{$review->name}} <small>{{$review->created_at}}</small></h4>
+                                        <h4>Review by <a href="/profile/{{$review->userId}}">{{$review->userName}}</a> <small>{{$review->created_at}}</small></h4>
                                         <p class="comment-date"><span class="review-rating"> {{$review->rating}}/10 <span class="icon">★</span></span></p>
 		                            </div>
 		                            <p>{{$review->review}}</p>

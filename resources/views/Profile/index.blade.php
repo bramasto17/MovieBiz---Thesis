@@ -1,6 +1,8 @@
 @extends('Layout/master')
 @section('Title')
-	My Profile
+	@if($isOwnAccount)My Profile
+	@else {{$user->name}}'s Profile
+	@endif
 @endsection
 
 @section('Content')
