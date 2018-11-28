@@ -251,7 +251,7 @@
 	                @if($key <= 5)
 			            <div class="col-xs-4 team-box">
 			        		<div class="col-xs-4">
-			                    <img src="https://image.tmdb.org/t/p/w138_and_h175_face{{$cast['profile_path']}}" alt="" onerror="this.onerror=null;this.src='{{ URL::to('/') }}/images/person.png';">
+			                    <img src="https://image.tmdb.org/t/p/w138_and_h175_face{{$cast['profile_path']}}" alt="" onerror="this.onerror=null;this.src='{{ URL::to('/') }}/images/actor.png';">
 			                </div>
 			        		<div class="col-xs-8">            			
 			                    <h4>{{$cast['name']}}</h4>
@@ -261,7 +261,7 @@
                 	@else
                 		<div class="col-xs-4 team-box more hidden">
 			        		<div class="col-xs-4">
-			                    <img src="https://image.tmdb.org/t/p/w138_and_h175_face{{$cast['profile_path']}}" alt="" onerror="this.onerror=null;this.src='{{ URL::to('/') }}/images/person.png';">
+			                    <img src="https://image.tmdb.org/t/p/w138_and_h175_face{{$cast['profile_path']}}" alt="" onerror="this.onerror=null;this.src='{{ URL::to('/') }}/images/actor.png';">
 			                </div>
 			        		<div class="col-xs-8">            			
 			                    <h4>{{$cast['name']}}</h4>

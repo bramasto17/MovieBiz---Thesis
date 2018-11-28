@@ -22,7 +22,7 @@ class HomeController extends Controller
         }
         $popular = Session::get('popular');
         if(auth()->guest()){
-            return view('index')->with(['popular'=>$popular]);
+            return view('index')->with(['popular1'=>$popular[rand(0,19)], 'popular2'=>$popular[rand(0,19)]]);
         }
         else{
             return redirect('/home');

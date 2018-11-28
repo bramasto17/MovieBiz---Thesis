@@ -667,7 +667,7 @@ iframe{
 
 .team-box span{
     width:100%;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     overflow:hidden;
     text-overflow: ellipsis;
 }
@@ -1994,12 +1994,18 @@ form .control {
     box-shadow: 0 0 20px black;
 }
 
+#search_page a{
+    color: white;
+    /*text-decoration: underline;*/
+}
+
 .box{
     /*border-color: white;
     border-radius: 20px;
     border-style: solid;*/
     background-color: rgba(0,0,0,0.5);
     padding: 2%;
+    margin: 15px;
 }
 
 .box a{

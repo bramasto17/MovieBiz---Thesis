@@ -38,14 +38,17 @@ Search Results for "{{$search}}"
             @endif
         </div>
         <div class="row hide" id="users_result">
-            <div class="col-xs-12 col-sm-4">
-                @if(count($users)==0)
+            @if(count($users)==0)
+            <div class="col-xs-12 col-sm-12">
                 <center>
                     <h3>Nothing Found</h3>
                 </center>
-                @else
+            </div>
+            @else
+            <div class="col-xs-12 col-sm-4">
                 @foreach($users as $user)
-                <div class="row box" >
+                <a href="/profile/{{$user->id}}">
+                    <div class="row box" >
                         <div class="col-xs-12 col-md-4">
                             <figure class="comment-pic">
                                 <img alt="" src="{{ URL::to('/') }}{{$user->profile_pict}}">
@@ -53,15 +56,16 @@ Search Results for "{{$search}}"
                         </div>
                         <div class="col-xs-12 col-md-8">
                             <div>
-                                <h3><a href="/profile/{{$user->id}}">{{$user->name}}</a></h3>
+                                <h3>{{$user->name}}</h3>
                                 <h4>@if($user->id == \Auth::user()->id)  @elseif($user->isFollowing()) Following @else Not Following @endif</h4>
                                 <div class="space-20"></div>
                             </div>
                         </div>
                     </div>
+                </a>
                 @endforeach
-                @endif
             </div>
+            @endif
         </div>
     </div>
 </section>

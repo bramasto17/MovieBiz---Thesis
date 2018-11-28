@@ -46,7 +46,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            {{--<a class="navbar-brand" href="#"><img src="{{ URL::to('/') }}/images/logo.png" alt="Logo"></a>--}}
+            <a class="navbar-brand" href="#"><img src="{{ URL::to('/') }}/images/logo.png" alt="Logo"></a>
         </div>
         <div class="collapse navbar-collapse" id="primary_menu">
             <ul class="nav navbar-nav mainmenu.">
@@ -106,7 +106,7 @@
                 <div class="col-xs-12">
                     <div class="page-title text-center">
                         <h5 class="title">Contact US</h5>
-                        <h3 class="dark-color">Find Us By Bellow Details</h3>
+                        <h3 class="dark-color">Find Us By Below Details</h3>
                         <div class="space-60"></div>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                         <div class="box-icon">
                             <span class="lnr lnr-map-marker"></span>
                         </div>
-                        <p>8-54 Paya Lebar Square <br /> 60 Paya Lebar Roa SG, Singapore</p>
+                        <p>Jakarta, Indonesia</p>
                     </div>
                     <div class="space-30 hidden visible-xs"></div>
                 </div>
@@ -126,7 +126,7 @@
                         <div class="box-icon">
                             <span class="lnr lnr-phone-handset"></span>
                         </div>
-                        <p>+65 93901336 <br /> +65 93901337</p>
+                        <p>+62 85718789603</p>
                     </div>
                     <div class="space-30 hidden visible-xs"></div>
                 </div>
@@ -135,8 +135,7 @@
                         <div class="box-icon">
                             <span class="lnr lnr-envelope"></span>
                         </div>
-                        <p>yourmail@gmail.com <br /> backpiper.com@gmail.com
-                        </p>
+                        <p>contactus@cinegram.com</p>
                     </div>
                 </div>
             </div>
@@ -148,19 +147,18 @@
             <div class="row">
                 <div class="col-xs-12 col-md-5">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        <span>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="lnr lnr-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></span>
+        <span>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Property of Cinegram</span>
         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     <div class="space-30 hidden visible-xs"></div>
                 </div>
                 <div class="col-xs-12 col-md-7">
                     <div class="footer-menu">
                         <ul>
-                            <li><a href="#">About</a></li>
-                            <!-- <li><a href="#">Services</a></li> -->
-                            <li><a href="#">Features</a></li>
-                            <!-- <li><a href="#">Pricing</a></li> -->
-                            <!-- <li><a href="#">Testimonial</a></li> -->
-                            <li><a href="#">Contacts</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/discover">Discover</a></li>
+                            <li><a href="/feed">Feed</a></li>
+                            <li><a href="/my-activity">My Activity</a></li>
+                            <li><a href="/profile/{{\Auth::user()->id">My Profile</a></li>
                         </ul>
                     </div>
                 </div>

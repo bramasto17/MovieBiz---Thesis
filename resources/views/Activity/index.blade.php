@@ -3,7 +3,16 @@
 My Activity
 @endsection
 @section('Content')
-@if(isset($history))
+@if(!isset($history))
+<header class="home-area activity overlay">
+    <div class="container">
+        <div class="row">
+            <h4 class="wow fadeInUp" data-wow-delay="0.4s">You haven't watched anything</h4>
+            <h4 class="wow fadeInUp" data-wow-delay="0.4s"><a href="/discover">Start watching now</a></h4>
+        </div>
+    </div>
+</header>
+@else
 <header class="home-area activity overlay" style="background: url(https://image.tmdb.org/t/p/original{{$history->movie()->backdrop_path}}) no-repeat scroll center top / cover;">
     <div class="container">
         <div class="row">
@@ -13,15 +22,6 @@ My Activity
         </div>
     </div>
 </header>
-@else
-<header class="home-area activity overlay">
-    <div class="container">
-        <div class="row">
-            <h4 class="wow fadeInUp" data-wow-delay="0.4s">You haven't watched anything</h4>
-        </div>
-    </div>
-</header>
-@endif
 <section class="section-padding info">
     <div class="container">
         <div class="row">
@@ -181,6 +181,7 @@ My Activity
         </div>
     </div>
 </section>
+@endif
 <script type="text/javascript" src="/js/watch-history.js"></script>
 <script type="text/javascript" src="/js/favourite-genres.js"></script>
 @endsection

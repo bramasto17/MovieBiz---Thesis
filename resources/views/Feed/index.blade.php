@@ -46,3 +46,10 @@ Feed
         </div>
     </section>
 @endsection
+@push('scripts')
+<script type="text/javascript">
+    $(function() {
+        $("#feed").addClass("active");
+    });
+</script>
+@endpush

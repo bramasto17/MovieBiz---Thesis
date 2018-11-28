@@ -4,7 +4,7 @@ Cinegram
 @endsection
 @section('Content')
     <!-- Home-Area -->
-    <header class="home-area overlay" style="background: url(https://image.tmdb.org/t/p/original{{$popular[rand(0,19)]->backdrop_path}}) no-repeat scroll center bottom / cover;" id="home_page">
+    <header class="home-area overlay" style="background: url(https://image.tmdb.org/t/p/original{{$popular1->backdrop_path}}) no-repeat scroll center bottom / cover;" id="home_page">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-8 col-md-offset-2">
@@ -28,13 +28,11 @@ Cinegram
             <div class="row">
                 <div class="col-xs-12 col-md-10 col-md-offset-1">
                     <div class="page-title text-center">
-                        <img src="images/about-logo.png" alt="About Logo">
                         <div class="space-20"></div>
-                        <h5 class="title">About Appy</h5>
+                        <h5 class="title">About Cinegram</h5>
                         <div class="space-30"></div>
-                        <h3 class="red-color">A beautiful app for consectetur adipisicing elit, sed do eiusmod tempor incididunt ut mollit anim id est laborum. Sedut perspiciatis unde omnis. </h3>
+                        <h3 class="red-color">A beautiful platform for movie lovers to manage your activities and connect with others. </h3>
                         <div class="space-20"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiing elit, sed do eiusmod tempor incididunt ut labore et laborused sed do eiusmod tempor incididunt ut labore et laborused.</p>
                     </div>
                 </div>
             </div>
@@ -42,7 +40,7 @@ Cinegram
     </section>
     <!-- About-Area-End -->
     <!-- Feature-Area -->
-    <section class="feature-area section-padding-top overlay" style="background: url(https://image.tmdb.org/t/p/original{{$popular[1]->backdrop_path}}) no-repeat scroll center bottom / cover;" id="features_page">
+    <section class="feature-area section-padding-top overlay" style="background: url(https://image.tmdb.org/t/p/original{{$popular2->backdrop_path}}) no-repeat scroll center bottom / cover;" id="features_page">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -83,7 +81,7 @@ Cinegram
                 </div>
                 <div class="hidden-xs hidden-sm col-md-4">
                     <figure class="wow fadeInUp mobile-image">
-                        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{$popular[1]->poster_path}}">
+                        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{$popular2->poster_path}}">
                     </figure>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4">
@@ -92,7 +90,7 @@ Cinegram
                             <i class="lnr lnr-magnifier"></i>
                         </div>
                         <h4>Find Information</h4>
-                        <p>You can easily find about every information about the movie here.</p>
+                        <p>You can easily find trailer and information about any kind of movies here.</p>
                     </div>
                     <div class="space-60"></div>
                     <div class="service-box wow fadeInUp" data-wow-delay="0.4s">
