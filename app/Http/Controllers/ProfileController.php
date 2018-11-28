@@ -25,8 +25,45 @@ class ProfileController extends Controller
     	$user = User::where('id',$id)->first();
     	$currentUser = Auth::user()->id;
     	$isFollowing = $this->checkFollowing($currentUser,$id);
+    	$isOwnAccount = $user->id == $currentUser ? true : false;
 
-    	return view('Profile.index')->with(['user'=>$user,'isFollowing'=>$isFollowing]);
+    	return view('Profile.index', compact('user', 'isFollowing', 'isOwnAccount'));
+    }
+
+    public function following($id){
+        $user = User::where('id',$id)->first();
+        $currentUser = Auth::user()->id;
+        $isFollowing = $this->checkFollowing($currentUser,$id);
+        $isOwnAccount = $user->id == $currentUser ? true : false;
+
+        return view('Profile.following', compact('user', 'isFollowing', 'isOwnAccount'));
+    }
+
+    public function followers($id){
+        $user = User::where('id',$id)->first();
+        $currentUser = Auth::user()->id;
+        $isFollowing = $this->checkFollowing($currentUser,$id);
+        $isOwnAccount = $user->id == $currentUser ? true : false;
+
+        return view('Profile.followers', compact('user', 'isFollowing', 'isOwnAccount'));
+    }
+
+    public function reviews($id){
+        $user = User::where('id',$id)->first();
+        $currentUser = Auth::user()->id;
+        $isFollowing = $this->checkFollowing($currentUser,$id);
+        $isOwnAccount = $user->id == $currentUser ? true : false;
+
+        return view('Profile.reviews', compact('user', 'isFollowing', 'isOwnAccount'));
+    }
+
+    public function discussion($id){
+        $user = User::where('id',$id)->first();
+        $currentUser = Auth::user()->id;
+        $isFollowing = $this->checkFollowing($currentUser,$id);
+        $isOwnAccount = $user->id == $currentUser ? true : false;
+
+        return view('Profile.discussion', compact('user', 'isFollowing', 'isOwnAccount'));
     }
 
     public function follow(Request $request){

@@ -45,8 +45,12 @@ Route::post('/deleteReviewMovie','ReviewController@deleteReview');
 
 //PROFILE
 Route::get('/profile/{id}','ProfileController@index');
-Route::post('/profile/{id}/follow','ProfileController@follow');
+Route::get('/profile/{id}/following','ProfileController@following');
+Route::get('/profile/{id}/followers','ProfileController@followers');
+Route::get('/profile/{id}/reviews','ProfileController@reviews');
+Route::get('/profile/{id}/discussion','ProfileController@discussion');
 
+Route::post('/profile/{id}/follow','ProfileController@follow');
 
 //FEED
 Route::get('/feed','FeedController@index');

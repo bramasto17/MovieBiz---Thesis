@@ -1811,6 +1811,13 @@ form .control {
     border-radius: 25px;
 }
 
+#profile-stat a {
+    color: #fff;
+}
+
+#profile-stat .active {
+    border-bottom: 3px solid #fff;
+}
 
 /* ======Dropdown user - Davis * created 20 october 2018 last updated 20 october 2018*=====*/
 
@@ -1872,12 +1879,26 @@ form .control {
     font-size: 50px;
 }
 .profile-image{
-    padding-bottom : 50px;
+    padding-bottom : 25px;
     padding-top :25px;
+    text-align: center;
 }
+
 .profile-image img{
-    width : 200px;
-    height:200px;
+    width : 150px;
+    height: 150px;
+    border-radius:50%;
+}
+
+.profile-image-m{
+    padding-bottom : 25px;
+    padding-top :25px;
+    text-align: center;
+}
+
+.profile-image-m img{
+    width : 75px;
+    height: 75px;
     border-radius:50%;
 }
 #follow{
