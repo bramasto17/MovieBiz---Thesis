@@ -27,7 +27,7 @@
                                 <form action="/editReviewMovie" method="post" class="comment-form">
                                     {{csrf_field()}}
                                     <figure class="comment-pic">
-                                        <img alt="" src="{{ URL::to('/') }}/images/person.png">
+                                        <img alt="" src="{{ URL::to('/').\Auth::user()->profile_pict }}">
                                     </figure>
                                     <div class="comment-content">
                                         <div class="comment-header">
@@ -165,7 +165,7 @@
 		                <li>
 		                    <article class="comment">
 		                        <figure class="comment-pic">
-		                            <img alt="" src="{{ URL::to('/') }}/images/person.png">
+		                            <img alt="" src="{{ URL::to('/').$review->pict }}">
 		                        </figure>
 		                        <div class="comment-content">
 		                            <div class="comment-header">

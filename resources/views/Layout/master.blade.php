@@ -83,7 +83,7 @@
                         </form>
 
                         <div class="dropdown" style="display: inline-block">
-                            <button class="dropbtn"><img class="profile-pict" alt="" src="{{ URL::to('/') }}/images/person.png"></button>
+                            <button class="dropbtn"><img class="profile-pict" alt="" src="{{ URL::to('/').\Auth::user()->profile_pict }}"></button>
                             <div class="dropdown-content">
                                 <a href="/profile/{{Auth::user()->id}}">My Profile</a>
                                 <a href="/logout">Logout</a>

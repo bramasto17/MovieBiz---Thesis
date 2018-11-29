@@ -54,7 +54,7 @@
                     		<div class="space-20"></div>
 		                    	<button id="checkInMovie" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-film-play"></i>{{$stats->times_played > 0 ? 'Watch Again' : 'Chek-In Movie'}}<span class="lds-dual-ring" id="loadingDiv"></span></button>
 		                </div>
-		                <div class="col-xs-12 col-sm-8 wow fadeInUp">
+		                <div class="col-xs-12 col-sm-8 wow fadeInUp" id="rating_section">
 		                	<div class="row">
 		                    	<span class="red-color">Your Rating: </span>
 		                	</div>
@@ -386,6 +386,10 @@
 @push('scripts')
 <script type="text/javascript">
 	$( document ).ready(function() {
+		if({!! json_encode($stats->times_played) <= 0 !!}){
+			console.log('dsfsdf');
+			$('#rating_section').css('display','none');
+		}
     	if($("#review .price-body").height() > $("#forum .price-body").height()) $("#forum .price-body").height($("#review .price-body").height());
     	else $("#review .price-body").height($("#forum .price-body").height())
 	});

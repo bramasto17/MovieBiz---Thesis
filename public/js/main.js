@@ -244,6 +244,7 @@
                 //     $("#message").slideUp(500);
                 // });
                 $('#checkInMovie').html('<span class="lnr lnr-checkmark-circle"></span> Movie Checked In!!');
+                $('#rating_section').css('display','block');
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
              console.log(errorThrown);
