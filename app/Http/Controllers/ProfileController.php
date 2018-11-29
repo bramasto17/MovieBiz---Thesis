@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;	
 use App\User;
+use App\Timeline;
 use Carbon\Carbon;
 use Auth;
 class ProfileController extends Controller
@@ -26,8 +27,8 @@ class ProfileController extends Controller
     	$currentUser = Auth::user()->id;
     	$isFollowing = $this->checkFollowing($currentUser,$id);
     	$isOwnAccount = $user->id == $currentUser ? true : false;
-
-    	return view('Profile.index', compact('user', 'isFollowing', 'isOwnAccount'));
+        $activities = Timeline::where('userId',$id)->orderBy('created_at','desc')->get();
+    	return view('Profile.index', compact('user', 'isFollowing', 'isOwnAccount', 'activities'));
     }
 
     public function following($id){
