@@ -25,7 +25,7 @@ Feed
                         <div class="row box" >
                             <div class="col-xs-12 col-md-1">
                                 <figure class="comment-pic">
-                                    <img alt="" src="{{ URL::to('/') }}/images/person.png">
+                                    <img alt="" src="{{ URL::to('/').$timeline->user->profile_pict }}">
                                 </figure>
                             </div>
                             <div class="col-xs-12 col-md-11">

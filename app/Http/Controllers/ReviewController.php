@@ -72,7 +72,7 @@ class ReviewController extends Controller
             })
             ->where('reviews.movieId', '=', $movie->id)
             ->where('users.id', '!=', Auth::user()->id)
-            ->select('reviews.*','users.name as userName', 'users.id as userId','ratings.rating')
+            ->select('reviews.*','users.name as userName', 'users.id as userId', 'users.profile_pict as pict','ratings.rating')
             ->get();
 
         // dd($allReviews);
