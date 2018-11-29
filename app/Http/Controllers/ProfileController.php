@@ -85,6 +85,8 @@ class ProfileController extends Controller
     	}
     }
 
-    
+    public function editProfile(Request $request){
+        dd($request);
+    }
 
 }

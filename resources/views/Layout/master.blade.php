@@ -158,7 +158,7 @@
                             <li><a href="/discover">Discover</a></li>
                             <li><a href="/feed">Feed</a></li>
                             <li><a href="/my-activity">My Activity</a></li>
-                            <li><a href="/profile/{{\Auth::user()->id">My Profile</a></li>
+                            <li><a href="/profile/{{Auth::user()->id}}">My Profile</a></li>
                         </ul>
                     </div>
                 </div>

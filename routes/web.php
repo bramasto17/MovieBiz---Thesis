@@ -51,6 +51,7 @@ Route::get('/profile/{id}/reviews','ProfileController@reviews');
 Route::get('/profile/{id}/discussion','ProfileController@discussion');
 
 Route::post('/profile/{id}/follow','ProfileController@follow');
+Route::post('/profile/edit', 'ProfileController@editProfile');
 
 //FEED
 Route::get('/feed','FeedController@index');

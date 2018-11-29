@@ -20,10 +20,10 @@
 					<div class="col-sm-4"></div>
 					<div class="col-sm-4">
 						@if($isOwnAccount)
-							<button class="btn btn-primary">Edit Profile</button>
+							<button id="editProfileBtn" class="bttn-white bttn-half-padding">Edit Profile</button>
 						@else
-							<button class="btn btn-primary">Follow</button>
-							{{--<button class="btn btn-primary">Report</button>--}}
+							<button id="follow" class="bttn-white bttn-half-padding not-following">Follow</button>
+							{{--<button class="bttn-white bttn-half-padding">Report</button>--}}
 						@endif
 					</div>
 					<br><br>
@@ -49,7 +49,9 @@
 		</div>
 	</section>
 
-    <div class="container">
+	@include('Profile/editModal')
+
+	<div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="page-title text-center">
@@ -64,3 +66,8 @@
     </div>
 
 @endsection
+
+@push('scripts')
+	@include('Profile/Script/follow')
+	@include('Profile/Script/edit')
+@endpush

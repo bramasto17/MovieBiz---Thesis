@@ -1150,7 +1150,7 @@ form .control {
     cursor: pointer;
 }
 
-#formThread label{
+#modalForm label{
     color: #ab0000;
     font-size: 14px;
 }
@@ -1192,7 +1192,7 @@ form .control {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#482cbf', endColorstr='#6ac6f0', GradientType=1);
     border-radius: 100%;
     position: relative;
-    z-index: 1;
+    /*z-index: 1;*/
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;

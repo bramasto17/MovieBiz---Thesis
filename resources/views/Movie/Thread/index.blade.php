@@ -66,7 +66,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
 
-                    <form id="formThread" action="/createThread" method="POST">
+                    <form id="modalForm" action="/createThread" method="POST">
                         {{csrf_field()}}
                         <input type="hidden" name="movieId" value="{{$movie->id}}">
                         <input type="hidden" name="forumId" value="{{$forum->id}}">

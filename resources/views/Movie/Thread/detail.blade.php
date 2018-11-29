@@ -29,7 +29,7 @@
                     <div id="myModal" class="modal">
                         <div class="modal-content">
                             <span class="close">&times;</span>
-                            <form id="formThread" action="/createPost" method="POST">
+                            <form id="modalForm" action="/createPost" method="POST">
                                 {{csrf_field()}}
                                 <input type="hidden" name="threadId" value="{{$thisThread->id}}">
                                 <input type="hidden" name="userId" value="{{Auth::user()->id}}">
@@ -63,7 +63,7 @@
                                         <div class="modal-content">
                                             <span class="close">&times;</span>
 
-                                            <form id="formThread" action="/createPost" method="POST">
+                                            <form id="modalForm" action="/createPost" method="POST">
                                                 {{csrf_field()}}
                                                 <input type="hidden" name="threadId" value="{{$thisThread->id}}">
                                                 <input type="hidden" name="userId" value="{{Auth::user()->id}}">
