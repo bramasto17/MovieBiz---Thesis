@@ -833,24 +833,22 @@ iframe{
     padding: 40px;
     color: #d02727;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#482cbf+0,6ac6f0+100 */
-    background: rgb(72, 44, 191);
     /* Old browsers */
     /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg, rgb(255, 0, 0) 0%, rgb(0, 0, 0) 100%);
+    /*background: -webkit-linear-gradient(45deg, rgb(255, 0, 0) 0%, rgb(0, 0, 0) 100%);*/
     /* Chrome10-25,Safari5.1-6 */
-    background: -o-linear-gradient(45deg, rgb(255, 0, 0) 0%, rgb(0, 0, 0) 100%);
-    background: linear-gradient(45deg, rgb(255, 0, 0) 0%, rgb(0, 0, 0) 100%);
+    /*background: -o-linear-gradient(45deg, rgb(255, 0, 0) 0%, rgb(0, 0, 0) 100%);*/
+    /*background: linear-gradient(45deg, rgb(255, 0, 0) 0%, rgb(0, 0, 0) 100%);*/
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#482cbf', endColorstr='#6ac6f0', GradientType=1);
-    position: relative;
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#482cbf', endColorstr='#6ac6f0', GradientType=1);*/
+    /*position: relative;*/
     overflow: hidden;
     z-index: 2;
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
 }
-
-.price-box .price-header:before {
+/*.price-box .price-header:before {
     content: '';
     position: absolute;
     left: 0;
@@ -863,15 +861,16 @@ iframe{
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
-}
+}*/
 
 .price-box:hover .price-header {
-    color: #ffffff;
+    color: #f2f3fc;
+    background: linear-gradient(45deg, rgb(255, 0, 0) 0%, rgb(0, 0, 0) 100%);
 }
 
-.price-box:hover .price-header:before {
+/*.price-box:hover .price-header:before {
     opacity: 0;
-}
+}*/
 
 
 .price-box .price-header .price-icon {
@@ -1812,14 +1811,6 @@ form .control {
     border-radius: 25px;
 }
 
-#profile-stat a {
-    color: #fff;
-}
-
-#profile-stat .active {
-    border-bottom: 3px solid #fff;
-}
-
 /* ======Dropdown user - Davis * created 20 october 2018 last updated 20 october 2018*=====*/
 
 .dropbtn {
@@ -1903,7 +1894,8 @@ form .control {
     height: 75px;
     border-radius:50%;
 }
-#follow{
+
+/*#follow{
     color:white;
     width :120px;
     height:45px;
@@ -1915,11 +1907,13 @@ form .control {
 }
 #follow button :focus{
     color:white;
+}*/
+
+.following, .following:focus, .following:before{
+    background: linear-gradient(45deg, rgb(255, 0, 0) 0%, rgb(0, 0, 0) 100%);
+    color: #fff;
 }
-.following{
-    background-color:green;
-}
-.following:hover{
+/*.following:hover{
     background-color:red;
 }
 
@@ -1929,7 +1923,7 @@ form .control {
 
 .not-following:hover{
     background-color:green;
-}
+}*/
     
 .lds-dual-ring {
   margin: 10%;
@@ -2016,6 +2010,14 @@ form .control {
 
 #profile_header{
     margin-bottom: 50px;
+}
+
+#profile_header a {
+    color: #fff;
+}
+
+#profile_header .active {
+    border-bottom: 3px solid #fff;
 }
 
 #profile_page{

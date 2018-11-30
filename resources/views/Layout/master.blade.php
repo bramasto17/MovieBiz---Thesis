@@ -59,7 +59,7 @@
                 <li id="home"><a href="/">Home</a></li>
                 <li id="discover"><a href="/discover">Discover</a></li>
                 <li id="feed"><a href="/feed">Feed</a></li>
-                <li id="my-activity"><a href="/my-activity">My Activity</a></li>                
+                <!-- <li id="my-activity"><a href="/my-activity">My Activity</a></li>                 -->
                 @endif
             </ul>
 
@@ -158,7 +158,10 @@
                             <li><a href="/discover">Discover</a></li>
                             <li><a href="/feed">Feed</a></li>
                             <li><a href="/my-activity">My Activity</a></li>
+                            @if (auth()->guest())
+                            @else
                             <li><a href="/profile/{{Auth::user()->id}}">My Profile</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>

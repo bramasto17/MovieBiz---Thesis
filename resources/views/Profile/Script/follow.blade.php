@@ -4,9 +4,9 @@
     function changeText(data){
         $("#follow").text(data);
         if(data =="Following"){
-            $("#follow").removeClass("not-following").addClass("following");
+            $("#follow").addClass("following");
         }else if(data == "Follow"){
-            $("#follow").removeClass("following").addClass("not-following");
+            $("#follow").removeClass("following");
         };
     };
 

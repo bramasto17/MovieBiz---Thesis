@@ -28,9 +28,9 @@ Route::get('/search','HomeController@search');
 Route::get('/discover','HomeController@discover');
 
 //ACTIVITY
-Route::get('/my-activity','ActivityController@index');
-Route::get('/get-activity','ActivityController@getActivity');
-Route::get('/get-favourite-genres','ActivityController@getFavouriteGenres');
+// Route::get('/my-activity','ActivityController@index');
+Route::get('/get-activity/{id}','ActivityController@getActivity');
+Route::get('/get-favourite-genres/{id}','ActivityController@getFavouriteGenres');
 
 //MOVIE
 Route::get('/movie/{id}','MovieController@index');
@@ -45,6 +45,7 @@ Route::post('/deleteReviewMovie','ReviewController@deleteReview');
 
 //PROFILE
 Route::get('/profile/{id}','ProfileController@index');
+Route::get('/profile/{id}/timeline','ProfileController@timeline');
 Route::get('/profile/{id}/following','ProfileController@following');
 Route::get('/profile/{id}/followers','ProfileController@followers');
 Route::get('/profile/{id}/reviews','ProfileController@reviews');

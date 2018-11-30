@@ -6,95 +6,53 @@
 @endsection
 
 @section('Content')
-	<section class="gallery-area section-padding list" id="profile_header">
+	<section class="home-area activity section-padding list overlay" @isset($history) style="background: url(https://image.tmdb.org/t/p/original{{isset($history) ? $history->movie()->backdrop_path:'' }}) no-repeat scroll center top / cover;" @else @endif id="profile_header">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12 col-sm-2">
 				</div>
 				<div class="col-xs-12 col-sm-2 profile-image">
-					<img src="../images/person.png">
+					<img src="{{$user->profile_pict}}">
 				</div>
 
 				<div class="col-xs-12 col-sm-6">
-					<div class="col-sm-4"><h3>{{$user->name}}</h3></div>
+					<div class="col-sm-4" id="user_name"><a href="profile/{{$user->id}}/"><h3>{{$user->name}}</h3></a></div>
 					<div class="col-sm-4"></div>
 					<div class="col-sm-4">
 						@if($isOwnAccount)
 							<button id="editProfileBtn" class="bttn-white bttn-half-padding">Edit Profile</button>
 						@else
-							<button id="follow" class="bttn-white bttn-half-padding not-following">Follow</button>
+							<button id="follow" class="bttn-white bttn-half-padding">Follow</button>
 							{{--<button class="bttn-white bttn-half-padding">Report</button>--}}
 						@endif
 					</div>
 					<br><br>
-					<div align="center" id="profile-stat">
-						<div class="col-sm-2 active">
-							<a href="profile/{{$user->id}}"><b>8</b> Activities</a>
+	                <div class="space-20"></div>
+					<div align="center">
+						<div class="col-sm-2" id="timeline">
+							<a href="profile/{{$user->id}}/timeline"><b>{{$profile_header->timeline}}</b> <br> Timeline</a>
 						</div>
-						<div class="col-sm-2">
-							<a href="profile/{{$user->id}}/following"><b>88</b> Following</a>
+						<div class="col-sm-2" id="following">
+							<a href="profile/{{$user->id}}/following"><b>{{$profile_header->following}}</b> <br> Following</a>
 						</div>
-						<div class="col-sm-2">
-							<a href="profile/{{$user->id}}/followers"><b>888</b> Followers</a>
-						</div>
-						<div class="col-sm-2">
-							<a href="profile/{{$user->id}}/reviews"><b>111</b> Reviews</a>
-						</div>
-						<div class="col-sm-2">
-							<a href="profile/{{$user->id}}/discussion"><b>11</b> Discussion</a>
+						<div class="col-sm-2" id="followers">
+							<a href="profile/{{$user->id}}/followers"><b>{{$profile_header->followers}}</b> <br> Followers</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		@isset($history)
+		<center>
+			<h5>Last Watching</h5>
+			<h4>{{$history->movie()->title}}</h4>
+			<h5>{{$history->created_at}}</h5>
+		</center>
+		@else
+		@endif
 	</section>
-
+	@yield('data')
 	@include('Profile/editModal')
-
-	<div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="page-title text-center">
-                    <h5 class="title">Activities</h5>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-1"></div>
-            <div class="col-xs-12 col-md-10">
-                {{--START POST--}}
-                    @if(count($activities)==0)
-                    <div class="row">
-                        <center>
-                            <div class="space-40"></div>
-                            <h3>No activities</h3>
-                        </center>
-                    </div>
-                    @else
-                    @foreach($activities as $activity)
-                    <div class="row box" >
-                        <div class="col-xs-12 col-md-1">
-                            <figure class="comment-pic">
-                                <img alt="" src="{{ URL::to('/') }}/images/person.png">
-                            </figure>
-                        </div>
-                        <div class="col-xs-12 col-md-11">
-                            <div>
-                                <h4><a href="" class="">{{$activity->user->name}}</a></h4>
-                                <h4>{{$activity->text}}</h4>
-                                <h5>Posted on: {{$activity->created_at}}</h5>
-                                <div class="space-20"></div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                    <div class="space-80"></div>
-                    @endif
-                {{--END POST--}}
-            </div>
-        </div>
-    </div>
-
 @endsection
 
 @push('scripts')

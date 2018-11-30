@@ -31,18 +31,18 @@ class ActivityController extends Controller
       $rating_top = Rating::where('userId',Auth::user()->id)->orderBy('rating','desc')->take(3)->get();
       $reviews = Review::where('userId',Auth::user()->id)->count();
 
-      $user = array(
-                'total' => $total,
-                'movies' => $movies->distinct_movie,
-                'average' => number_format((float)$average->average_rating, 1, '.', ''),
-                'reviews' => $reviews
+      $user_data = array(
+                  'total' => $total,
+                  'movies' => $movies->distinct_movie,
+                  'average' => number_format((float)$average->average_rating, 1, '.', ''),
+                  'reviews' => $reviews
               );
-      $user = (object) $user;
+      $user_data = (object) $user_data;
 
-		  return view('activity.index')->with(['history'=>$history, 'mosts'=>$mosts, 'user'=>$user, 'rating_top'=>$rating_top]);
+		  return view('activity.index')->with(['history'=>$history, 'mosts'=>$mosts, 'user_data'=>$user_data, 'rating_top'=>$rating_top]);
     }
 
-    public function getActivity(){
+    public function getActivity($id){
 
       $start = Carbon::now()->subDays(29);
       for ($i = 0 ; $i <= 29; $i++) {
@@ -51,7 +51,7 @@ class ActivityController extends Controller
 
       foreach ($dates as $date) {
         $q = \DB::table('watches')
-            ->where('userId',\Auth::user()->id)
+            ->where('userId',$id)
             ->where('created_at','>=',$date.' 00:00:00')
             ->where('created_at','<=',$date.' 23:59:59')
             ->count();
@@ -66,8 +66,8 @@ class ActivityController extends Controller
       return json_encode($activity);
     }
 
-    public function getFavouriteGenres(){
-      $history = Watch::where('userId',Auth::user()->id)->orderBy('created_at','desc')->get();
+    public function getFavouriteGenres($id){
+      $history = Watch::where('userId',$id)->orderBy('created_at','desc')->get();
       $total_genres = 0;
 
       foreach ($history as $key => $a) {

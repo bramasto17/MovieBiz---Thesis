@@ -8,7 +8,7 @@ var color = d3.scale.linear()
 
 var tooltip_genre = d3.select("#chart_genre").append("div").attr("class", "toolTip");
 
-d3.json("/get-favourite-genres", function(error, dataset){
+d3.json("/get-favourite-genres/{!! json_encode($user->id) !!}", function(error, dataset){
     dataset.forEach(function(d){
         d.label = d.label;
         d.count = +d.count;
