@@ -29,9 +29,14 @@ class LoginController extends Controller
     		return redirect('/login')->withErrors($validator);
     	}
     	else if(Auth::attempt(['email'=>$email,'password'=>$password],false)){ 
-          session()->put('Auth', Auth::user());
-          session()->save();
-          return redirect('/home')->with('message','Login Success');
+            if(Auth::user()->active()){
+                session()->put('Auth', Auth::user());
+                session()->save();
+                return redirect('/home')->with('message','Login Success');
+            }
+            else{
+                return redirect('/login')->with('message','User are banned by admin');
+            }
 	    } else { 
 	    	return redirect('/login')->with('message','User Not Found');
 	    } 

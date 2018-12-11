@@ -169,7 +169,18 @@
 		                        </figure>
 		                        <div class="comment-content">
 		                            <div class="comment-header">
-                                        <h4>Review by <a href="/profile/{{$review->userId}}">{{$review->userName}}</a> <small>{{$review->created_at}}</small></h4>
+                                        <div class="col-md-11">
+                                            <h4>Review by <a href="/profile/{{$review->userId}}">{{$review->userName}}</a> <small>{{$review->created_at}}</small></h4>
+                                        </div>
+                                        <div class="col-md-1">
+                                            @if(\Auth::user()->admin())
+                                            <a href="deleteReview/{{$review->id}}">
+                                                <button id="myBtn" class="bttn-default bttn-half-padding bttn-admin">
+                                                    <i class="fa fa-trash fa-lg"></i>
+                                                </button>
+                                            </a>
+                                            @endif
+                                        </div>
                                         <p class="comment-date"><span class="review-rating"> {{$review->rating}}/10 <span class="icon">★</span></span></p>
 		                            </div>
 		                            <p>{{$review->review}}</p>

@@ -17,13 +17,19 @@
 
 				<div class="col-xs-12 col-sm-6">
 					<div class="col-sm-4" id="user_name"><a href="profile/{{$user->id}}/"><h3>{{$user->name}}</h3></a></div>
-					<div class="col-sm-4"></div>
+					<div class="col-sm-4">
+						@if(\Auth::user()->admin() && $user->id != \Auth::user()->id)
+						<a href="banUser/{{$user->id}}">
+						<button id="ban" class="bttn-default bttn-half-padding bttn-admin">@if($user->active()) Ban User @else Unban User @endif</button>
+						</a>
+						@endif
+					</div>
 					<div class="col-sm-4">
 						@if($isOwnAccount)
 							<button id="editProfileBtn" class="bttn-white bttn-half-padding">Edit Profile</button>
 						@else
 							<button id="follow" class="bttn-white bttn-half-padding">Follow</button>
-							{{--<button class="bttn-white bttn-half-padding">Report</button>--}}
+							<!-- {{--<button class="bttn-white bttn-half-padding">Report</button>--}} -->
 						@endif
 					</div>
 					<br><br>

@@ -62,3 +62,10 @@ Route::get('/movie/{id}/forum','ThreadController@index');
 Route::post('/createThread','ThreadController@createThread');
 Route::get('/thread/{id}','ThreadController@showThreadDetail');
 Route::post('/createPost','ThreadController@createPost');
+
+
+//ADMIN
+Route::get('/banUser/{id}','AdminController@banUser');
+Route::get('/deleteThread/{id}','AdminController@deleteThread');
+Route::get('/deletePost/{id}','AdminController@deletePost');
+Route::get('/deleteReview/{id}','AdminController@deleteReview');

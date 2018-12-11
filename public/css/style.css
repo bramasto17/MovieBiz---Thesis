@@ -2031,3 +2031,7 @@ form .control {
 #profile_page .box{
     background-color: rgba(0,0,0,0.2);
 }
+
+.bttn-admin {
+    background: green;
+}

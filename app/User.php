@@ -28,6 +28,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function admin(){
+        if($this->admin == 1) return true;
+        else return false;
+    }
+
+    public function active(){
+        if($this->active == 1) return true;
+        else return false;
+    }
 
     public function isFollowing()
     {

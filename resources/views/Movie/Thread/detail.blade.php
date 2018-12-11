@@ -24,6 +24,13 @@
                         <button id="myBtn" class="bttn-default bttn-half-padding">
                             Create New Post
                         </button>
+                        @if($creator == true || \Auth::user()->admin())
+                        <a href="deleteThread/{{$thisThread->id}}">
+                            <button id="myBtn" class="bttn-default bttn-half-padding bttn-admin">
+                                Delete Thread
+                            </button>
+                        </a>
+                        @endif
                     </div>
 
                     <div id="myModal" class="modal">
@@ -35,7 +42,6 @@
                                 <input type="hidden" name="userId" value="{{Auth::user()->id}}">
                                 <textarea name="txtContent"  rows="3" class="form-control" placeholder="Write post here"></textarea>
                                 <div class="space-30"></div>
-
                                 <div align="right">
                                     <button type="submit" class="bttn-default bttn-half-padding">Post</button>
                                 </div>
@@ -51,7 +57,18 @@
                                 <div class="col-xs-12 col-md-1"></div>
                                 <div class="col-xs-12 col-md-11">
                                     <div>
-                                        <h4><a href="/profile/{{$post->userId}}" class="">{{$post->userName}}</a> <small>Posted on: {{$post->created_at}}</small></h4>
+                                        <div class="col-md-11">
+                                            <h4><a href="/profile/{{$post->userId}}" class="">{{$post->userName}}</a> <small>Posted on: {{$post->created_at}}</small></h4>
+                                        </div>
+                                        <div class="col-md-1">
+                                            @if(\Auth::user()->admin())
+                                            <a href="/deletePost/{{$post->id}}">
+                                                <button id="myBtn" class="bttn-default bttn-half-padding bttn-admin">
+                                                    <i class="fa fa-trash fa-lg"></i>
+                                                </button>
+                                            </a>
+                                            @endif   
+                                        </div>
                                         <h4>{{$post->content}}</h4>
                                         <button id="myBtnSub">
                                             <small><span class="fa fa-reply"></span> Reply</small>
@@ -88,8 +105,19 @@
                                                 <div class="col-xs-12 col-md-1"></div>
                                                 <div class="col-xs-12 col-md-11">
                                                     <div>
-                                                        <h4><a href="/profile/{{$subpost->userId}}" class="">{{$subpost->userName}}</a> <small>Posted on: {{$subpost->created_at}}</small></h4>
-                                                        <h4>{{$subpost->content}}</h4>
+                                                        <div class="col-xs-12 col-md-11">
+                                                            <h4><a href="/profile/{{$subpost->userId}}" class="">{{$subpost->userName}}</a> <small>Posted on: {{$subpost->created_at}}</small></h4>
+                                                            <h4>{{$subpost->content}}</h4>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            @if(\Auth::user()->admin())
+                                                            <a href="/deletePost/{{$subpost->id}}">
+                                                                <button id="myBtn" class="bttn-default bttn-half-padding bttn-admin">
+                                                                    <i class="fa fa-trash fa-lg"></i>
+                                                                </button>
+                                                            </a>
+                                                            @endif 
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -106,6 +134,8 @@
                 </div>
             </div>
         </div>
+        
+        <div class="space-80"></div>
     </section>
 @endsection
 

@@ -95,7 +95,9 @@ class ThreadController extends Controller
             ->select('posts.*', 'users.name as userName', 'users.id as userId')
             ->get();
 
-        return view('Movie\Thread\detail', compact('movie', 'thisThread', 'posts', 'subposts'));
+        $creator = (\Auth::user()->id == $thisThread->creatorId) ? true : false;
+
+        return view('Movie\Thread\detail', compact('movie', 'thisThread', 'posts', 'subposts','creator'));
     }
 
     public function createPost(Request $request){
