@@ -56,7 +56,7 @@
                             <div class="row" style="margin-top: 20px">
                                 <div class="col-xs-12 col-md-1"></div>
                                 <div class="col-xs-12 col-md-11">
-                                    <div>
+                                    <div class="row">
                                         <div class="col-md-11">
                                             <h4><a href="/profile/{{$post->userId}}" class="">{{$post->userName}}</a> <small>Posted on: {{$post->created_at}}</small></h4>
                                         </div>
@@ -69,6 +69,8 @@
                                             </a>
                                             @endif   
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <h4>{{$post->content}}</h4>
                                         <button id="myBtnSub">
                                             <small><span class="fa fa-reply"></span> Reply</small>
