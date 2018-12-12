@@ -28,12 +28,12 @@
 	                        <span>{{$movie->original_language}}</span>
 	                    </div>
 	                    <div class="col-xs-6 col-sm-4">
-	                        <span class="red-color">Country : </span>
-	                        <span>{{$movie->production_countries[0]['name']}}</span>
-	                    </div>
-	                    <div class="col-xs-6 col-sm-4">
 	                        <span class="red-color">Directors : </span>
 	                        <span>{{$movie->casts['crew'][0]['name']}}</span>
+	                    </div>
+	                    <div class="col-xs-6 col-sm-4">
+	                        <span class="red-color">Duration : </span>
+	                        <span>{{$movie->runtime}} minutes</span>
 	                    </div>
 	                    <div class="col-xs-6 col-sm-4">
 	                        <span class="red-color">Writers : </span>
@@ -49,6 +49,11 @@
 	                    </div>
 	                </div>
 	                <div class="space-20"></div>
+	                @if($movie->status != "Released")
+	                <div class="row text-center">
+	                	<h5 class="wow fadeInUp">The movie is not released yet so you can't check in to the movie</h5>
+	                </div>
+	                @else
 	                <div class="row movie-menu">
 		                <div class="col-xs-12 col-sm-4">
                     		<div class="space-20"></div>
@@ -150,6 +155,7 @@
 		                	</div>
 		                </div>
 	                </div>
+	                @endif
 	            </div>
 	        </div>
 	    </div>

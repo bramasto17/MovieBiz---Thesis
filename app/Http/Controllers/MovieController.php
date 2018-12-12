@@ -51,7 +51,7 @@ class MovieController extends Controller
         $forum = Forum::where('movieId',$id)->first();
         if($forum) $threads = Thread::where('forumId',$forum->id)->take(3)->get();
         else $threads = null;
-        
+
         return view('Movie\index', compact('movie','rating','review','stats','similar','threads'));
     } 
 }

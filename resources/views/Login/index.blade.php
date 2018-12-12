@@ -26,6 +26,9 @@ Login
                         </div>
 
                     </div>
+                    @if(isset($message))
+                    <h3>{{$message}}</h3>
+                    @endif
                     <div class="space-20"></div>
                     <h5 class="wow fadeInUp" data-wow-delay="0.4s">Not a User? <a href="/register"><u>Sign Up!</u></a></h5>
                     <div class="space-80"></div>
