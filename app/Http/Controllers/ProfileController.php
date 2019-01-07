@@ -12,6 +12,9 @@ use App\Review;
 use App\Watch;
 use Carbon\Carbon;
 use Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+
 class ProfileController extends Controller
 {
     //
@@ -132,7 +135,34 @@ class ProfileController extends Controller
     }
 
     public function editProfile(Request $request){
-        dd($request);
+        $inputs = Input::all();
+        $rules = [
+            'profile_pict' => 'image',
+            'name' => 'required',
+            'password' => 'required | min:5 | alpha_num'
+        ];
+        $validator = Validator::make($inputs, $rules);
+
+        if ($validator->passes()) {
+            $target = User::find($request->userId);
+
+            if ($request->profile_pict != null){
+                $file = $request->profile_pict;
+                $file_name = $file->getClientOriginalName();
+                $file->move("images/users/", $file_name);
+                $target->profile_pict =  'images/users/'.$file_name;
+            }
+
+            $target->name = $request->name;
+            $target->password = app('hash')->make($request->password);
+            $target->save();
+        }
+        else{
+            return redirect('/profile/'.$request->userId)->withErrors($validator);
+        }
+
+        return redirect('/profile/'.$request->userId);
+
     }
 
 }

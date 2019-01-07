@@ -83,7 +83,7 @@
                         </form>
 
                         <div class="dropdown" style="display: inline-block">
-                            <button class="dropbtn"><img class="profile-pict" alt="" src="{{ URL::to('/').\Auth::user()->profile_pict }}"></button>
+                            <button class="dropbtn"><img class="profile-pict" alt="" src="{{ Auth::user()->profile_pict }}"></button>
                             <div class="dropdown-content">
                                 <a href="/profile/{{Auth::user()->id}}">My Profile</a>
                                 <a href="/logout">Logout</a>
@@ -151,20 +151,20 @@
         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     <div class="space-30 hidden visible-xs"></div>
                 </div>
-                <div class="col-xs-12 col-md-7">
-                    <div class="footer-menu">
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/discover">Discover</a></li>
-                            <li><a href="/feed">Feed</a></li>
-                            <li><a href="/my-activity">My Activity</a></li>
-                            @if (auth()->guest())
-                            @else
-                            <li><a href="/profile/{{Auth::user()->id}}">My Profile</a></li>
-                            @endif
-                        </ul>
-                    </div>
-                </div>
+                {{--<div class="col-xs-12 col-md-7">--}}
+                    {{--<div class="footer-menu">--}}
+                        {{--<ul>--}}
+                            {{--<li><a href="/">Home</a></li>--}}
+                            {{--<li><a href="/discover">Discover</a></li>--}}
+                            {{--<li><a href="/feed">Feed</a></li>--}}
+                            {{--<li><a href="/my-activity">My Activity</a></li>--}}
+                            {{--@if (auth()->guest())--}}
+                            {{--@else--}}
+                            {{--<li><a href="/profile/{{Auth::user()->id}}">My Profile</a></li>--}}
+                            {{--@endif--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
         </div>
     </div>
