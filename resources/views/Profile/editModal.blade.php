@@ -4,7 +4,7 @@
     <div class="modal-content">
         <span class="close">&times;</span>
 
-        <form id="modalForm" action="/profile/edit" method="POST">
+        <form id="modalForm" action="/profile/edit" method="POST"  enctype="multipart/form-data">
             {{csrf_field()}}
             <input type="hidden" name="userId" value="{{$user->id}}">
 
@@ -14,15 +14,15 @@
                 </div>
 
                 <div class="col-sm-6">
-                    <label for="profilepic">Upload Picture
-                        <input type="file" class="form-control" id="profilepic" name="profilepic">
+                    <label for="profile_pict">Upload Picture
+                        <input type="file" class="form-control" id="profilepic" name="profile_pict">
                     </label>
 
                     <label for="name">User Name
                         <input type="text" class="form-control" name="name" value="{{$user->name}}">
                     </label>
 
-                    <label for="password">Password
+                    <label for="password">Retype/Change Password
                         <input type="password" class="form-control" name="password">
                     </label>
 
