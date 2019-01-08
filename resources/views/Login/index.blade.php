@@ -13,7 +13,7 @@ Login
                     <div class="space-20"></div>
                     <div class="desc wow fadeInUp" data-wow-delay="0.6s">
                         <div class="Login_SignUp-form text-center">
-                            <form action="/login" method="POST">
+                            <form action="/login" method="POST" id="login_form">
 								{{csrf_field()}}
                                 <div class="field-form">
                                     <input type="email" class="control" placeholder="Email" required="required" name="txtEmail" id="txtEmail" >
@@ -21,6 +21,11 @@ Login
                                 <div class="field-form">
                                     <input type="password" class="control" placeholder="Password" required="required" name="txtPassword" id="txtPassword">
                                 </div>
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                                 <input id="login_submit" class="bttn-white wow fadeInUp" type="submit" value="Login"></input>
                             </form>
                         </div>
@@ -40,7 +45,7 @@ Login
 @endsection
 @push('scripts')
 <script type="text/javascript">
-    $("#login_submit").on("click", function () {
+    $("#login_form").submit(function () {
         $('.preloader').fadeIn(3500);
     });
 </script>
