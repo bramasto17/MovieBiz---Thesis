@@ -77,11 +77,12 @@
                     </div>
                 @else
                     <div class="right-button-elements" >
+                        @if(\Route::getFacadeRoot()->current()->uri() != 'home')
                         <form action="/search" id="search2" style="display: inline-block">
                             <input type="text" class="control" placeholder="Search" required="required" name="txtSearch" id="txtSearch" ><!--
                             --><button type="submit" style="cursor: pointer"><i class="fa fa-search fa-lg"></i></button>
                         </form>
-
+                        @endif
                         <div class="dropdown" style="display: inline-block">
                             <button class="dropbtn"><img class="profile-pict" alt="" src="{{ Auth::user()->profile_pict }}"></button>
                             <div class="dropdown-content">

@@ -8,6 +8,7 @@ use Auth;
 use Session;
 
 use App\Watch;
+use App\Timeline;
 use App\User;
 class HomeController extends Controller
 {
@@ -30,33 +31,10 @@ class HomeController extends Controller
     }
 
     public function home(Request $request){
-        ini_set('max_execution_time', 6000);
-        //POPULAR
         $popular = Session::get('popular');
-
-        //LATEST
-        if(!Session::has('latest')){
-            $latests = tmdb()->nowPlayingMovies();
-            foreach ($latests as $l) {
-                $latest[] = (object) $l->get();
-            }
-            Session::put('latest', $latest);
-        }
-        $latest = Session::get('latest');
-
-        //HISTORY
-        if(!Session::has('history')){
-            $movieId = Watch::where('userId',Auth::user()->id)->get()->sortByDesc('created_at');
-            foreach ($movieId as $key => $data) {
-                // $time_start = microtime(true); 
-                $history[] = (object) tmdb()->getMovie($data->movieId)->get();
-                // $time_end = microtime(true); 
-                // $exe[] = $time_end - $time_start;
-            }
-            Session::put('history', isset($history) ? $history : null);
-        }
-        $history = Session::get('history');
-        return view('Home/index')->with(['popular'=>$popular,'latest'=>$latest, 'history'=>$history]);
+        $feeds = Timeline::whereIn('userId',getFollowingIds())->orderBy('created_at','desc')->take(5)->get();
+        $timelines = Timeline::where('userId',\Auth::user()->id)->orderBy('created_at','desc')->take(5)->get();
+        return view('Home/index')->with(['popular'=>$popular, 'feeds'=>$feeds, 'timelines'=>$timelines]);
     }
 
     public function discover(Request $request){

@@ -12,26 +12,11 @@ use Illuminate\Http\Request;
 
 class FeedController extends Controller
 {
-    //
-
-    public function getFollowingIds(){
-    	$following = Following::where('userId',Auth::user()->id)->get();
-
-        if(count($following)==0) $ids[] = 0;
-        else{
-        	foreach ($following as $f) {
-        		$ids[] = $f->followingId;
-        	}
-        }
-
-    	return $ids;
-	}
-
     public function index(){
         $popular = Session::get('popular');
     	$movie = $popular[0];
 
-    	$timelines = Timeline::whereIn('userId',$this->getFollowingIds())->orderBy('created_at','desc')->get();
+    	$timelines = Timeline::whereIn('userId',getFollowingIds())->orderBy('created_at','desc')->get();
 
     	return view('Feed.index', compact('movie', 'timelines'));
     }

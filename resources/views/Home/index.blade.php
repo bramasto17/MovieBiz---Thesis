@@ -56,9 +56,99 @@ Home
                 </a>
             </div>
         </div>
+        <div class="space-40"></div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 gallery-slider">
+                <div class="col-xs-12 col-sm-12 gallery-slider">
+                    <div class="page-title text-center">
+                        <h4 class="title">Your Feed</h4>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 gallery-slider">
+                    @if(count($feeds)==0)
+                    <div class="row">
+                        <center>
+                            <div class="space-40"></div>
+                            <h3>No activities</h3>
+                        </center>
+                    </div>
+                    @else
+                    @foreach($feeds as $feed)
+                    <div class="row box" >
+                        <div class="col-xs-12 col-md-1">
+                            <figure class="comment-pic">
+                                <img alt="" src="{{ URL::to('/').$feed->user->profile_pict }}">
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-md-11">
+                            <div>
+                                <h4><a href="" class="">{{$feed->user->name}}</a></h4>
+                                <h4>{{$feed->text}}</h4>
+                                <h5>Posted on: {{$feed->created_at}}</h5>
+                                <div class="space-20"></div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    @endif
+                </div>
+                <div class="col-xs-12 col-sm-12" align="center">
+                    <a href="/feed">
+                        <h4>
+                            <button class="bttn-default bttn-top-padding">
+                                View more feed
+                            </button>
+                        </h4>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 gallery-slider">
+                <div class="col-xs-12 col-sm-12 gallery-slider">
+                    <div class="page-title text-center">
+                        <h4 class="title">Your Timeline</h4>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 gallery-slider">
+                    @if(count($timelines)==0)
+                    <div class="row">
+                        <center>
+                            <div class="space-40"></div>
+                            <h3>No activities</h3>
+                        </center>
+                    </div>
+                    @else
+                    @foreach($timelines as $timeline)
+                    <div class="row box" >
+                        <div class="col-xs-12 col-md-1">
+                            <figure class="comment-pic">
+                                <img alt="" src="{{ URL::to('/').$timeline->user->profile_pict }}">
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-md-11">
+                            <div>
+                                <h4><a href="" class="">{{$timeline->user->name}}</a></h4>
+                                <h4>{{$timeline->text}}</h4>
+                                <h5>Posted on: {{$timeline->created_at}}</h5>
+                                <div class="space-20"></div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    @endif
+                </div>
+                <div class="col-xs-12 col-sm-12" align="center">
+                    <a href="/profile/{{\Auth::user()->id}}/timeline">
+                        <h4>
+                            <button class="bttn-default bttn-top-padding">
+                                View more timeline
+                            </button>
+                        </h4>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-\\
 @endsection
 @push('scripts')
 <script type="text/javascript">
