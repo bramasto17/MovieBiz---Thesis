@@ -747,6 +747,9 @@ iframe{
     color: #ffffff;
 }
 
+.gallery-area input {
+    color: red;
+}
 
 .gallery-slide .item {
     margin-bottom: 15px;
