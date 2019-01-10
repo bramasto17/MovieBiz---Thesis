@@ -57,7 +57,7 @@
 	                <div class="row movie-menu">
 		                <div class="col-xs-12 col-sm-4">
                     		<div class="space-20"></div>
-		                    	<button id="checkInMovie" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-film-play"></i>{{$stats->times_played > 0 ? 'Watch Again' : 'Chek-In Movie'}}<span class="lds-dual-ring" id="loadingDiv"></span></button>
+		                    	<button id="checkInMovie" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-film-play"></i>{{$stats->times_played > 0 ? 'Watch Again' : 'Check-In Movie'}}<span class="lds-dual-ring" id="loadingDiv"></span></button>
 		                </div>
 		                <div class="col-xs-12 col-sm-8 wow fadeInUp" id="rating_section">
 		                	<div class="row">
@@ -241,6 +241,77 @@
 	    </div>
 	</section>
 	<!-- Trailer-Area-End -->
+	<!-- Forum-Review-Area-->
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-6">
+				<section class="section-padding price-area" id="forum">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="page-title text-center">
+								<h3 class="title">Forum</h3>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12">
+							<div class="price-box">
+								<div class="price-body">
+									<ul>
+										@if(isset($threads))
+											@foreach($threads as $thread)
+												<li><a href="thread/{{$thread->id}}">{{$thread->title}}</a></li>
+											@endforeach
+										@else
+											<li>No thread at the moment</li>
+										@endif
+									</ul>
+								</div>
+								<div class="price-footer">
+									<a href="/movie/{{$movie->id}}/forum" class="bttn-white">Go to movie's forum</a>
+								</div>
+							</div>
+							<div class="space-30 hidden visible-xs"></div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="col-xs-12 col-md-6">
+				<section class="section-padding price-area" id="review">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="page-title text-center">
+								<h3 class="title">Review</h3>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12">
+							<div class="price-box">
+								<div class="price-body">
+									@if(isset($review))
+										<a href="review/{{$movie->id}}">
+											<span>Most Liked Review by {{$review->name}}</span>
+											<p>
+												{{$review->review}}
+											</p>
+										</a>
+									@else
+										<span>No review for the movie at this moment.</span>
+									@endif
+								</div>
+								<div class="price-footer">
+									<a href="/movie/{{$movie->id}}/review" class="bttn-white">@if(isset($review)) Check other review @else Write the first review @endif</a>
+								</div>
+							</div>
+							<div class="space-30 hidden visible-xs"></div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+	<!-- Forum-Review-Area-End-->
 	<!--Actors-Area -->
 	<section class="testimonial-area">
 	    <div class="container">
@@ -317,77 +388,7 @@
 	</section>
 	@endif
 	<!-- Similar-Area-End-->
-	<!-- Forum-Review-Area-->
-	<div class="container">
-	    <div class="row">
-	        <div class="col-xs-12 col-md-6">
-	            <section class="section-padding price-area" id="forum">
-	                <div class="row">
-	                    <div class="col-xs-12">
-	                        <div class="page-title text-center">
-	                            <h3 class="title">Forum</h3>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="row">
-	                    <div class="col-xs-12 col-sm-12">
-	                        <div class="price-box">
-	                            <div class="price-body">
-	                                <ul>
-	                                	@if(isset($threads))
-	                                	@foreach($threads as $thread)
-	                                    <li><a href="thread/{{$thread->id}}">{{$thread->title}}</a></li>
-	                                    @endforeach
-	                                    @else
-	                                    <li>No thread at the moment</li>
-	                                    @endif
-	                                </ul>
-	                            </div>
-	                            <div class="price-footer">
-	                                <a href="/movie/{{$movie->id}}/forum" class="bttn-white">Go to movie's forum</a>
-	                            </div>
-	                        </div>
-	                        <div class="space-30 hidden visible-xs"></div>
-	                    </div>
-	                </div>
-	            </section>
-	        </div>
-	        <div class="col-xs-12 col-md-6">
-	            <section class="section-padding price-area" id="review">
-	                <div class="row">
-	                    <div class="col-xs-12">
-	                        <div class="page-title text-center">
-	                            <h3 class="title">Review</h3>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="row">
-	                    <div class="col-xs-12 col-sm-12">
-	                        <div class="price-box">
-	                            <div class="price-body">
-	                    			@if(isset($review))
-	                    			<a href="review/{{$movie->id}}">
-	                            	<span>Most Liked Review by {{$review->name}}</span>
-	                                <p>
-	                                	{{$review->review}}
-	                                </p>
-	                                </a>
-	                                @else
-	                        		<span>No review for the movie at this moment.</span>
-	                                @endif
-	                            </div>
-	                            <div class="price-footer">
-	                                <a href="/movie/{{$movie->id}}/review" class="bttn-white">@if(isset($review)) Check other review @else Write the first review @endif</a>
-	                            </div>
-	                        </div>
-	                        <div class="space-30 hidden visible-xs"></div>
-	                    </div>
-	                </div>
-	            </section>
-	        </div>
-	    </div>
-	</div>
-	<!-- Forum-Review-Area-End-->
+	<div class="space-20"></div>
 @endsection
 @push('scripts')
 <script type="text/javascript">

@@ -653,7 +653,7 @@ iframe{
 
 .testimonial-area {
     padding-top: 60px;
-    padding-bottom: 60px;
+    /*padding-bottom: 60px;*/
 }
 
 .team-box-container{
@@ -1842,7 +1842,7 @@ form .control {
     display: none;
     position: absolute;
     background-color: rgba(0,0,0,0.5);
-    min-width: 160px;
+    min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     right:0;
@@ -2050,4 +2050,12 @@ form .control {
     right: 130px;
     top: 57px;
     margin-right: 0;
+}
+
+.h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins';
+}
+
+* {
+    /*border: 1px solid black;*/
 }

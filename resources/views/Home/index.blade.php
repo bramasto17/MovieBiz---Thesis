@@ -66,11 +66,9 @@ Home
                 </div>
                 <div class="col-xs-12 col-sm-12 gallery-slider">
                     @if(count($feeds)==0)
-                    <div class="row">
-                        <center>
-                            <div class="space-40"></div>
-                            <h3>No activities</h3>
-                        </center>
+                    <div class="row" align="center">
+                        <h4>No activities</h4>
+                        <div class="space-40"></div>
                     </div>
                     @else
                     @foreach($feeds as $feed)
@@ -95,7 +93,7 @@ Home
                 <div class="col-xs-12 col-sm-12" align="center">
                     <a href="/feed">
                         <h4>
-                            <button class="bttn-default bttn-top-padding">
+                            <button class="bttn-white bttn-top-padding">
                                 View more feed
                             </button>
                         </h4>
@@ -111,10 +109,10 @@ Home
                 <div class="col-xs-12 col-sm-12 gallery-slider">
                     @if(count($timelines)==0)
                     <div class="row">
-                        <center>
+                        <div class="row" align="center">
+                            <h4>No activities</h4>
                             <div class="space-40"></div>
-                            <h3>No activities</h3>
-                        </center>
+                        </div>
                     </div>
                     @else
                     @foreach($timelines as $timeline)
@@ -139,7 +137,7 @@ Home
                 <div class="col-xs-12 col-sm-12" align="center">
                     <a href="/profile/{{\Auth::user()->id}}/timeline">
                         <h4>
-                            <button class="bttn-default bttn-top-padding">
+                            <button class="bttn-white bttn-top-padding">
                                 View more timeline
                             </button>
                         </h4>

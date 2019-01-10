@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
     <!--[if lt IE 9]>
@@ -87,6 +90,7 @@
                             <button class="dropbtn"><img class="profile-pict" alt="" src="{{ Auth::user()->profile_pict }}"></button>
                             <div class="dropdown-content">
                                 <a href="/profile/{{Auth::user()->id}}">My Profile</a>
+                                <a href="/changepassword">Change Password</a>
                                 <a href="/logout">Logout</a>
                             </div>
                         </div>
@@ -101,6 +105,7 @@
 @yield('Content')
 <!-- Footer-Area -->
 <footer class="footer-area" id="contact_page">
+    @if(\Route::getFacadeRoot()->current()->uri() == 'home')
     <div class="section-padding">
         <div class="container">
             <div class="row">
@@ -142,6 +147,7 @@
             </div>
         </div>
     </div>
+    @endif
     <!-- Footer-Bootom -->
     <div class="footer-bottom">
         <div class="container">
