@@ -12,12 +12,17 @@ use App\Review;
 use App\Watch;
 use Carbon\Carbon;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function checkFollowing($followerId,$followTargetId){
 
     	$temp = DB::table('followings')->where('userId',$followerId)->where('followingId',$followTargetId)->get();
@@ -138,8 +143,7 @@ class ProfileController extends Controller
         $inputs = Input::all();
         $rules = [
             'profile_pict' => 'image',
-            'name' => 'required',
-            'password' => 'required | min:5 | alpha_num'
+            'name' => 'required'
         ];
         $validator = Validator::make($inputs, $rules);
 
@@ -154,7 +158,6 @@ class ProfileController extends Controller
             }
 
             $target->name = $request->name;
-            $target->password = app('hash')->make($request->password);
             $target->save();
         }
         else{
@@ -165,4 +168,39 @@ class ProfileController extends Controller
 
     }
 
+    public function viewChangePasswordForm(){
+        return view('Profile.changepass');
+    }
+
+    public function changePassword(Request $request){
+        //dd($request);
+        if (!(Hash::check($request->get('txtCurrPass'), Auth::user()->password))) {
+            return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+        }
+
+        if(strcmp($request->get('txtCurrPass'), $request->get('txtNewPass')) == 0){
+            return redirect()->back()->with("error","New Password cannot be same as your current password.");
+        }
+
+        if(!(strcmp($request->get('txtNewPass'), $request->get('txtConfirmPass'))) == 0){
+            return redirect()->back()->with("error","New password does not match the confirm password");
+        }
+
+        $rules = [
+            'txtCurrPass' => 'required',
+            'txtNewPass' => 'required | min:5 | alpha_num'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator);
+        }else{
+            $user_id = Auth::user()->id;
+            $user = User::find($user_id);
+            $user->password = app('hash')->make($request->txtNewPass);
+            $user->save();
+            return redirect()->back()->with("success","Password changed successfully!");
+        }
+
+    }
 }

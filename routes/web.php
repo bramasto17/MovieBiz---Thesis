@@ -51,6 +51,9 @@ Route::get('/profile/{id}/followers','ProfileController@followers');
 Route::get('/profile/{id}/reviews','ProfileController@reviews');
 Route::get('/profile/{id}/discussion','ProfileController@discussion');
 
+Route::get('/changepassword','ProfileController@viewChangePasswordForm');
+Route::post('/changepassword','ProfileController@changePassword');
+
 Route::post('/profile/{id}/follow','ProfileController@follow');
 Route::post('/profile/edit', 'ProfileController@editProfile');
 
