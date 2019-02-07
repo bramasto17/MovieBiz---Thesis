@@ -1124,6 +1124,27 @@ form .control {
     margin-bottom: 5px;
 }
 
+.alert {
+    border-radius: 35px;
+}
+
+.alert li {
+    list-style: none;
+}
+
+.alert-danger {
+    background: transparent;
+    border: 2px solid red;
+    color: red;
+}
+
+.alert-success {
+    background: transparent;
+    border: 2px solid green;
+    color: green;
+}
+
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */

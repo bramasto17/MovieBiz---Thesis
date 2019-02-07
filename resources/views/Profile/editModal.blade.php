@@ -21,6 +21,10 @@
                     <label for="name">User Name
                         <input type="text" class="form-control" name="name" value="{{$user->name}}">
                     </label>
+
+                    <label for="name">Retype/Change Password
+                        <input type="password" name="password" class="form-control">
+                    </label>
                 </div>
             </div>
 

@@ -35,6 +35,7 @@ class ProfileController extends Controller
 
     public function index($id){
         $user = User::where('id',$id)->first();
+        if ($user == null) return redirect('/404');
         $currentUser = Auth::user()->id;
         $isFollowing = $this->checkFollowing($currentUser,$id);
         $isOwnAccount = $user->id == $currentUser ? true : false;
@@ -72,6 +73,7 @@ class ProfileController extends Controller
 
     public function timeline($id){
         $user = User::where('id',$id)->first();
+        if ($user == null) return redirect('/404');
         $currentUser = Auth::user()->id;
         $isFollowing = $this->checkFollowing($currentUser,$id);
         $isOwnAccount = $user->id == $currentUser ? true : false;
@@ -88,6 +90,7 @@ class ProfileController extends Controller
 
     public function following($id){
         $user = User::where('id',$id)->first();
+        if ($user == null) return redirect('/404');
         $currentUser = Auth::user()->id;
         $isFollowing = $this->checkFollowing($currentUser,$id);
         $isOwnAccount = $user->id == $currentUser ? true : false;
@@ -105,6 +108,7 @@ class ProfileController extends Controller
 
     public function followers($id){
         $user = User::where('id',$id)->first();
+        if ($user == null) return redirect('/404');
         $currentUser = Auth::user()->id;
         $isFollowing = $this->checkFollowing($currentUser,$id);
         $isOwnAccount = $user->id == $currentUser ? true : false;
@@ -143,9 +147,16 @@ class ProfileController extends Controller
         $inputs = Input::all();
         $rules = [
             'profile_pict' => 'image',
-            'name' => 'required'
+            'name' => 'required',
+            'password' => 'required | min: 5'
         ];
-        $validator = Validator::make($inputs, $rules);
+        $message = [
+            'profile_pict.image' => 'Profile picture must be a valid image',
+            'name.required' => 'Name is required',
+            'password.min' => 'Password should consists atleast 5 characters',
+            'password.required' => 'Password is required',
+        ];
+        $validator = Validator::make($inputs, $rules, $message);
 
         if ($validator->passes()) {
             $target = User::find($request->userId);
@@ -158,6 +169,7 @@ class ProfileController extends Controller
             }
 
             $target->name = $request->name;
+            $target->password = app('hash')->make($request->password);
             $target->save();
         }
         else{

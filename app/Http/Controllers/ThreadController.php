@@ -24,6 +24,7 @@ class ThreadController extends Controller
 {
     public function index($id){
         $movie =(object) tmdb()->getMovie($id)->get();
+        if (!property_exists($movie, 'release_date')) return redirect('/404');
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
 
         $forum = Forum::where('movieID','=', $id)->first();
@@ -75,6 +76,8 @@ class ThreadController extends Controller
             ->where('threads.id', '=', $id)
             ->select('threads.*', 'users.name as userName', 'users.id as userId', 'forums.movieId')
             ->first();
+
+        if ($thisThread == null) return redirect('/404');
 
         $movie =(object) tmdb()->getMovie($thisThread->movieId)->get();
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);

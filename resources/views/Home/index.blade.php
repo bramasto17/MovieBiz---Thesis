@@ -57,6 +57,7 @@ Home
             </div>
         </div>
         <div class="space-40"></div>
+
         <div class="row">
             <div class="col-xs-12 col-sm-6 gallery-slider">
                 <div class="col-xs-12 col-sm-12 gallery-slider">
@@ -93,7 +94,7 @@ Home
                 <div class="col-xs-12 col-sm-12" align="center">
                     <a href="/feed">
                         <h4>
-                            <button class="bttn-white bttn-top-padding">
+                            <button class="bttn-default bttn-top-padding">
                                 View more feed
                             </button>
                         </h4>
@@ -137,7 +138,7 @@ Home
                 <div class="col-xs-12 col-sm-12" align="center">
                     <a href="/profile/{{\Auth::user()->id}}/timeline">
                         <h4>
-                            <button class="bttn-white bttn-top-padding">
+                            <button class="bttn-default bttn-top-padding">
                                 View more timeline
                             </button>
                         </h4>

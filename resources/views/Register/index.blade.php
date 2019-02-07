@@ -9,6 +9,15 @@ Register
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-8 col-md-offset-2">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="space-30 hidden-xs"></div>
                     <h3 class="wow fadeInUp" data-wow-delay="0.4s">Join us now.</h3>
                     <div class="space-20"></div>

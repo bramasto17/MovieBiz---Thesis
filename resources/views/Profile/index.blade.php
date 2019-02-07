@@ -7,17 +7,19 @@
 
 @section('Content')
 	<section class="home-area activity section-padding list overlay" @isset($history) style="background: url(https://image.tmdb.org/t/p/original{{isset($history) ? $history->movie()->backdrop_path:'' }}) no-repeat scroll center top / cover;" @else @endif id="profile_header">
-		<div class="container-fluid">
+		<div class="container-fluid" align="center">
 
-			@if ($errors->any())
-				<div class="alert alert-danger">
-					<ul>
-						@foreach ($errors->all() as $error)
-							<li>{{ $error }}</li>
-						@endforeach
-					</ul>
-				</div>
-			@endif
+			<div style="width: 60%;">
+				@if ($errors->any())
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($errors->all() as $error)
+								<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+					</div>
+				@endif
+			</div>
 
 			<div class="row">
 				<div class="col-xs-12 col-sm-2">

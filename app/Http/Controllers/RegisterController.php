@@ -15,13 +15,20 @@ class RegisterController extends Controller
     	return view('Register/index');
     }
     public function Register(Request $request){
-    	$rules = array(
+    	$rules = [
     			'txtUsername' => 'required | between:5,25',
     			'txtPassword' => 'required | min:5 | alpha_num',
     			'txtEmail' => 'required| email | unique:users,email',
-    		);
-
-    	$validator = Validator::make($request->all(),$rules);
+    		];
+        $message = [
+            'txtUsername.required' => 'Username is required',
+            'txtUsername.between' => 'Username must be between 5 - 25 characters',
+            'txtPassword.required' => 'Password is required',
+            'txtPassword.min' => 'Password should consists atleast 5 characters',
+            'txtPassword.alpha_num' => 'Password may only contain letters and numbers',
+            'txtEmail.unique' => 'Email has already been taken',
+        ];
+    	$validator = Validator::make($request->all(),$rules,$message);
     	$name = $request->txtUsername;
     	$password = $request->txtPassword;
       	$email = $request->txtEmail;

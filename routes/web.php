@@ -13,6 +13,11 @@
 
 Route::get('/','HomeController@index');
 
+// ERROR
+Route::get('/404', function (){
+    abort(404);
+});
+
 // LOGIN
 Route::get('/login','LoginController@index');
 Route::post('/login','LoginController@Login')->name('login');

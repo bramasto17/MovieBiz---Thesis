@@ -90,7 +90,7 @@
                             <button class="dropbtn"><img class="profile-pict" alt="" src="{{ Auth::user()->profile_pict }}"></button>
                             <div class="dropdown-content">
                                 <a href="/profile/{{Auth::user()->id}}">My Profile</a>
-                                <a href="/changepassword">Change Password</a>
+                                {{--<a href="/changepassword">Change Password</a>--}}
                                 <a href="/logout">Logout</a>
                             </div>
                         </div>

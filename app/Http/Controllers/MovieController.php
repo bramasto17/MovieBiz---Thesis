@@ -25,6 +25,7 @@ class MovieController extends Controller
     //
     public function index($id){
         $movie =(object) tmdb()->getMovie($id)->get();
+        if (!property_exists($movie, 'release_date')) return redirect('/404');
         $movie->release_date = Carbon::createFromFormat('Y-m-d', $movie->release_date);
         $rating = Rating::where('userId',Auth::user()->id)->where('movieId',$id)->first();
         $review = Review::join('users','users.id','=','reviews.userId')->where('movieId',$id)->select('reviews.*','users.name')->first();

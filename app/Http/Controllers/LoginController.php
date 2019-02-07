@@ -17,11 +17,15 @@ class LoginController extends Controller
     }
     public function Login(Request $request){
     	//login pakai email & password
-    	$rules = array(
+    	$rules = [
     			'txtEmail' => 'required | email',
     			'txtPassword' => 'required | min:5'
-    		);
-    	$validator = Validator::make($request->all(),$rules);
+    		];
+    	$messages = [
+    	    'txtPassword.min' => 'Password should consists atleast 5 characters',
+            'txtPassword.required' => 'Password is required',
+        ];
+    	$validator = Validator::make($request->all(),$rules,$messages);
     	$email = $request->input('txtEmail');
     	$password = $request->input('txtPassword');
 

@@ -16,12 +16,13 @@
                 <div class="profile-image-m">
                     <img src="{{$follower->follower->profile_pict}}">
                 </div>
-                <p><a href="">{{$follower->follower->name}}</a><br /> <button class="bttn-default bttn-half-padding">Un/Follow</button> </p>
+                <p><a href="/profile/{{$follower->follower->id}}">{{$follower->follower->name}}</a><br /> <button class="bttn-default bttn-half-padding">Un/Follow</button> </p>
             </div>
             <div class="space-30 hidden visible-xs"></div>
         </div>
         @endforeach
     </div>
+    <div class="space-40"></div>
 </div>
 @endsection
 @push('scripts')
