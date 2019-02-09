@@ -5,7 +5,7 @@ Feed
 
 @section('Content')
 
-<section class="overlay no-scroll" style="background: url('https://image.tmdb.org/t/p/original{{$movie->backdrop_path}}') no-repeat center center fixed;" id="reviews-section">
+<section class="overlay no-scroll" style="background: url('https://image.tmdb.org/t/p/original{{$movie->backdrop_path}}') no-repeat center center fixed; background-size: cover;" id="reviews-section">
         <div class="space-80"></div>
 
         <div class="container">
