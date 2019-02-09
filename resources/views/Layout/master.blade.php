@@ -105,7 +105,7 @@
 @yield('Content')
 <!-- Footer-Area -->
 <footer class="footer-area" id="contact_page">
-    @if(\Route::getFacadeRoot()->current()->uri() == 'home')
+    {{--@if(\Route::getFacadeRoot()->current()->uri() == 'home')--}}
     <div class="section-padding">
         <div class="container">
             <div class="row">
@@ -147,7 +147,7 @@
             </div>
         </div>
     </div>
-    @endif
+    {{--@endif--}}
     <!-- Footer-Bootom -->
     <div class="footer-bottom">
         <div class="container">
