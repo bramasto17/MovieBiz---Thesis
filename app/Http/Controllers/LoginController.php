@@ -39,6 +39,8 @@ class LoginController extends Controller
                 return redirect('/home')->with('message','Login Success');
             }
             else{
+                session()->flush();
+                Auth::logout();
                 return redirect('/login')->with('message','User are banned by admin');
             }
 	    } else { 
